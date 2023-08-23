@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="icon" href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580"> -->
+    
+        <title>Position</title>
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="./global.css">
+        <script src="./global.js"></script>
+    
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <!-- Swal2 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+    
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="./global_hrm.css" />
+    
+        <!-- Global JS -->
+        <script src='./global_js.js'></script>
+        <script src="config.js"></script>
+        <!-- This css font  -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+        rel="stylesheet">
+    
+        <link rel="stylesheet" href="position_page.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    </head>
+
+<body style="overflow: hidden;">
+    <!-- script menubar -->
+    <script>
+            $.get("./menu-top.html", function (data) {
+            $("#sidebar-tabtop").html(data);
+            });
+            $.get("./menu-left.html", function (data) {
+            $("#sidebar-tableft").html(data);
+            });
+    </script>
+     <!-- -->
+        <div style="display: flex;">
+            <!-- div menuabr -->
+            <div id="sidebar-tableft"></div>
+            <div style="width: calc(100% - 60px);">
+                <div id="sidebar-tabtop"></div>
+            <!--  -->
+                <div id="blur_bg" class=""style="width: 100%; height: 100%; position: absolute; top: 0; z-index: 2; background-color: rgb(151 151 151 / 20%); backdrop-filter: blur(3px); display: none;"></div>
+ <!-- position_addposition  -->
+                <div class="overlay_branch_info overlay-slide_branch_info" id="position_addposition" style="width: 450px;">
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+                    <p style="font-size: 20px;"> เพิ่มตำแหน่ง</p>
+                    <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+                        onclick="$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none'); ">
+                    </div>
+            
+                    <div style="height: 80%; padding: 0 25px; overflow: unset; background-color: #fff;" >
+
+                        <div class="content_overlay">
+                            <div class="overlay_items">
+                                <div class="position_name_th">
+                                    <span>ตำแหน่ง*</span>
+                                    <input type="text" name="position_name_th" id="position_name_th" placeholder="กรอกชื่อตำแหน่ง">
+                                </div>
+                                <div class="position_name_en">
+                                    <span>ตำแหน่ง(EN)</span>
+                                    <input type="text" name="position_name_en" id="position_name_en" placeholder="กรอกชื่อตำแหน่ง(EN)">
+                                </div>
+                                <div class="limit_rank">
+                                    <span>จำกัดระดับ</span>
+                                    <div class="ui_input_switch">
+                                        <label class="switch_hrm" id="switch_limitrank">
+                                            <input type="checkbox" id="check_limit_position">
+                                            <span class="slider round" ></span>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="rank_swap" id="rank_swap_content" style="display: none;">
+                                    <div class="rank_div">
+                                        <div class="rank_from">
+                                            <span class="to_rank_text">จากระดับ*</span>
+                                            <span class="selector_rank_content" id="selector_rank_from_1">
+                                                <div class="selection_text" id="selection_text_1"><span>กรุณาเลือก</span></div>
+                                                <div class="selection_menuright">
+                                                    <div class="selection_dropdown"><span class="material-symbols-outlined">arrow_forward_ios</span></div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="iconbetween">
+                                            <div><span></span></div>
+                                    </div>
+                                    <div class="rank_div">
+        
+                                        <div class="rank_to">
+                                            <span  class="to_rank_text">ถึงระดับ*</span>
+                                            <span class="selector_rank_content" id="selector_rank_to_2">
+                                                <div class="selection_text" id="selection_text_2"><span>กรุณาเลือก</span></div>
+                                                <div class="selection_menuright">
+                                                    <div class="selection_dropdown"><span class="material-symbols-outlined">arrow_forward_ios</span></div>
+                                                </div>
+        
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="position_popup_list">
+                                    <div class="container_popup_rank" id="container_popup_rank_1" style="display: none;">
+                                        <div class="arrow_pop"></div>
+                                        <label class="content_popup_rank" id="content_popup_rank_1">
+                                            <ul>
+                                                
+                                            </ul>
+                                        </label>
+                                    </div>
+                                    <div class="container_popup_rank" id="container_popup_rank_2"style="display: none;" >
+                                        <div class="arrow_pop"></div>
+                                        <label class="content_popup_rank" id="content_popup_rank_2">
+                                            <ul>
+
+                                            </ul>
+                                        </label>
+                                    </div>
+                                
+                                </div>
+                            </div>
+        
+                        </div>
+
+                    </div>
+            
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+                    <div style="align-items: center; display: flex;">
+                        <span style="margin-right: 10px;">สถานะใช้งาน</span>
+                        <label class="switch_hrm"id="switch_position_enable" >
+                        <input type="checkbox"  id="switch_position_enable_input">
+                        <span class="slider round"  ></span>
+                        </label>
+                    </div>
+            
+                    <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+                        <div id="btn_cancel_data"
+                        style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+                        ยกเลิก
+                        </div>
+                        <div id="btn_submit_data"
+                        style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex;  background-color: #009688;color: var(--color_white_Light_4);">
+                        สร้าง
+                        </div>
+                    </div>
+                    </div>
+            
+                </div>   
+  <!-- position_editposition -->
+                <div class="overlay_branch_info overlay-slide_branch_info" id="position_editposition" style="width: 450px;">
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+                    <p style="font-size: 20px;"> แก้ไขตำแหน่ง</p>
+                    <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+                        onclick="$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none'); ">
+                    </div>
+            
+                    <div style="height: 80%; padding: 0 25px; overflow: unset; background-color: #fff;" >
+
+                        <div class="content_overlay">
+                            <div class="overlay_items">
+                                <div class="position_name_th">
+                                    <span>ตำแหน่ง*</span>
+                                    <input type="text" name="position_name_th" id="position_name_th-edit" placeholder="กรอกชื่อตำแหน่ง">
+                                </div>
+                                <div class="position_name_en">
+                                    <span>ตำแหน่ง(EN)</span>
+                                    <input type="text" name="position_name_en" id="position_name_en-edit" placeholder="กรอกชื่อตำแหน่ง(EN)">
+                                </div>
+                                <div class="limit_rank">
+                                    <span>จำกัดระดับ</span>
+                                    <div class="ui_input_switch">
+                                        <label class="switch_hrm" id="switch_limitrank">
+                                            <input type="checkbox" id="check_limit_position_edit" >
+                                            <span class="slider round"  ></span>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="rank_swap" id="rank_swap_content_edit" >
+                                    <div class="rank_div">
+                                        <div class="rank_from">
+                                            <span class="to_rank_text">จากระดับ*</span>
+                                            <span class="selector_rank_content" id="selector_rank_from_1_edit">
+                                                <div class="selection_text" id="selection_text_1_edit"><span>กรุณาเลือก</span></div>
+                                                <div class="selection_menuright">
+                                                    <div class="selection_dropdown"><span class="material-symbols-outlined">arrow_forward_ios</span></div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="iconbetween">
+                                            <div><span></span></div>
+                                    </div>
+                                    <div class="rank_div">
+        
+                                        <div class="rank_to">
+                                            <span  class="to_rank_text">ถึงระดับ*</span>
+                                            <span class="selector_rank_content" id="selector_rank_to_2_edit">
+                                                <div class="selection_text" id="selection_text_2_edit"><span>กรุณาเลือก</span></div>
+                                                <div class="selection_menuright">
+                                                    <div class="selection_dropdown"><span class="material-symbols-outlined">arrow_forward_ios</span></div>
+                                                </div>
+        
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="position_popup_list">
+                                    <div class="container_popup_rank" id="container_popup_rank_1_edit">
+                                        <div class="arrow_pop"></div>
+                                        <label class="content_popup_rank" id="content_popup_rank_1_edit">
+                                            <ul>
+                                                
+                                            </ul>
+                                        </label>
+                                    </div>
+                                    <div class="container_popup_rank" id="container_popup_rank_2_edit" >
+                                        <div class="arrow_pop"></div>
+                                        <label class="content_popup_rank" id="content_popup_rank_2_edit">
+                                            <ul>
+
+                                            </ul>
+                                        </label>
+                                    </div>
+                                
+                                </div>
+                            </div>
+        
+                        </div>
+
+                    </div>
+            
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+                    <div style="align-items: center; display: flex;">
+                        <span style="margin-right: 10px;">สถานะใช้งาน</span>
+                        <label class="switch_hrm"id="switch_position_enable" >
+                        <input type="checkbox"  id="switch_position_enable_input_edit">
+                        <span class="slider round" ></span>
+                        </label>
+                    </div>
+            
+                    <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+                        <div id="btn_cancel_data_edit"
+                        style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+                        ยกเลิก
+                        </div>
+                        <div id="btn_submit_data_edit"
+                        style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex;  background-color: #009688; color: var(--color_white_Light_4);">
+                        บันทึก
+                        </div>
+                    </div>
+                    </div>
+            
+                </div>
+ <!-- position_addrank -->
+                <div class="overlay_branch_info overlay-slide_branch_info" id="position_addrank" style="width: 450px;">
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+                    <p style="font-size: 20px;"> เพิ่มตำแหน่ง</p>
+                    <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+                        onclick="$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none'); ">
+                    </div>
+                
+                    <div style="height: 80%; padding: 0 25px; overflow: unset; background-color: #fff;" >
+                
+                        <div class="content_overlay">
+                            <div class="overlay_items">
+                                <div class="position_name_th">
+                                    <span>ตำแหน่ง*</span>
+                                    <input type="text" name="position_name_th_rank" id="position_name_th_rank" placeholder="กรอกชื่อระดับ">
+                                </div>
+                                <div class="position_name_en">
+                                    <span>ตำแหน่ง(EN)</span>
+                                    <input type="text" name="position_name_en_rank" id="position_name_en_rank" placeholder="กรอกชื่อระดับ(EN)">
+                                </div>
+                                <div class="position_name_th_des">
+                                    <span>คำอธิบาย</span>
+                                    <span class="des_rank">                          
+                                        <input type="text" name="position_name_rank_res" id="position_name_des_rank" class="position_name_des">
+                                     </span>
+                                </div>    
+                            </div>
+                
+                        </div>
+                
+                    </div>
+                
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+                        <div style="align-items: center; display: flex;">
+                
+                        </div>
+                
+                        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+                            <div id="btn_cancel_data_rank"
+                            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+                            ยกเลิก
+                            </div>
+                            <div id="btn_submit_data_rank"
+                            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex;  background-color: #009688;color: var(--color_white_Light_4);">
+                            สร้าง
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- position_rank-edit -->
+                <div class="overlay_branch_info overlay-slide_branch_info" id="position_rank-edit" style="width: 450px;">
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+                    <p style="font-size: 20px;"> แก้ไขระดับ</p>
+                    <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+                        onclick="$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none'); ">
+                    </div>
+
+                    <div style="height: 80%; padding: 0 25px; overflow: unset; background-color: #fff;" >
+
+                        <div class="content_overlay">
+                            <div class="overlay_items">
+                                <div class="position_name_th">
+                                    <span>ตำแหน่ง*</span>
+                                    <input type="text" name="position_name_th_rank" id="position_name_th_rank-edit" placeholder="กรอกชื่อระดับ">
+                                </div>
+                                <div class="position_name_en">
+                                    <span>ตำแหน่ง(EN)</span>
+                                    <input type="text" name="position_name_en_rank" id="position_name_en_rank-edit" placeholder="กรอกชื่อระดับ(EN)">
+                                </div>
+                                <div class="position_name_th_des">
+                                    <span>คำอธิบาย</span>
+                                    <span class="des_rank">                          
+                                        <input type="text" name="position_name_rank_res" id="position_name_des_rank-edit" class="position_name_des">
+                                    </span>
+                                </div>    
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+                        <div style="align-items: center; display: flex;">
+
+                        </div>
+
+                        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+                            <div id="btn_cancel_data_rank-edit"
+                            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+                            ยกเลิก
+                            </div>
+                            <div id="btn_submit_data_rank-edit"
+                            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex;  background-color: #009688;color: var(--color_white_Light_4);">
+                            บันทึก
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                    <div class="container_position">
+                            <div class="header_position">
+                                <div class="header_position-name">
+                                    <span style="font-size: 24px;">ตำแหน่ง</span>
+                                </div>
+                                <div class="header_position-menu_right">
+                                    <div class="header_position-menu_right-video">
+                                        <span class="header_position-menu_right-video_icon">
+                                            0
+                                        </span>
+                                        <span>ดูวีดีโอ</span>
+                                    </div>
+                                    <div class="header_position-menu_right-manual">
+                                        <span class="header_position-menu_right-manual_icon">
+                                            0
+                                        </span>
+                                        <span>คู่มอืการใช้งาน</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="content_position">
+                                <!--  -->
+                                <div class="content_position-tabs_view" >
+                                    <div class="content_position-tabs_view-position" id="content_position-tabs_view"><span id="content_position-tabs_view-position">ตำแหน่ง</span></div>
+                                    <div class="content_position-tabs_view-rank" id="content_position-tabs_view"><span id="content_position-tabs_view-rank">ระดับตำแหน่ง</span></div>
+                                </div>
+                                <div class="content_position-wrapper">
+                                        <!-- postion block -->
+                                        <div class="content_position-wrapper-position" id="content_position-wrapper-position"style="display: flex;">
+                                            <div class="content_position-wrapper-position-filter">
+                                                    <div class="position-filter-left">
+                                                        <div class="position-filter-left-menu_input">
+                                                            <div class="position-filter-left-menu_input-icon"> <span class="material-symbols-outlined" style="color: lightgray;">search</span></div>
+                                                            <div class="position-filter-left-menu_input-textbox"><input type="text" placeholder="ค้นหาตำแหน่ง..." id="search_position" autocomplete="off"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-filter-right">
+                                                        <!-- <div class="position-filter-right-menu_t" style="position: relative;"><span style="margin-right: 15px;">ระดับ</span><span class="material-symbols-outlined" style="font-size: 200%;position: absolute;right: 0; ">arrow_drop_down </span></div> -->
+                                                        <!-- <div class="position-filter-right-menu_active"><span>ใช้งาน</span><span class="material-symbols-outlined" style="font-size: 15px;padding-top: 2px;"> close </span></div> -->
+                                                        <div class="position-filter-right-menu_addposition" onclick="$('#position_addposition').addClass('open'); $('#blur_bg').css('display','flex'); " ><span class="material-symbols-outlined" style="font-size: 20px ;" id="material_new_hover_add"> add</span><span>เพิ่มตำแหน่ง</span></div>
+                                                    </div>                       
+                                            </div>
+                                            <div class="content_position-wrapper-position-table">
+                                                <div class="table-wrapper">
+                                                    <table>
+                                                            <thead> 
+                                                                <tr>
+                                                                    <th class="checkbox_master"> <div><input type="checkbox" name="checkbox" id="position_checkbox_master"></div></th>
+                                                                    <th>ตำเเหน่ง</th>
+                                                                    <th>ตำเเหน่ง (EN)</th>
+                                                                    <th>ระดับ</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th></th>
+                                                                </tr>
+                                                            </thead>                                                   
+                                                            <tbody id="data_position">
+                                                            </tbody>                                        
+                                                    </table>
+                                                    
+                                                </div>
+                                                <div class="footer-wrapper" id="footer_wrapper" style="display: none;"><button type="button">ยกเลิก</button><button type="button" id="btn_delete_postion">ลบ</button></div>
+                                            </div>
+                                        </div>
+                                        <!-- rank block -->
+                                        <div class="content_position-wrapper-position"  id="content_position-wrapper-rank"style="display: none;">
+                                            <div class="content_position-wrapper-position-filter">
+                                                    <div class="position-filter-left">
+                                                        <div class="position-filter-left-menu_input">
+                                                            <div class="position-filter-left-menu_input-icon"> <span class="material-symbols-outlined"  style="color: lightgray;">search</span></div>
+                                                            <div class="position-filter-left-menu_input-textbox"><input type="text" placeholder="ค้นหาระดับ..." id="search_rank" autocomplete="off"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-filter-right">
+                                                        <div class="position-filter-right-menu_addposition" id="btn_addrank"><span class="material-symbols-outlined" style="font-size: 20px ;" id="material_new_hover_add"> add</span><span>เพิ่มระดับ</span></div>
+                                                    </div>                       
+                                            </div>
+                                            <div class="content_position-wrapper-position-table">
+                                                    <div class="table-wrapper">
+                                                        <table id="table_ranking_page">
+                                                                <thead> 
+                                                                    <tr>   
+                                                                        <th></th>
+                                                                        <th>ชื่อระดับ</th>
+                                                                        <th>ชื่อระดับ (EN)</th>
+                                                                        <th>คำอธิบาย</th>
+                                                                        <th></th>
+
+                                                                    </tr>
+                                                                </thead>                                                   
+                                                                <tbody id="data_rank">
+                                                                    
+                                                                </tbody>                                        
+                                                        </table>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                </div>
+                        
+                            </div>
+                    </div>
+                <!--  -->
+            </div>
+
+        </div>
+        
+</body>
+<script type="module" src="position_script.js"></script>
+
+</html>

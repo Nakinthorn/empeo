@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://media.discordapp.net/attachments/457119817376202765/913645251237920798/logopt.png">
+
+  <title>HRM</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global.css">
+  <script src="./global.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Swal2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global_hrm.css" />
+
+  <!-- Global JS -->
+  <script src='./global_js.js'></script>
+  <script src="config.js"></script>
+  <!-- This css font  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+    rel="stylesheet">
+
+
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .tapmenu-faq {
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+
+  .tapactive {
+    border-bottom: 3px solid #009688;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 98%;
+    color: #333;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+
+  }
+
+  table th {
+    background-color: #e6e6e6;
+    padding: 18px;
+    height: calc(100% - 50vh);
+    font-size: 16px;
+  }
+
+  table td {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    height: calc(100% - 50vh);
+  }
+
+  .input_box1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 8px;
+    font-size: 14px;
+    outline: unset;
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border-color: #808080;
+    color: #808080;
+  }
+</style>
+
+<body style="overflow: hidden;">
+  <script>
+    $.get("./menu-top.html", function (data) {
+      $("#sidebar-tabtop").html(data);
+    });
+  </script>
+  <script>
+    $.get("./menu-left.html", function (data) {
+      $("#sidebar-tableft").html(data);
+    });
+  </script>
+  <div style="display: flex;">
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+
+      <div id="sidebar-tabtop">
+
+      </div>
+
+      <div>
+        <div
+          style="width: 100%; height: 100px; display: flex; align-items: center;border: 1px solid #e0dede; justify-content: space-between; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; ">
+          <div class="font_xl" style="width: 20%;  padding-left: 25px;">
+            ตั้งค่ากะทำงาน
+          </div>
+          <div style="display: flex; width: 20%;  justify-content: end;  padding-right: 25px;">
+
+            <div class="font_normal" style="align-items: center;display: flex; color: #F47243;"><img
+                style="height: 20px; margin-right: 10px; " src="./symbol_hrm/scanandpay_copy_icon_pin.png">ดูวีดีโอ
+            </div>
+            <div class="font_normal" style="align-items: center;display: flex; color: #F47243;"><img
+                style="height: 20px; margin-left: 30px; margin-right: 10px;"
+                src="./symbol_hrm/scanandpay_copy_icon_pin.png">คู่มือการใช้งาน</div>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 12.5vh; display: flex; background-color: rgb(255, 255, 255);">
+          <div style="width: 2090px; height: 12.5vh;display: flex; align-items: center; padding: 0 25px;">
+            <div class=" search_long">
+              <div class="seachdiv">
+                <img src="./symbol_hrm/search_gray_icon.png" style="height: 50%;" />
+              </div>
+
+              <input id="" type="text" class="kanit font_normal seachinputinside_css" placeholder="ค้นหากะการทำงาน" />
+            </div>
+
+            <div style="height: 50px;">&nbsp;</div>
+          </div>
+          <div style="width: 40%; height: 12.5vh;display: flex;">
+            <div
+              style="width: 450px; height: 12.5vh;display: flex;align-items: center;justify-content: space-between;padding: 0 20px">
+              <div style="width: 90px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1">
+                    <option value="0">บริษัท</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px; padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div style="width: 134px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1">
+                    <option value="0"> สถานะใช้งาน</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px;padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div style=" width: 0; height: 40px; border: 0.8px solid #e8e8e8;"></div>
+              <div onclick="shift_setting_open()"
+                style=" color: #fff; background-color: #F47243;border-radius: 10px; padding: 13px;border: 1px solid #fff; cursor: pointer;">
+                +เพิ่มกะการทำงาน
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: calc(100vh - 12.5vh - 60px - 100px);overflow: scroll;">
+
+        <table style="padding: 0 25px;">
+          <tr>
+            <th>ชื่อกะ</th>
+            <th>รหัสกะ</th>
+            <th>รายละเอียด</th>
+            <th>ชื่อบริษัท</th>
+            <th>
+              <div style="margin-left:15px ;">
+                สถานะ
+              </div>
+            </th>
+            <th>แก้ไขล่าสุด</th>
+            <th style="width: 60px;"></th>
+          </tr>
+          <tbody id="shift_tbody">
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 150px;line-break: anywhere;">
+                  <div style="display: flex; align-items: center;">
+                    <div
+                      style="background-color: orange; height: 10px; width: 10px; border-radius: 50%; margin-right: 5px;">
+                    </div>
+                    <div>ขวบกะ</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 50px;line-break: anywhere;">11221</div>
+              </td>
+              <td>
+                <div style="width: 135px;line-break: anywhere;">xxxxx</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;">ใช้กับทุกบริษัท</div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 80px; height: 25px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>Sven zenn <br>
+                <p style="color: #ccc;">22/06/2023 16:10</p>
+              </td>
+              <td>
+                <div style=" display: flex;">
+                  <div class="icon-role" style="display: none;" onclick="addClass('open');('display','flex');"
+                    onclick="shift_setting_open()">
+                    <img onclick="Edit_Shift()" style="height: 25px; margin: 0 10px;"
+                      src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;" onclick="addClass('open');('display','flex');">
+                    <img onclick="Edit_Shift()" style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 150px;line-break: anywhere;">สำนักงาน 08:30-17:30</div>
+              </td>
+              <td>
+                <div style="width: 50px;line-break: anywhere;">S2</div>
+              </td>
+              <td>
+                <div style="width: 135px;line-break: anywhere;">Flexible 30 min</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;">ใช้กับทุกบริษัท</div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 80px; height: 25px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>empeo Team <br>
+                <p style="color: #ccc;">02/06/2023 12:55</p>
+              </td>
+              <td>
+                <div style=" display: flex;">
+                  <div class="icon-role" style="display: none;" onclick="addClass('open');('display','flex');">
+                    <img onclick="Edit_Shift()" style="height: 25px; margin: 0 10px;"
+                      src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;" onclick="addClass('open');('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  let ENDPOINT = window.API_URL;
+  
+  function shift_setting_open() {
+    window.location.assign("shift_add.html")
+  }
+  function Edit_Shift(id) {
+    window.location.assign("shift_editv2.html?id=" + id)
+  }
+  render_get_Shift()
+  async function render_get_Shift() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token
+    });
+
+    let response = await fetch(ENDPOINT + "mobile/Get-All-Shift", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    console.log(data);
+    let list = data.data
+    let html = ''
+    list.forEach(e => {
+      html += `
+       <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 150px;line-break: anywhere;">
+                  <div style="display: flex; align-items: center;">
+                    <div
+                      style="background-color: orange; height: 10px; width: 10px; border-radius: 50%; margin-right: 5px;">
+                    </div>
+                    <div>${e.shift_name}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 50px;line-break: anywhere;">${e.shift_id}</div>
+              </td>
+              <td>
+                <div style="width: 135px;line-break: anywhere;">${e.reason}</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;">${e.using_inCompany === "ใช้กับทุกบริษัท" ? 'ใช้กับทุกบริษัท' : e.com_name}</div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 80px; height: 25px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);">
+                    ${e.status ? 'ใช้งาน' : 'ไม่ได้ใช้งาน'}</div>
+                </div>
+              </td>
+              <td>ระบบ<br>
+                <p style="color: #ccc;">22/06/2023 16:10</p>
+              </td>
+              <td>
+                <div style=" display: flex;">
+                  <div class="icon-role" style="" onclick="">
+                    <img onclick="Edit_Shift(${e.s_id})" style="height: 25px;" src="https://img.icons8.com/?size=512&id=2o0oz6BtYr5E&format=png">
+                  </div>
+                  <div class="icon-role" style="" onclick="">
+                    <img onclick="Remove_shift(${e.s_id})" style="height: 25px;" src="https://img.icons8.com/?size=512&id=85194&format=png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+      `
+    });
+    document.getElementById('shift_tbody').innerHTML = html
+
+  }
+  async function Remove_shift(id) {
+    Swal.fire({
+      title: 'ต้องการลบข้อมูล?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ใช่',
+      cancelButtonText: 'ไม่ใช่'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        let headersList = {
+          "Accept": "*/*",
+          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+          "Content-Type": "application/json"
+        }
+
+        let bodyContent = JSON.stringify({
+          "token": localStorage.token,
+          "s_id": id
+        });
+
+        let response = await fetch(ENDPOINT + "mobile/Remove-shift-by-id", {
+          method: "POST",
+          body: bodyContent,
+          headers: headersList
+        });
+        let data = await response.json();
+        if (data.msg === "good") {
+          window.location.reload()
+        }
+      }
+    });
+
+  }
+</script>
+
+</html>

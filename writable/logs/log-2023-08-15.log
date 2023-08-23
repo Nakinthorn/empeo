@@ -1,0 +1,24 @@
+CRITICAL - 2023-08-15 01:51:45 --> Undefined variable $name
+in APPPATH/Controllers/Homecon.php on line 93.
+ 1 APPPATH/Controllers/Homecon.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $name', '/Users/sunti/hrm-project-frontend/app/Controllers/Homecon.php', 93)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\Homecon->home()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Homecon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')
+CRITICAL - 2023-08-15 01:51:48 --> Undefined variable $name
+in APPPATH/Controllers/Homecon.php on line 93.
+ 1 APPPATH/Controllers/Homecon.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $name', '/Users/sunti/hrm-project-frontend/app/Controllers/Homecon.php', 93)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\Homecon->home()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Homecon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')
+CRITICAL - 2023-08-15 01:51:57 --> Undefined variable $name
+in APPPATH/Controllers/Homecon.php on line 93.
+ 1 APPPATH/Controllers/Homecon.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $name', '/Users/sunti/hrm-project-frontend/app/Controllers/Homecon.php', 93)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\Homecon->home()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Homecon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')

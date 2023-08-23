@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon"
+    href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+  <title>Add Employee</title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="./global.css"> -->
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Swal2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global_hrm.css" />
+
+  <!-- Global JS -->
+  <script src="config.js"></script>
+  <!-- <script src='./global_js.js'></script> -->
+  <!-- This css font  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./jquery.Thailand.js/dist/jquery.Thailand.min.css">
+
+
+
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .fadeIn {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -20%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .fadeIn:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .fadeIn:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+
+  .fadeIn:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+
+  .fadeIn:nth-child(5) {
+    animation-delay: 1.1s;
+  }
+
+  .fadeIn:hover {
+    transform: scale(105%) !important;
+    cursor: pointer;
+  }
+
+  .tapmenu-user {
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+
+  .tapuseractive {
+    border-bottom: 3px solid #009688;
+  }
+
+  .step_cycle {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cycle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    color: #bcbcc8;
+    border: 2px solid #ececf1;
+  }
+
+  .active_cycle {
+    background-color: #009688 !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  /* checkbox */
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #d2d2da;
+    border-radius: 3px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked~.checkmark {
+    background-color: orangered;
+    border: 1px solid orangered;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* checkbox END */
+</style>
+
+<body style="overflow: hidden;">
+  <script>
+    $.get("./menu-top.html", function (data) {
+      $("#sidebar-tabtop").html(data);
+    });
+  </script>
+  <script>
+    $.get("./menu-left.html", function (data) {
+      $("#sidebar-tableft").html(data);
+    });
+  </script>
+  <div style="display: flex;">
+
+    <div id="blur_bg"
+      style="width: 100%; height: 100%; position: absolute; top: 0; z-index: 2; background-color: rgb(151 151 151 / 20%); backdrop-filter: blur(3px); display: none;">
+    </div>
+
+    <div class="overlay_setuprole overlay-slide_setuprole">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> แก้ไขบทบาท </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_setuprole').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; overflow: scroll; background-color: #fff;">
+
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">ชื่อบทบาท*</span>
+          <div class="inpu_long" style="width: unset;">
+            <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="กรอกชื่อสาขา">
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;"> เป็น HR* </span>
+          <div style="display: flex;">
+            <div>
+              <div id="btu_haffrole" onclick="btneditrole(1)" class="editrole_btu  editrole_btu_active"
+                style=" border-radius: 10px 0 0 10px; border-right: none; font-size: 12px; ">
+                ใช่
+              </div>
+            </div>
+            <div>
+              <div id="btu_fullrole" onclick="btneditrole(2)" class="editrole_btu "
+                style="  border-radius: 0px 10px 10px 0px; font-size: 12px; border-left: none; ">
+                ไม่ใช่
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">รายละเอียด</span>
+          <div
+            style="width: unset; height: 150px;display: flex;  align-items: center;border-radius: 6px;  border: 1px solid var(--color_gray_Dark_3);">
+            <textarea class="kanit" style="font-size: 12px; border: none;   width: 100%; height: 100%;"></textarea>
+          </div>
+        </div>
+
+        <div id="details_compensation_contribution_rate" style="display: none;">
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">เลขที่บัญชีประกันสังคม</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_social_security_account_number" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รหัสกิจการ</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_business_code" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">อัตราสมทบผู้ประกันตน (%)</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_contribution_rate" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รายได้ต่อเดือนไม่เกิน</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_monthly_income_not_more_than" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="align-items: center; display: flex;">
+          <span style="margin-right: 10px;">สถานะใช้งาน</span>
+          <label class="switch_hrm">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="overlay_addrole overlay-slide_addrole">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> เพิ่มบทบาท </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_addrole').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; overflow: scroll; background-color: #fff;">
+
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">ชื่อบทบาท*</span>
+          <div class="inpu_long" style="width: unset;">
+            <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="กรอกชื่อสาขา">
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;"> เป็น HR* </span>
+          <div style="display: flex;">
+            <div>
+              <div id="btu_haffrole" onclick="btneditrole(1)" class="editrole_btu  editrole_btu_active"
+                style=" border-radius: 10px 0 0 10px; border-right: none; font-size: 12px; ">
+                ใช่
+              </div>
+            </div>
+            <div>
+              <div id="btu_fullrole" onclick="btneditrole(2)" class="editrole_btu "
+                style="  border-radius: 0px 10px 10px 0px; font-size: 12px; border-left: none; ">
+                ไม่ใช่
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">รายละเอียด</span>
+          <div
+            style="width: unset; height: 150px;display: flex;  align-items: center;border-radius: 6px;  border: 1px solid var(--color_gray_Dark_3);">
+            <textarea class="kanit" style="font-size: 12px; border: none;   width: 100%; height: 100%;"></textarea>
+          </div>
+        </div>
+
+        <div id="details_compensation_contribution_rate" style="display: none;">
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">เลขที่บัญชีประกันสังคม</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_social_security_account_number" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รหัสกิจการ</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_business_code" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">อัตราสมทบผู้ประกันตน (%)</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_contribution_rate" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รายได้ต่อเดือนไม่เกิน</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_monthly_income_not_more_than" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="align-items: center; display: flex;">
+          <span style="margin-right: 10px;">สถานะใช้งาน</span>
+          <label class="switch_hrm">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="sidebar-tableft"></div>
+
+    <!-- overlay edit user  -->
+    <div class="overlay_editeuser overlay-slide_editeuser">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> แก้ไขผู้ใช้งาน </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_editeuser').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; overflow: scroll; ">
+        <div style="width: 100% ;flex-direction: column; justify-content: center; display: flex;">
+          <div
+            style="width: 100%; justify-content: center; align-items: center; flex-direction: column;display: flex;  ">
+            <!-- มีรูป -->
+            <div
+              style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+              <div id="editprofile_limtuser"
+                style="width: 220px; position: relative; height: 200px; background-image: url(./symbol_hrm/test.jpeg);background-size: cover; border-radius: 50%;">
+                <div id="iconediter_userlimint"
+                  style="width: 50px ;display: flex; justify-content: center; align-items: center; height: 50px; ;border-radius: 50%; bottom: 5px;right: 7px; position: absolute;">
+                  <i class='bx bx-image-add'></i>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 100%;  margin-bottom: 15px;">
+              <p class="" style="margin-top: 16px; margin-bottom: 10px; margin-right: 5px;">ชื่อ*</p>
+              <div class="inputlong_userlimit ">
+                <input id="ffname_userhrm" type="text" class="kanit font_normal inputinside_css" placeholder="ffff" />
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 100%;  margin-bottom: 15px;">
+              <p class="" style="margin-top: 16px; margin-bottom: 10px; margin-right: 5px;">นามสกุล*</p>
+              <div class="inputlong_userlimit ">
+                <input id="llname_userhrm" type="text" class="kanit font_normal inputinside_css" placeholder="ffff" />
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 100%;  margin-bottom: 15px;">
+              <p class="" style="margin-top: 16px; margin-bottom: 10px; margin-right: 5px;">อีเมล์</p>
+              <div class="inputlong_userlimit ">
+                <input id="llname_userhrm" type="text" class="kanit font_normal inputinside_css" placeholder="email" />
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 100%;  margin-bottom: 15px;">
+              <p class="" style="margin-top: 16px; margin-bottom: 10px; margin-right: 5px;">รหัสผ่าน</p>
+              <div class="inputlong_userlimit ">
+                <input id="llname_userhrm" type="text" class="kanit font_normal inputinside_css"
+                  placeholder="รหัสผ่าน" />
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 100%;  margin-bottom: 15px;">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">dropdown กล่องกลาง</p>
+
+              </div>
+              <div style="position: relative;">
+                <select id="" class="input_box_medium">
+                  <option value="" disabled selected hidden>สถานะพนักงาน</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: end; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div id="cancel_modal_documentcompany"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div id="save_modal_documentcompany"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="width: calc(100% - 60px);">
+      <div id="sidebar-tabtop">
+
+      </div>
+      <div>
+        <div style="width: 100%; height: calc(100vh - 60px); display: flex;">
+
+          <div id="main_content" style="width: 100%; padding: 25px; overflow: scroll;">
+            <div style="font-size: 24px; margin-left: 10px;">เพิ่มพนักงาน</div>
+
+
+            <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+              <div style="width: 80%; display: flex; justify-content: space-between; position: relative;">
+
+                <div class="step_cycle">
+                  <div id="cycle_nextstep1" onclick="next_step_add_user('nextstep1')" class="cycle active_cycle">
+                    <span>1</span>
+                  </div>
+                  <div style="position: absolute; margin-top: 50px;">
+                    <span style="font-size: 1vw;">ข้อมูลพนักงาน</span>
+                  </div>
+                </div>
+
+                <div class="step_cycle">
+                  <div id="cycle_nextstep2" onclick="next_step_add_user('nextstep2')" class="cycle">
+                    <span>2</span>
+                  </div>
+                  <div style="position: absolute; margin-top: 50px;">
+                    <span style="font-size: 1vw;">การติดต่อ</span>
+                  </div>
+                </div>
+
+                <div class="step_cycle">
+                  <div id="cycle_nextstep3" onclick="next_step_add_user('nextstep3')" class="cycle">
+                    <span>3</span>
+                  </div>
+                  <div style="position: absolute; margin-top: 50px;">
+                    <span style="font-size: 1vw;">การจ้างงาน</span>
+                  </div>
+                </div>
+
+                <div class="step_cycle">
+                  <div id="cycle_nextstep4" onclick="next_step_add_user('nextstep4')" class="cycle">
+                    <span>4</span>
+                  </div>
+                  <div style="position: absolute; margin-top: 50px;">
+                    <span style="font-size: 1vw;">เงินเดือน</span>
+                  </div>
+                </div>
+
+                <div
+                  style="width: 90%; position: absolute; left: 5%; z-index: -1; margin-top: 23px; border-top: 2px solid #ececf1;">
+                </div>
+
+
+              </div>
+            </div>
+
+            <br><br>
+
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+
+              <div id="step_1" style="width: 50%; display: flex; flex-direction: column;">
+
+                <div style="width: 100%; display: flex; justify-content: center; margin:20px 0; cursor: pointer;">
+                  <img id="preview_img"
+                    src="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg"
+                    alt="Image" width="100" height="100" style="border-radius: 100px;">
+                  <input style="display: none;" type="file" id="file_upload" accept="image/*">
+                  <!-- <div
+                    style="width: 100px; height: 100px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+                  </div> -->
+                </div>
+                <br>
+                <div style="position: relative; width: 40%; border-radius: 6px; background-color: transparent;">
+                  <select id="title" class="input_overtm_box kanit">
+                    <option value="0">---กรุณาเลือก---</option>
+                    <option value="Mr.">นาย</option>
+                    <option value="Mrs.">นาง</option>
+                    <option value="Ms.">นางสาว</option>
+                  </select>
+                  <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ชื่อ (TH)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="firstname" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">นามสกุล (TH)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="lastname" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ชื่อ (EN)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="firstname_en" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">นามสกุล (EN)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="lastname_en" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ชื่อเล่น</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="nickname" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ชื่อเล่น (EN)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="nickname_en" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">วันเกิด</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="birthdate" type="date" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เพศ</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input type="radio" name="sex" value="male" checked />
+                          <span>ชาย</span>
+                        </label>
+                        <label class="label1x">
+                          <input type="radio" name="sex" value="female" />
+                          <span>หญิง</span>
+                        </label>
+                        <label class="label1x">
+                          <input type="radio" name="sex" value="other" />
+                          <span>อืนๆ</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภท</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input onclick="change_nationality()" type="radio" name="nationality" value="คนไทย" checked />
+                          <span>คนไทย</span>
+                        </label>
+                        <label class="label1x">
+                          <input onclick="change_nationality()" type="radio" name="nationality" value="ชาวต่างชาติ" />
+                          <span>ชาวต่างชาติ</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="thai_person" style="display: block;">
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เลขบัตรประชาชน</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="citizen_cardno" type="text"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="foreigner" style="display: none;">
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                          เลขประจำตัวผู้เสียภาษี</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="taxpayer_number" type="text"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                          เลขที่หนังสือเดินทาง</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="passport_number" type="text"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เลขใบอนุญาตทำงาน
+                        </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="workPermit_number" type="text"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">วันที่ออกใบอนุญาต
+                        </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="dateofissuance" type="date"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                          วันที่ใบอนุญาตทำงานหมดอายุ</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="dateEndofissuance" type="date"
+                          class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  style="height: 60px; display: flex; align-items: center; justify-content: space-between; border-top: var(--border_dotDark_4); margin-top: 30px; padding-top: 20px;">
+
+                  <div style="align-items: center; display: flex;">
+                    <span style="margin-right: 10px;">เปิดให้พนักงานกรอกข้อมูลตั้งต้นได้เอง</span>
+                    <label class="switch_hrm">
+                      <input id="" type="checkbox">
+                      <span class="slider round" style="box-shadow: unset;"></span>
+                    </label>
+                  </div>
+
+                  <div style="width: 20%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+                    <div id="" onclick="next_step_add_user('nextstep2')"
+                      style="width: 65%; height: 60%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4); cursor: pointer;">
+                      ถัดไป
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step_2" style="width: 50%; display: none; flex-direction: column;">
+                <p style="font-size: 20px;">ข้อมูลติดต่อที่ทำงาน</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">อีเมลบริษัท
+                        (ชื่อผู้ใช้งาน)</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="work_email" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เบอร์ที่ทำงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="work_phone" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;">
+                  <label class="container font_normal_1 weight_regular" style="display: flex; padding-bottom: 10px;">
+                    <input id="payslipmobile" type="checkbox">
+                    <div style="margin-left: 30px;">ให้ส่งอีเมลวิธีเข้าใช้ระบบ</div>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <p style="font-size: 20px;">ข้อมูลติดต่อส่วนตัว</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">อีเมลส่วนตัว</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="personal_email" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เบอร์โทรศัพท์</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="personal_phoneno" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ไลน์ไอดี</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="lineid" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <p style="font-size: 20px;">ที่อยู่ตามทะเบียนบ้าน</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="addr_text" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ที่อยู่</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จังหวัด</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="addr_province" name="province" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เขต/อำเภอ</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="addr_district" name="district" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">แขวง/ตำบล</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="addr_amphoe" name="amphoe" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">รหัสไปรษณีย์</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="addr_zipcode" name="zipcode" disabled type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <p style="font-size: 20px; margin-bottom: 20px;">ที่อยู่ที่ติดต่อได้</p>
+
+                <div style="width: 100%;">
+                  <label class="container font_normal_1 weight_regular" style="display: flex; padding-bottom: 10px;">
+                    <input id="" type="checkbox">
+                    <div style="margin-left: 30px;">ให้ส่งอีเมลวิธีเข้าใช้ระบบ</div>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ที่อยู่</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="contact_addr_text" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จังหวัด</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="contact_addr_province" name="province2" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เขต/อำเภอ</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="contact_addr_district" name="district2" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">แขวง/ตำบล</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="contact_addr_amphoe" name="amphoe2" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">รหัสไปรษณีย์</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="contact_addr_zipcode" name="zipcode2" disabled type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <p style="font-size: 20px;">ผู้ติดต่อกรณีฉุกเฉิน</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ชื่อ</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="emerg_firstname" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">นามสกุล</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="emerg_lastname" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ความสัมพันธ์</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="emerg_relation" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เบอร์โทรศัพท์</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="emerg_phoneno" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  style="height: 60px; display: flex; align-items: center; justify-content: space-between; border-top: var(--border_dotDark_4); margin-top: 30px; padding-top: 20px;">
+
+                  <div style="align-items: center; display: flex;">
+                    <span style="margin-right: 10px;">เปิดให้พนักงานกรอกข้อมูลตั้งต้นได้เอง</span>
+                    <label class="switch_hrm">
+                      <input id="" type="checkbox">
+                      <span class="slider round" style="box-shadow: unset;"></span>
+                    </label>
+                  </div>
+
+                  <div style="width: 20%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+                    <div id="" onclick="next_step_add_user('nextstep3')"
+                      style="width: 65%; height: 60%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4); cursor: pointer;">
+                      ถัดไป
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+              <div id="step_3" style="width: 50%; display: none; flex-direction: column;">
+
+                <p style="font-size: 20px;">ข้อมูลติดต่อที่ทำงาน</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">บริษัท</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select onchange="getDepartment()" id="company_list" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">สังกัด</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="department_list" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ระดับ</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="rank_list" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ตำแหน่ง</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="position_list" onchange="set_rank()" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">รหัสพนักงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="emp_id" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">สถานที่ทำงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="branch_01" class="input_overtm_box kanit">
+                        <option value="0">เลือกสถานที่ทำงาน</option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">กะทำงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="shift_01" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">วันเริ่มงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <input type="date" id="hire_start" class="input_overtm_box kanit">
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;">
+                  <label class="container font_normal_1 weight_regular" style="display: flex; padding-bottom: 10px;">
+                    <input id="payslipmobile" type="checkbox">
+                    <div style="margin-left: 30px;">ให้ส่งอีเมลวิธีเข้าใช้ระบบ</div>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">วันเริ่มใช้กะในระบบ
+                      </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="datestartshift_insystem" type="date"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">สถานะพนักงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="employee_status" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภทพนักงาน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="employee_type" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ผู้บังคับบัญชา</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="commander_list" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">วันสิ้นสุดสัญญาจ้าง
+                      </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="dateend_finaldayofwork" type="date"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ปฏิทินวันหยุด</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="calendar_dayoff" class="input_overtm_box kanit">
+                        <option value="0">1</option>
+                        <option value="0">2</option>
+                        <option value="0">3</option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เลขผู้ขับขี่</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="drivinglicence_number" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภทอัตรา</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input onclick="" type="radio" name="ratetype" value="ใหม่" checked="">
+                          <span>ใหม่</span>
+                        </label>
+                        <label class="label1x">
+                          <input onclick="" type="radio" name="ratetype" value="ทดแทน">
+                          <span>ทดแทน</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">บันทึกเวลาเข้าออก</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input onclick="" type="radio" name="Loginandout" value="yes" checked="">
+                          <span>บันทึก</span>
+                        </label>
+                        <label class="label1x">
+                          <input onclick="" type="radio" name="Loginandout" value="no">
+                          <span>ไม่บันทึก</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภทการจ้าง</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="hire_type01" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                </div>
+
+                <p style="font-size: 20px; margin-bottom: 20px; margin-top: 20px;">ข้อมูลการจ่ายเงิน</p>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input onclick="payment_info()" type="radio" name="paymentinfo" value="จ่ายธนาคาร" checked>
+                          <span>ธนาคาร</span>
+                        </label>
+                        <label class="label1x">
+                          <input onclick="payment_info()" type="radio" name="paymentinfo" value="จ่ายเงินสด">
+                          <span>เงินสด</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="payment_info"
+                  style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">บัญชีธนาคาร</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="payment_info_banklist" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เลขที่บัญชีพนักงาน
+                      </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="bankno" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                </div> -->
+
+                <br>
+
+                <div
+                  style="height: 60px; display: flex; align-items: center; justify-content: space-between; border-top: var(--border_dotDark_4); margin-top: 30px; padding-top: 20px;">
+
+                  <div style="align-items: center; display: flex;">
+                    <span style="margin-right: 10px;">เปิดให้พนักงานกรอกข้อมูลตั้งต้นได้เอง</span>
+                    <label class="switch_hrm">
+                      <input id="" type="checkbox">
+                      <span class="slider round" style="box-shadow: unset;"></span>
+                    </label>
+                  </div>
+
+                  <div style="width: 20%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+                    <div id="" onclick="next_step_add_user('nextstep4')"
+                      style="width: 65%; height: 60%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4); cursor: pointer;">
+                      ถัดไป
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div id="step_4" style="width: 50%; display: none; flex-direction: column;">
+
+                <br><br><br>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div class="container">
+                      <form style="display: flex; justify-content: space-around;">
+                        <label class="label1x">
+                          <input onclick="employment_type()" type="radio" name="Employmenttype" value="แบบธนาคาร"
+                            checked="">
+                          <span>ธนาคาร</span>
+                        </label>
+                        <label class="label1x">
+                          <input onclick="employment_type()" type="radio" name="Employmenttype" value="แบบเงินสด">
+                          <span>เงินสด</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="employment_bank"
+                  style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">บัญชีธนาคาร</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="payment_info_banklist" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เลขที่บัญชีพนักงาน
+                      </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="bankno" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภทการจ้าง</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div
+                      style="position: relative; height: 42px; width: 100%; border-radius: 6px; background-color: transparent;">
+                      <select id="hire_type01" class="input_overtm_box kanit">
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                        <option value="0"> </option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เงินเดือน</p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="salary" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+
+                <div
+                  style="height: 60px; display: flex; align-items: center; justify-content: space-between; border-top: var(--border_dotDark_4); margin-top: 30px; padding-top: 20px;">
+
+                  <div style="align-items: center; display: flex;">
+                    <span style="margin-right: 10px;">เปิดให้พนักงานกรอกข้อมูลตั้งต้นได้เอง</span>
+                    <label class="switch_hrm">
+                      <input id="" type="checkbox">
+                      <span class="slider round" style="box-shadow: unset;"></span>
+                    </label>
+                  </div>
+
+                  <div id="add_emp"
+                    style="width: 20%; height: 100%; display: flex; justify-content: flex-end; align-items: center;">
+                    <div onclick=""
+                      style="width: 65%; height: 60%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4); cursor: pointer;">
+                      เสร็จ
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+
+  </div>
+
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
+
+  <!-- dependencies for zip mode -->
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/zip.js/zip.js"></script>
+  <!-- / dependencies for zip mode -->
+
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/JQL.min.js"></script>
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+
+  <script type="text/javascript" src="./jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
+</body>
+
+<script>
+  let ENDPOINT = window.API_URL;
+
+  $(document).ready(async function () {
+    getbanklist()
+    getRank()
+    getCompany()
+    getPosition()
+    // getUnder()
+  })
+
+  $.Thailand({
+    database: './jquery.Thailand.js/database/db.json',
+
+    $district: $('.inpu_long_overtimecon [name="district"]'),
+    $amphoe: $('.inpu_long_overtimecon [name="amphoe"]'),
+    $province: $('.inpu_long_overtimecon [name="province"]'),
+    $zipcode: $('.inpu_long_overtimecon [name="zipcode"]'),
+
+    onDataFill: function (data) {
+      console.info('Data Filled', data);
+    },
+
+    onLoad: function () {
+      console.info('Autocomplete is ready!');
+    }
+  });
+
+  $.Thailand({
+    database: './jquery.Thailand.js/database/db.json',
+
+    $district: $('.inpu_long_overtimecon [name="district2"]'),
+    $amphoe: $('.inpu_long_overtimecon [name="amphoe2"]'),
+    $province: $('.inpu_long_overtimecon [name="province2"]'),
+    $zipcode: $('.inpu_long_overtimecon [name="zipcode2"]'),
+
+    onDataFill: function (data) {
+      console.info('Data Filled', data);
+    },
+
+    onLoad: function () {
+      console.info('Autocomplete is ready!');
+    }
+  });
+
+  function change_nationality() {
+    if ($("input[name='nationality']:checked").val() == 'คนไทย') {
+      $('#thai_person').css('display', 'block')
+      $('#foreigner').css('display', 'none')
+    }
+    else if ($("input[name='nationality']:checked").val() == 'ชาวต่างชาติ') {
+      $('#thai_person').css('display', 'none')
+      $('#foreigner').css('display', 'block')
+    }
+  }
+
+  function payment_info() {
+    // console.log('xxxx')
+    if ($("input[name='paymentinfo']:checked").val() == 'จ่ายธนาคาร') {
+      $('#payment_info').css('display', 'flex')
+    }
+    else if ($("input[name='paymentinfo']:checked").val() == 'จ่ายเงินสด') {
+      $('#payment_info').css('display', 'none')
+    }
+  }
+
+  function employment_type() {
+    if ($("input[name='Employmenttype']:checked").val() == 'แบบธนาคาร') {
+      $('#employment_bank').css('display', 'flex')
+    }
+    else if ($("input[name='Employmenttype']:checked").val() == 'แบบเงินสด') {
+      $('#employment_bank').css('display', 'none')
+    }
+  }
+
+  function next_step_add_user(id) {
+    $('#main_content').scrollTop(0)
+    $('#step_1').css('display', 'none')
+    $('#step_2').css('display', 'none')
+    $('#step_3').css('display', 'none')
+    $('#step_4').css('display', 'none')
+
+    $('#cycle_nextstep1').removeClass('active_cycle')
+    $('#cycle_nextstep2').removeClass('active_cycle')
+    $('#cycle_nextstep3').removeClass('active_cycle')
+    $('#cycle_nextstep4').removeClass('active_cycle')
+
+    if (id == 'nextstep1') {
+      $('#step_1').css('display', 'flex')
+
+      $('#cycle_nextstep1').addClass('active_cycle')
+    }
+    else if (id == 'nextstep2') {
+      $('#step_2').css('display', 'flex')
+
+      $('#cycle_nextstep2').addClass('active_cycle')
+    }
+    else if (id == 'nextstep3') {
+      $('#step_3').css('display', 'flex')
+
+      $('#cycle_nextstep3').addClass('active_cycle')
+    }
+    else if (id == 'nextstep4') {
+      $('#step_4').css('display', 'flex')
+
+      $('#cycle_nextstep4').addClass('active_cycle')
+    }
+
+  }
+
+  function getbanklist() {
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/Get-Bank",
+      data: {
+        token: localStorage.token
+      },
+      async: true,
+      success: async (res) => {
+        if (res.msg == 'good') {
+          var html = ``
+          for (let i = 0; i < res.data.length; i++) {
+            const data = res.data[i]
+            html += `
+                <option value="${data.optionname}"> ${data.optionname} </option>
+              `
+          }
+          $('#employment_bank_banklist').html(html)
+          $('#payment_info_banklist').html(html)
+        }
+      }
+    })
+  }
+
+  function getRank() {
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/Get-Sequence-Rank",
+      data: {
+        token: localStorage.token
+      },
+      async: true,
+      success: async (res) => {
+        if (res.msg == 'good') {
+
+        }
+      }
+    })
+  }
+
+  function getDepartment() {
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/get/department/bycompany",
+      data: {
+        token: localStorage.token,
+        com_id: $('#company_list').val().split('|')[0]
+      },
+      async: true,
+      success: async (res) => {
+        document.getElementById('branch_01').innerHTML = `<option value="0">เลือกสถานที่ทำงาน</option>`
+        document.getElementById('shift_01').innerHTML = `<option value="0"> ---กรุณาเลือก--- </option>`
+        set_branch(parseInt($('#company_list').val().split("|")[0]))
+        set_shift(parseInt($('#company_list').val().split("|")[0]))
+        if (res.msg == 'good' && res.departments.length > 0) {
+          var html = `<option value="0"> ---กรุณาเลือก--- </option>`
+          for (let i = 0; i < res.departments.length; i++) {
+            const data = res.departments[i]
+            html += `
+                <option value="${data.id}"> ${data.dpname} </option>
+              `
+          }
+          $('#department_list').html(html)
+        } else {
+          $('#department_list').html(`<option value="0"> ---กรุณาเลือก--- </option>`)
+        }
+      }, error: err => {
+        $('#department_list').html(`<option value="0"> ---กรุณาเลือก--- </option>`)
+      }
+    })
+  }
+
+  function getCompany() {
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/my_company/admin",
+      data: {
+        token: localStorage.token,
+        com_id: $('#company_list').val().split('|')[0]
+      },
+      async: true,
+      success: async (res) => {
+        if (res.msg == 'good' && res.company.length > 0) {
+          var html = `<option value="0"> ---กรุณาเลือก--- </option>`
+          for (let i = 0; i < res.company.length; i++) {
+            const data = res.company[i]
+            html += `
+              <option value="${data.com_id} | ${data.com_name}"> ${data.com_name} </option>
+            `
+          }
+          $('#company_list').html(html)
+        } else {
+          $('#company_list').html(`<option value="0"> ---กรุณาเลือก--- </option>`)
+        }
+      }
+    })
+  }
+  var POSITION_DATA = ''
+  function getPosition() {
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/Get-Sequence-Position",
+      data: {
+        token: localStorage.token,
+        com_id: $('#company_list').val().split('|')[0]
+      },
+      async: true,
+      success: async (res) => {
+        POSITION_DATA = res.dataSend
+        if (res.msg == 'good' && res.dataSend.length > 0) {
+          var html = `<option value="0"> ---กรุณาเลือก--- </option>`
+          for (let i = 0; i < res.dataSend.length; i++) {
+            const data = res.dataSend[i]
+            html +=
+              `
+              <option value="${data.position_id} | ${data.name_en}"> ${data.name_en} </option>
+            `
+          }
+          $('#position_list').html(html)
+        } else {
+          $('#position_list').html(`<option value="0"> ---กรุณาเลือก--- </option>`)
+        }
+      }
+    })
+  }
+
+  // function getUnder() {
+  //   $.ajax({
+  //     type: 'post',
+  //     url: ENDPOINT + "mobile/employee/by-company",
+  //     data: {
+  //       token: localStorage.token,
+  //       com_id: ""
+  //     },
+  //     async: true,
+  //     success: async (res) => {
+  //       if (res.msg == 'good' && res.employee.length > 0) {
+  //         var html = `<option value="0"> ---กรุณาเลือก--- </option>`
+  //         for (let i = 0; i < res.employee.length; i++) {
+  //           const data = res.employee[i]
+  //           html += `
+  //             <option value="${data.position_id}"> ${data.name_en} </option>
+  //           `
+  //         }
+  //         // $('#position_list').html(html)
+  //       } else {
+  //         // $('#position_list').html(`<option value="0"> ---กรุณาเลือก--- </option>`)
+  //       }
+  //     }
+  //   })
+  // }
+  document.getElementById('add_emp')
+    .addEventListener('click', () => {
+      Swal.fire({
+        title: 'Do you want to save the changes?',
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          addUser()
+        }
+      })
+    })
+
+  function addUser() {
+    $('#title').val()
+    $('#firstname').val()
+    $('#lastname').val()
+    $('#firstname_en').val()
+    $('#lastname_en').val()
+    $('#nickname').val()
+    $('#nickname_en').val()
+    $('#birthdate').val()
+    let preivew_img = document.getElementById('preview_img').src
+    var img_profile = isBase64Image(preivew_img) ? preivew_img : ''
+    var genderValue = $("input[name='sex']:checked").val()
+
+
+    var nationality_info = {
+      nationalityValue: $("input[name='nationality']:checked").val(),
+      cardno: $('#citizen_cardno').val(),
+      taxpayer: $('#taxpayer_number').val(),
+      passport: $('#passport_number').val(),
+      dateEndofissuance: $('#dateEndofissuance').val(),
+    }
+
+    var contact_info = {
+      personal_email: $('#personal_email').val(),
+      personal_phoneno: $('#personal_phoneno').val(),
+      lineid: $('#lineid').val(),
+    }
+
+    var personal_addr = {
+      addr_text: $('#addr_text').val(),
+      province: $('#addr_province').val(),
+      district: $('#addr_district').val(),
+      amphoe: $('#addr_amphoe').val(),
+      zipcode: $('#addr_zipcode').val(),
+    }
+    $('#email').val()
+    $('#work_phone').val()
+    $('#personal_email').val()
+    $('#personal_phoneno').val()
+    $('#lineid').val()
+
+    $('#addr_text').val()
+    $('#addr_province').val()
+    $('#addr_district').val()
+    $('#addr_amphoe').val()
+    $('#addr_zipcode').val()
+
+    $('#contact_addr_text').val()
+    $('#contact_addr_province').val()
+    $('#contact_addr_district').val()
+    $('#contact_addr_amphoe').val()
+    $('#contact_addr_zipcode').val()
+
+    $('#emerg_firstname').val()
+    $('#emerg_lastname').val()
+    $('#emerg_relation').val()
+    $('#emerg_phoneno').val()
+
+    $('#company_list').val()
+    $('#department_list').val()
+    $('#rank_list').val()
+    $('#position_list').val()
+    $('#emp_id').val()
+    $('#branch_01').val()
+    $('#shift_01').val()
+    $('#hire_start').val()
+    $('#payslipmobile').val() //ให้ส่งอีเมลวิธีเข้าใช้ระบบ
+    $('#datestartshift_insystem').val()
+
+    var contact_addr = {
+      addr_text: $('#contact_addr_text').val(),
+      province: $('#contact_addr_province').val(),
+      district: $('#contact_addr_district').val(),
+      amphoe: $('#contact_addr_amphoe').val(),
+      zipcode: $('#contact_addr_zipcode').val(),
+    }
+
+    var emrg_contact = {
+      firstname: $('#emerg_firstname').val(),
+      lastname: $('#emerg_lastname').val(),
+      relation: $('#emerg_relation').val(),
+      phoneno: $('#emerg_phoneno').val()
+    }
+
+
+    var comid = $('#company_list').val().split('|')[0]
+    var com_name = $('#company_list').val().split('|')[1]
+    var work_email = $('#work_email').val()
+    var work_phone = $('#work_phone').val()
+
+    var hire_info = {
+      company: $('#company_list').val().split('|')[1],
+      department: $('#department_list').val(),
+      rank: $('#rank_list').val(),
+      position_id: $('#position_list').val().split('|')[0],
+      position_name: $('#position_list').val().split('|')[1],
+      emp_id: $('#emp_id').val(),
+      branch: $('#branch_01').val(),
+      shift: $('#shift_01').val(),
+      hire_start: $('#hire_start').val(),
+
+      emp_status: $('#employee_status').val(),
+      emp_type: $('#employee_type').val(),
+      commander_id: $('#commander_list').val(),
+      datestartshift_insystem: $('#datestartshift_insystem').val(),
+      dateend_finaldayofwork: $('#dateend_finaldayofwork').val(),
+      calendar_dayoff: $('#calendar_dayoff').val(),
+      drivinglicence_number: $('#drivinglicence_number').val(),
+      rateType: $("input[name='ratetype']:checked").val(),
+      save_dayinout: $("input[name='Loginandout']:checked").val()
+    }
+
+    var income_info = {
+      bankname: $('#payment_info_banklist').val(),
+      bankno: $('#bankno').val(),
+      typeofincome: $("input[name='Employmenttype']:checked").val(),
+      hire_type: $('#hire_type01').val(),
+      salary: $('#salary').val(),
+    }
+
+    let data = {
+      token: localStorage.token,
+      com_id: comid,
+      com_name: com_name,
+      work_email: work_email,
+      work_phone: work_phone,
+      role: 'user',
+      prefix: $('#title').val(),
+      fname: $('#firstname').val(),
+      lname: $('#lastname').val(),
+      fname_en: $('#firstname_en').val(),
+      lname_en: $('#lastname_en').val(),
+      nickname: $('#nickname').val(),
+      nickname_en: $('#nickname_en').val(),
+      date_of_birth: $('#birthdate').val(),
+      gender: genderValue,
+      emrg_contact: JSON.stringify(emrg_contact),
+      contact_addr: JSON.stringify(contact_addr),
+      personal_addr: JSON.stringify(personal_addr),
+      contact_info: JSON.stringify(contact_info),
+      nationality_info: JSON.stringify(nationality_info),
+      hire_info: JSON.stringify(hire_info),
+      income_info: JSON.stringify(income_info),
+      img_profile: img_profile,
+    }
+    console.log("detail send  : ", data)
+    $.ajax({
+      type: 'post',
+      url: ENDPOINT + "mobile/add/v2/employee",
+      data,
+      async: true,
+      success: async (res) => {
+        if (res.msg == 'good') {
+          Swal.fire(
+            'เพิ่มข้อมูลสำเร็จ',
+            '',
+            'success'
+          )
+        } else {
+          Swal.fire(
+            'เกิดข้อผิดพลาด',
+            '',
+            'error'
+          )
+        }
+      }
+    })
+  }
+  async function set_branch(com_id) {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token,
+      "com_id": com_id
+    });
+
+    let response = await fetch(ENDPOINT + "mobile/Get-branch-in-company", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    console.log(data);
+    data = data.data
+    let html = '<option value="0">เลือกสถานที่ทำงาน</option>'
+    data.forEach(e => {
+      console.log('ssss')
+      html += `<option value="${e.br_id}">${e.name}</option>`
+    });
+    document.getElementById('branch_01').innerHTML = html
+  }
+  async function set_shift(com_id) {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token,
+      "com_id": com_id
+    });
+
+    let response = await fetch(ENDPOINT + "mobile/Get-All-Shift-ID", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    data = data.data
+    let html = '<option value="0">เลือกช่วงเวลาทำงาน</option>'
+    data.forEach(e => {
+      // console.log('ssss')
+      html += `<option value="${e.s_id}">${e.shift_id}-${e.shift_name}</option>`
+    });
+    document.getElementById('shift_01').innerHTML = html
+  }
+  set_employee_status()
+  async function set_employee_status() {
+    let headersList = {
+      "Accept": "*/*"
+    }
+    let response = await fetch(ENDPOINT + "mobile/master-employee-status", {
+      method: "GET",
+      headers: headersList
+    });
+
+    let data = await response.json();
+    data = data.data
+    let html = '<option value="0">เลือก</option>'
+    data.forEach(e => {
+      html += `<option value="${e.id}">${e.name_th}</option>`
+    });
+    document.getElementById('employee_status').innerHTML = html
+
+  }
+  set_employee_type()
+  async function set_employee_type() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token
+    });
+
+    let response = await fetch(ENDPOINT + "mobile/Get-Master-Employee_type", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    console.log(data);
+
+    let html = '<option value="0">เลือก</option>'
+    data.data.forEach(e => {
+      html += `<option value="${e.id}">${e.optionname}</option>`
+    });
+    document.getElementById('employee_type').innerHTML = html
+
+  }
+  set_hire_type()
+  async function set_hire_type() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token
+    }
+    );
+    let response = await fetch(ENDPOINT + "mobile/Get-hire-list", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+    let data = await response.json();
+    let html = '<option value="0">เลือก</option>'
+    data.data.forEach(e => {
+      html += `<option value="${e.et_id}">${e.name_th}</option>`
+    });
+    document.getElementById('hire_type01').innerHTML = html
+
+
+  }
+  set_superviser()
+  async function set_superviser() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/GET-EMPLOYEE-ALL", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      let html = '<option value="0">เลือก</option>'
+      data.data.forEach(e => {
+        html += `<option value="${e.eid}">${e.fname} ${e.lname}</option>`
+      });
+      document.getElementById('commander_list').innerHTML = html
+      // console.log(data);
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  async function set_rank() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+    console.log('set_rank', event.target.value)
+    let value = event.target.value.split('|')[0].replaceAll(' ', '')
+    let position_id = value
+    // console.log("value",value)
+    console.log("POSITION_DATA", POSITION_DATA)
+    let result = POSITION_DATA.filter(e => e.position_id === parseInt(position_id))[0]
+    // console.log("result", result)
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token,
+      "obj": {
+        "rank_id_start": result.rank_id_start,
+        "rank_id_end": result.rank_id_end
+      }
+    });
+    console.log(bodyContent)
+
+    let response = await fetch(ENDPOINT + "mobile/Get-Between-rank", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    let html = '<option value="0">เลือก</option>'
+    data.data.forEach(e => {
+      html += `<option value="${e.rank_id}">${e.name_en_r} (${e.reason})</option>`
+    });
+    document.getElementById('rank_list').innerHTML = html
+    console.log(data);
+
+  }
+  // onclick preview_img << id
+  document.getElementById('preview_img')
+    .addEventListener('click', click_preview_img);
+  function click_preview_img() {
+    document.getElementById('file_upload').click();
+  }
+  // Function to preview the selected image
+  function previewImage(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("preview_img").src = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  // Event listener for file input change
+  document.getElementById("file_upload").addEventListener("change", function () {
+    previewImage(this);
+  });
+  function isBase64Image(str) {
+    // Regular expression to check if the string is Base64 encoded
+    const base64Regex = /^data:image\/([a-zA-Z]*);base64,([^\s]*)$/;
+
+    // Check if the string matches the Base64 pattern
+    return base64Regex.test(str);
+  }
+  // get_calendar()
+  async function get_calendar() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token
+    });
+
+    let response = await fetch(ENDPOINT + "api/getNewHolidayID", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.json();
+    console.log(data);
+    let html = '<option value="0">เลือก</option>'
+    data.data.forEach(e => {
+      html += `<option value="${e.h_id}">${e.h_name}</option>`
+    });
+    document.getElementById('calendar_dayoff').innerHTML = html
+  }
+
+</script>
+
+</html>

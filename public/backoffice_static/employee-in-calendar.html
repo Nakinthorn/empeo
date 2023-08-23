@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+    <title>พนักงานในปฏิทิน</title>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Swal2 -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- This css font  -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+        rel="stylesheet">
+
+    <script src="config.js"></script>
+
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .em-body {
+        margin-left: 5vw;
+        padding: 20px;
+    }
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+    .staff-td {
+        display: flex;
+    }
+
+    .staff-td img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+</style>
+
+<body style="overflow: hidden;">
+    <script>
+        $.get("./menu-top.html", function (data) {
+            $("#sidebar-tabtop").html(data);
+        });
+    </script>
+    <script>
+        $.get("./menu-left.html", function (data) {
+            $("#sidebar-tableft").html(data);
+        });
+    </script>
+
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+        <div id="sidebar-tabtop">
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <div class="em-body">
+        <h2>พนักงานในปฏิทิน</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <td style="width: 20%;">Employee ID</td>
+                    <td style="width: 80%;">Name</td>
+                </tr>
+            </thead>
+            <tbody id="staff-table">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let ENDPOINT = window.API_URL;
+
+        const token = localStorage.getItem('token')
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "token": token
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch(ENDPOINT + "api/getStaff", requestOptions)
+            .then(response => {
+                return response.json();
+            })
+            .then(result => {
+                const tableBody = document.getElementById("staff-table");
+
+                for (let i in result.staff) {
+                    const staffHTML = `
+                        <tr>
+                            <td>#${result.staff[i].eid}</td>
+                            <td>
+                                <div class="staff-td">
+                                    <img src="${result.staff[i].img_profile}">
+                                    <div style="margin-left: 15px;">
+                                        <p>${result.staff[i].fname} ${result.staff[i].lname}</p>
+                                        <p>${result.staff[i].job_title}</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += staffHTML;
+                }
+            })
+            .catch(error => {
+                console.log('error', error);
+            });
+    </script>
+</body>
+
+</html>

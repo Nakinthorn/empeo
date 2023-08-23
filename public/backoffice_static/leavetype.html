@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon"
+    href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+  <title>HRM</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global.css">
+  <script src="./global.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Swal2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global_hrm.css" />
+
+  <!-- Global JS -->
+  <script src='./global_js.js'></script>
+  <script src="config.js"></script>
+  <!-- This css font  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+    rel="stylesheet">
+
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .tapmenu-faq {
+
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+
+  .tapactive {
+    border-bottom: 3px solid #009688;
+  }
+
+  .PH_I {
+    margin-left: 25px;
+    max-height: 120px;
+    min-height: 120px;
+    max-width: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    border: 1px solid rgb(223, 223, 232);
+  }
+
+  .img_I {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    left: -27px;
+    top: 40px;
+    border: none;
+    background-color: #009688;
+    border-radius: 50px;
+    color: white;
+  }
+
+  .input_from {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .input-tx1 {
+    width: 46.5%;
+    float: left;
+    padding: 0.5em;
+    margin: 10px 0;
+    height: 40px;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--color_gray_Dark_3);
+    margin-bottom: 50px;
+
+  }
+
+  .textt {
+    width: 100%;
+    display: flex;
+  }
+
+  .input_box1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    outline: unset;
+    height: 55px;
+    background: var(--color_white_Light_4);
+    border-radius: 6px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid var(--color_gray_Dark_3);
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    width: 100%;
+    padding-left: 20px;
+
+
+  }
+
+  .input_box2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    outline: unset;
+    height: 55px;
+    background: var(--color_white_Light_4);
+    border-radius: 6px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid var(--color_gray_Dark_3);
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    width: 100%;
+    padding-left: 55px;
+
+
+  }
+
+  .cardslide {
+    width: 97%;
+    padding: 0 7px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .fa-arrow-down {
+    transform: rotate(0deg);
+    transition: transform 0.5s linear;
+  }
+
+  .fa-arrow-down.open {
+    transform: rotate(180deg);
+    transition: transform 0.5s linear;
+  }
+
+  /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #d2d2da;
+    border-radius: 3px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked~.checkmark {
+    background-color: orangered;
+    border: 1px solid orangered;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .dropdown_arrow_input1 {
+    height: 50%;
+    position: absolute;
+    top: 12px;
+    right: 95px;
+  }
+
+  .tapnon-activebank {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7b7979;
+  }
+
+  .tapactivebank {
+    border: 1.5px solid #F47243;
+    color: #F47243;
+    background-color: #FFF3EC;
+  }
+</style>
+
+<body style="overflow: hidden;">
+  <script>
+    $.get("./menu-top.html", function (data) {
+      $("#sidebar-tabtop").html(data);
+    });
+  </script>
+  <script>
+    $.get("./menu-left.html", function (data) {
+      $("#sidebar-tableft").html(data);
+    });
+  </script>
+  <div style="display: flex;">
+
+    <div id="blur_bg" class=""
+      style="width: 100%; height: 100%; position: absolute; top: 0; z-index: 2; background-color: rgb(151 151 151 / 20%); backdrop-filter: blur(3px); display: none;">
+    </div>
+
+
+
+
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+      <div id="sidebar-tabtop">
+
+      </div>
+      <div>
+        <div
+          style="width: 100%; height: 60px; border-bottom: var(--border_dotDark_4); display: flex; align-items: center; justify-content: space-between;">
+          <div class="font_xl" style="width: 20%;  padding-left: 25px;">
+            ประเภทการลา
+          </div>
+          <div style="display: flex; width: 20%;  justify-content: end;  padding-right: 25px; ">
+            <div class="font_normal" style="align-items: center;display: flex;"><img
+                style="height: 20px; margin-right: 10px; " src="./symbol_hrm/scanandpay_copy_icon_pin.png">ดูวีดีโอ
+            </div>
+            <div class="font_normal" style="align-items: center;display: flex;"><img
+                style="height: 20px; margin-left: 30px; margin-right: 10px;"
+                src="./symbol_hrm/scanandpay_copy_icon_pin.png">คู่มือการใช้งาน</div>
+
+          </div>
+        </div>
+        <div style="width: 100%; height: calc(100vh - 181px); display: flex;">
+          <div style="width: 25%; padding: 25px; border-right: var(--border_dotDark_4); overflow: scroll;">
+
+            <div style="width: 100%">
+
+              <div style="position: relative;">
+                <select id="com_list" class="input_box">
+                  <option value="use-all-company" disabled selected hidden>ทุกบริษัท</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+            <div onclick="add_leave_type()"
+              style="height: 60px; border-radius: 10px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4); cursor: pointer; margin-top: 20px;">
+              + เพิ่มประเภทการลา
+            </div>
+            <p style="padding: 10px 0; font-size: 16px;">การลา</p>
+            <div id="type_list">
+              <div
+                style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+
+                <span style="margin-left: 10px;">ลาหยุดพักร้อนประจำปี</span>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div style="width: 75%; padding: 25px;">
+
+            <div style="height: 70px; width: 100%;">
+              <div style=" display: flex; font-size: 1.2vw;">
+                <div id="tapleavetype-1" onclick="menutapleavetype(1)" class="tapmenu-faq tapactive">การลา</div>
+              </div>
+            </div>
+            <input style="display: none;" type="file" id="img-store" accept="image/*">
+            <div id="tap_leave" style="width: 100%; overflow: scroll; height: calc(100vh - 280px);">
+              <div style="  width: 100%; display: flex; flex-direction: column;  align-items: center;">
+                <div style="width: 50%;">
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class=""
+                          style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                          ชื่อประเภท</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="name_th" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                          placeholder="">
+                      </div>
+                    </div>
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class=""
+                          style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                          ชื่อประเภท (EN)</p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="name_en" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                          placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div>
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style=" margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                            ชนิดการลา*
+                          </p>
+
+                        </div>
+                        <div style="position: relative;">
+                          <select style="font-size: 12px;" id="leave_type" class="input_box">
+                            <option value="leave">ลาหยุด</option>
+                            <option value="offsite_work">ปฏิบัติงานนอกสถานที่</option>
+                            <option value="collect-time">ขอสะสมเวลา</option>
+                            <option value="endorse-time">รับรองเวลา</option>
+                            <option value="redeem-time">แลกเวลา</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div style="width:48%">
+
+                    </div>
+                  </div>
+
+                  <div id="hide_use_com"
+                    style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ใช้กับทุกบริษัท
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="using_com_switch" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <p style="font-size: 18px;">การขอลา</p>
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class=""
+                          style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                          นาทีขั้นต่ำในการลา </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class="inpu_long_overtimecon">
+                        <input id="min_leave" type="" class="kanit weight_regular font_normal input95perinside_ovecss"
+                          placeholder="">
+                      </div>
+                    </div>
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class=""
+                          style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                          จำกัดจำนวนเอกสารต่อวัน* </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="nodpd" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                          placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      เงื่อนไขการขอลา
+                    </div>
+                    <div style="width:40%">
+                      <div>
+                        <div style="display: flex; align-items: baseline;">
+
+                        </div>
+                        <div style="position: relative;">
+                          <select style="font-size: 12px;" id="condition_leave" class="input_box">
+                            <option value="ลาล่วงหน้าและย้อนหลังได้">ลาล่วงหน้าและย้อนหลังได้ </option>
+                            <option value="ต้องลาล่วงหน้า">ต้องลาล่วงหน้า</option>
+                            <option value="ให้ลาย้อนหลังได้">ให้ลาย้อนหลังได้</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ลาครึ่งวัน
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="lh" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      จำกัดการลาติดต่อกัน
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="tapleave1" onchange="checkleave1('tapleave1' ,'leave-1_tapleave1')"
+                            type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div id="leave-1_tapleave1"
+                    style="display: none; border-bottom: 0.5px solid #6a6a7c; margin-bottom: 20px;">
+                    <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div
+                        style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                        ลาติดต่อกันได้ไม่เกิน
+                      </div>
+                      <div style="width:40%">
+                        <div>
+                          <div style="display: flex; align-items: baseline;">
+
+                          </div>
+                          <div style="position: relative;">
+                            <select style="font-size: 12px;" id="" class="input_box">
+                              <option value="0">0 วัน </option>
+                              <option value="1">1 วัน </option>
+                              <option value="2">2 วัน </option>
+                              <option value="3">3 วัน </option>
+                              <option value="4">4 วัน </option>
+                              <option value="5">5 วัน </option>
+                              <option value="6">6 วัน </option>
+                              <option value="7">7 วัน </option>
+                              <option value="8">8 วัน </option>
+                              <option value="9">9 วัน </option>
+                              <option value="10">10 วัน </option>
+                            </select>
+                            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center; ">
+                      เพศ
+                    </div>
+                    <div style="width:40%">
+                      <div>
+                        <div style="display: flex; align-items: baseline;">
+
+                        </div>
+                        <div style="position: relative;">
+                          <select style="font-size: 12px;" id="sex" class="input_box">
+                            <option value="ลาได้ทุกเพศ">ลาได้ทุกเพศ</option>
+                            <option value="ลาได้เฉพาะะชาย">ชาย</option>
+                            <option value="ลาได้เฉพาะหญิง">หญิง</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ผ่านทดลองงาน
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="through_work_trials" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ต้องแนบไฟล์
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="must_using_file" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <p style="font-size: 18px;"> เงื่อนไข </p>
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ลาได้ครั้งเดียว
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="leave_per1" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      นับวันหยุดเป็นวันลา
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="chald" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ได้สวัสดิการเงินพิเศษเฉพาะกลุ่ม
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="rsfwfsg" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ได้เบี้ยขยัน
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="gda" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ไม่ได้รับค่าจ้าง
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="unpaid" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      สะสมข้ามปี
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="tapleave2" onchange="checkleave2('tapleave2' ,'leave-2_tapleave2')"
+                            type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div id="leave-2_tapleave2"
+                    style="display: none; border-bottom: 0.5px solid #6a6a7c; margin-bottom: 20px;">
+                    <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                            สะสมได้สูงสุด*</p>
+                          <span style="color: var(--color_gray_Dark_3);">*</span>
+                        </div>
+                        <div class=" inpu_long_overtimecon">
+                          <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                            placeholder="">
+                        </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; font-size: 14px; color: var(--color_gray_Dark_3);">
+                            เดือนหมดอายุวันสะสม </p>
+
+                        </div>
+                        <div style="position: relative;">
+                          <select id="" class="input_box" style="height: 44px; font-size: 12px;">
+                            <option value="0">มกราคม</option>
+                            <option value="0">1</option>
+                            <option value="0">2</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      ใช้ได้เฉพาะในเดือนเกิด
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="cobuitmob" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 10px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center;">
+                      นับอายุช่วงทดลองงาน
+                    </div>
+                    <div style="width:48%; display: flex; justify-content: end; align-items: center;">
+                      <div>
+                        <label class="switch_hrm">
+                          <input id="ctadtpp" type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                    <div
+                      style="width:48%; font-size: 14px; color: var(--color_gray_Dark_3); display: flex; align-items: center; ">
+                      การคำนวณสิทธิ์
+                    </div>
+                    <div style="width:40%">
+                      <div>
+                        <div style="display: flex; align-items: baseline;">
+
+                        </div>
+                        <div style="position: relative;">
+                          <select style="font-size: 12px;" id="ec" class="input_box">
+                            <option value="คำนวนตามวันตัด">คำนวนตามวันตัดรอบ</option>
+                            <option value="คำนวนจากวันทำงานจริง">คำนวนจากวันทำงานจริง </option>
+
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จำนวนวัน</p>
+                      <!-- <span style="color: var(--color_gray_Dark_3);">*</span> -->
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="max" type="number" class="kanit weight_regular font_normal input95perinside_ovecss"
+                        placeholder="">
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+            <div id="tap_permossionleave"
+              style="height: calc(100vh - 280px); display: none; flex-direction: column; padding: 0 15%;">
+
+              <div style="width:55%">
+                <!-- <div style="display: flex; align-items: baseline;">
+                  <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จำกัด</p>
+                  <span style="color: var(--color_gray_Dark_3);">*</span>
+                </div> -->
+                <!-- <div class="container">
+                  <form style="display: flex; justify-content: space-around;">
+                    <label class="label1x" style="font-size: 1vw;">
+                      <input type="radio" name="radio" value="ชาย" checked="">
+                      <span>ไม่จำกัดวัน</span>
+                    </label>
+                    <label class="label1x" style="font-size: 1vw;">
+                      <input type="radio" name="radio" value="หญิง">
+                      <span>คิดโปรเรต</span>
+                    </label>
+                  </form>
+                </div> -->
+              </div>
+
+              <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                <div style="width:48%">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จำนวนวัน</p>
+                    <!-- <span style="color: var(--color_gray_Dark_3);">*</span> -->
+                  </div>
+                  <div class=" inpu_long_overtimecon">
+                    <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                      placeholder="">
+                  </div>
+                </div>
+                <div style="width:48%">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">จำนวนชั่วโมง</p>
+                    <span style="color: var(--color_gray_Dark_3);">*</span>
+                  </div>
+                  <div class=" inpu_long_overtimecon">
+                    <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                      placeholder="">
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="align-items: center; justify-content: space-between; display: flex; margin-top: 30px; margin-bottom: 15px;">
+                <span>กำหนดตามอายุงาน</span>
+                <label class="switch_hrm">
+                  <input id="determined_working_age" type="checkbox"
+                    onchange="checkleave3('determined_working_age' ,'determined_working_age')">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div id="leave-2_determined_working_age"
+                style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: none;">
+                <div style="width:48%">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">อายุงานตั้งแต่</p>
+                    <!-- <span style="color: var(--color_gray_Dark_3);">*</span> -->
+                  </div>
+                  <div class=" inpu_long_overtimecon">
+                    <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                      placeholder="">
+                  </div>
+                  <div style="position: relative; width: 50%; margin-top: 10px;">
+                    <select style="font-size: 12px; height: 43px;" id="" class="input_box">
+                      <option value="0">เดือน</option>
+                      <option value="0">ปี</option>
+                    </select>
+                    <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                  </div>
+                </div>
+                <div style="width:48%">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">แต่ไม่ถึง</p>
+                    <!-- <span style="color: var(--color_gray_Dark_3);">*</span> -->
+                  </div>
+                  <div class=" inpu_long_overtimecon">
+                    <input id="" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                      placeholder="">
+                  </div>
+                  <div style="position: relative; width: 50%; margin-top: 10px;">
+                    <select style="font-size: 12px; height: 43px;" id="" class="input_box">
+                      <option value="0">เดือน</option>
+                      <option value="0">ปี</option>
+                    </select>
+                    <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+        <div
+          style="height: 60px; display: flex; align-items: center; justify-content: space-between; padding-left: 4%; padding-right: 25px; border-top: var(--border_dotDark_4);">
+
+          <div style="align-items: center; display: flex;">
+            <span style="margin-right: 10px;">เปิดใช้งาน</span>
+            <label class="switch_hrm">
+              <input id="activestatus_home" type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div style="width: 20%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div id="cancel_settinghome"
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก
+            </div>
+            <div id="save_settinghome"
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              บันทึก
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+</body>
+
+<script>
+  $(document).ready(function () {
+    $('#myTabledd').DataTable();
+  });
+
+  function menutapleavetype(id) {
+    $("#tapleavetype-1").removeClass('tapactive')
+    $("#tapleavetype-2").removeClass('tapactive')
+    $("#tap_leave").css("display", 'none')
+    $("#tap_permossionleave").css("display", 'none')
+    if (id == 1) {
+      $("#tapleavetype-1").addClass('tapactive')
+      $("#tapleavetype-2").removeClass('tapactive')
+      $("#tap_leave").css("display", 'block')
+    }
+    if (id == 2) {
+      $("#tapleavetype-1").removeClass('tapactive')
+      $("#tapleavetype-2").addClass('tapactive')
+
+      $("#tap_permossionleave").css("display", 'block')
+    }
+  }
+</script>
+<script>
+  function slideworking_conditions() {
+    $(".slideworking").slideToggle("slow");
+    // $(".cardslide").css('border-bottom','none');
+  }
+</script>
+<script>
+  // Get the modal
+  var modal = document.getElementById("myhistroyprint_modal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn_hisprt");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+<script>
+  $(document).on('click', '.hide-off', function () {
+    $('.hideme').show();
+    $(this).removeClass('hide-off');
+    $(this).addClass('hide-on');
+  })
+
+  $(document).on('click', '.hide-on', function () {
+    $('.hideme').hide();
+    $(this).removeClass('hide-on');
+    $(this).addClass('hide-off');
+  })
+
+  function check(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#details_" + id).css("display", 'block')
+    } else {
+      $("#details_" + id).css("display", 'none')
+    }
+  }
+
+  function checkshow(id, id_show) {
+    var check = $('#' + id).is(":checked")
+
+    console.log('check ==>', check)
+
+    if (check) {
+      $("#" + id_show).css("display", 'block')
+    }
+    else {
+      $("#" + id_show).css("display", 'none')
+    }
+    " ลาติดต่อกันได้ไม่เกิน "
+  }
+</script>
+
+<script>
+  let ENDPOINT = window.API_URL;
+
+  function checkleave1(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#leave-1_" + id).css("display", 'block')
+    } else {
+      $("#leave-1_" + id).css("display", 'none')
+    }
+  }
+
+  function checkleave2(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#leave-2_" + id).css("display", 'block')
+    } else {
+      $("#leave-2_" + id).css("display", 'none')
+    }
+  }
+
+  function checkleave3(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#leave-2_" + id).css("display", 'flex')
+    } else {
+      $("#leave-2_" + id).css("display", 'none')
+    }
+  }
+
+  function add_leave_type() {
+
+  }
+  get_company()
+  async function get_company() {
+
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/my_company/admin", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let result = await response.json();
+      // console.log(result)
+      let list_data = result.company
+      let arr = []
+      let html = '<option value="0" selected >ทุกบริษัท</option>'
+      list_data.forEach(e => {
+        html += `<option value="${e.com_id}">${e.com_name}</option>`
+      });
+      document.getElementById('com_list').innerHTML = html
+      LIST_LEVE_TYPE = list_data
+      get_type()
+    } catch (err) {
+      console.log(err)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+
+      })
+    }
+  }
+  get_type()
+  let LIST_LEVE_TYPE = ''
+  document.getElementById('com_list')
+    .addEventListener('change', async () => {
+      get_type()
+      // let headersList = {
+      //   "Accept": "*/*",
+      //   "Content-Type": "application/json"
+      // }
+      // let com_list = document.getElementById('com_list')
+      // let bodyContent = JSON.stringify({
+      //   "token": localStorage.token,
+      //   "com_id": com_list.value,
+      //   "sp": com_list.value === "0" ? 'use-all-company' : ''
+      // });
+
+      // let response = await fetch(ENDPOINT + "mobile/Get-Leave-Type", {
+      //   method: "POST",
+      //   body: bodyContent,
+      //   headers: headersList
+      // });
+
+      // let data = await response.json();
+      // let list = data.data
+      // let html = ''
+      // let arr = []
+      // list.forEach((e) => {
+      //   arr.push(e.l_id)
+      //   html += `
+      //   <div onclick="render_leave_type(${e.l_id})" style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+      //   <span style="margin-left: 10px;">${e.name_th}</span>
+      //   </div>
+      //   `
+      // })
+      // document.getElementById('type_list').innerHTML = html
+      // LIST_LEVE_TYPE = list
+      // render_leave_type(arr[0])
+      // console.log(data);
+    })
+
+  async function update_leave_type() {
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+    console.log('COM_ID :', COM_ID)
+    Swal.fire({
+      title: 'ต้องการอัพเดทข้อมูลใช่ หรือ ไม่',
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+    }).then(async (result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let obj = {
+          "name_th": document.getElementById('name_th').value,
+          "name_en": document.getElementById('name_en').value,
+          "max": document.getElementById('max').value,
+          "count": 0,
+          "com_id": COM_ID,
+          "using": document.getElementById('com_list').value === "0" ? 'use-all-company' : document.getElementById('com_list').value,
+          "status": document.getElementById('activestatus_home').value ? 'active' : 'inactive',
+          "using_company_switch": document.getElementById('using_com_switch').checked,
+          "min_leave": document.getElementById('min_leave').value,
+          "nodpd": document.getElementById('nodpd').value,
+          "condition_leave": document.getElementById('condition_leave').value,
+          "lh": document.getElementById('lh').checked,
+          "limit_leave": document.getElementById('tapleave1').checked,
+          "sex": document.getElementById('sex').value,
+          "through_work_trials": document.getElementById('through_work_trials').value,
+          "must_using_file": document.getElementById('must_using_file').checked,
+          "leave_per1": document.getElementById('leave_per1').checked,
+          "chald": document.getElementById('chald').checked,
+          "rsfwfsg": document.getElementById('rsfwfsg').checked,
+          "gda": document.getElementById('gda').checked,
+          "unpaid": document.getElementById('unpaid').checked,
+          "aoty": document.getElementById('tapleave2').checked,
+          "cobuitmob": document.getElementById('cobuitmob').checked,
+          "ctadtpp": document.getElementById('ctadtpp').checked,
+          "ec": document.getElementById('ec').value,
+          "leave_type": document.getElementById('leave_type').value,
+          "code": "-",
+          "wf_id": WF_ID,
+          "workflow_type": "-",
+          "workflow_con": WORKFLOW_CON,
+          l_id: L_ID
+        }
+        console.log(obj)
+        let bodyContent = JSON.stringify({
+          "token": localStorage.token,
+          "obj": obj
+        });
+
+        let response = await fetch(ENDPOINT + "mobile/Update-Leave-Type", {
+          method: "POST",
+          body: bodyContent,
+          headers: headersList
+        });
+
+        let data = await response.json();
+        console.log(data);
+        window.location.reload()
+        // Swal.fire('Saved!', '', 'success')
+      }
+    })
+  }
+  let COM_ID = 0
+  let WF_ID = 0
+  let L_ID = 0
+  function render_leave_type(id) {
+    document.getElementById('save_settinghome').onclick = () => update_leave_type()
+    let data = LIST_LEVE_TYPE.filter(e => e.l_id == id)[0]
+    COM_ID = data.com_id
+    document.getElementById('name_th').value = data.name_th
+    document.getElementById('name_en').value = data.name_en
+    document.getElementById('leave_type').value = data.leave_type
+    document.getElementById('condition_leave').value = data.condition_leave
+    document.getElementById('using_com_switch').checked = data.using_company_switch
+    document.getElementById('min_leave').value = data.min_leave ? data.min_leave : 0
+    document.getElementById('nodpd').value = data.nodpd
+    document.getElementById('lh').checked = data.lh ? data.lh : false
+    document.getElementById('tapleave1').checked = data.limit_leave ? data.limit_leave : false
+    document.getElementById('sex').value = data.sex ? data.sex : 'ลาได้ทุกเพศ'
+    document.getElementById('through_work_trials').checked = data.through_work_trials ? data.through_work_trials : false
+    document.getElementById('must_using_file').checked = data.must_using_file ? data.must_using_file : false
+    document.getElementById('leave_per1').checked = data.leave_per1 ? data.leave_per1 : false
+    document.getElementById('chald').checked = data.chald ? data.chald : false
+    document.getElementById('rsfwfsg').checked = data.rsfwfsg ? data.rsfwfsg : false
+    document.getElementById('gda').checked = data.gda ? data.gda : false
+    document.getElementById('unpaid').checked = data.unpaid ? data.unpaid : false
+    document.getElementById('tapleave2').checked = data.aoty ? data.aoty : false
+    document.getElementById('cobuitmob').checked = data.cobuitmob ? data.cobuitmob : false
+    document.getElementById('ctadtpp').checked = data.ctadtpp ? data.ctadtpp : false
+    document.getElementById('ec').value = data.ec ? data.ec : 'คำนวนตามวันตัด'
+    WF_ID = data.wf_id ? data.wf_id : 0
+    document.getElementById('max').value = data.max ? data.max : 0
+    document.getElementById('activestatus_home').checked = data.status === 'active' ? true : false
+    WORKFLOW_CON = data.workflow_con
+    console.log('WORKFLOW_CON', WORKFLOW_CON)
+    L_ID = data.l_id
+    console.log('L_ID', L_ID)
+
+  }
+
+  async function get_type() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+      let com_list = document.getElementById('com_list')
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "com_id": com_list.value,
+        "sp": com_list.value === "0" ? 'use-all-company' : ''
+      });
+
+    if (com_list.value === "0") {
+      document.getElementById('hide_use_com').style.display = 'none'
+    } else {
+      document.getElementById('hide_use_com').style.display = 'flex'
+    }
+    let response = await fetch(ENDPOINT + "mobile/Get-Leave-Type", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+      let data = await response.json();
+      let list = data.data
+      let html = ''
+      let arr = []
+      list.forEach((e) => {
+        arr.push(e.l_id)
+        html += `
+        <div onclick="render_leave_type(${e.l_id})" style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+        <span style="margin-left: 10px;">${e.name_th}</span>
+        </div>
+        `
+      })
+      document.getElementById('type_list').innerHTML = html
+      LIST_LEVE_TYPE = list
+      if(arr[0]){
+        render_leave_type(arr[0])
+      }else{
+        add_leave_type()
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+  function add_leave_type() {
+    console.log('ddddddsdsdsd')
+    document.getElementById('save_settinghome').onclick = () => confirm_leave_type()
+    // COM_ID = data.com_id
+    document.getElementById('name_th').value = ''
+    document.getElementById('name_en').value = ''
+    document.getElementById('leave_type').value = 'leave'
+    document.getElementById('condition_leave').value = 'ลาล่วงหน้าและย้อนหลังได้'
+    document.getElementById('using_com_switch').checked = false
+    document.getElementById('min_leave').value = ''
+    document.getElementById('nodpd').value = ''
+    document.getElementById('lh').checked = false
+    document.getElementById('tapleave1').checked = false
+    document.getElementById('sex').value = 'ลาได้ทุกเพศ'
+    document.getElementById('through_work_trials').checked = false
+    document.getElementById('must_using_file').checked = false
+    document.getElementById('leave_per1').checked = false
+    document.getElementById('chald').checked = false
+    document.getElementById('rsfwfsg').checked = false
+    document.getElementById('gda').checked = false
+    document.getElementById('unpaid').checked = false
+    document.getElementById('tapleave2').checked = false
+    document.getElementById('cobuitmob').checked = false
+    document.getElementById('ctadtpp').checked = false
+    document.getElementById('ec').value = 'คำนวนตามวันตัด'
+    WF_ID = 0
+    document.getElementById('max').value = 10
+    document.getElementById('activestatus_home').checked = true
+    // WORKFLOW_CON = data.workflow_con
+    // console.log('WORKFLOW_CON', WORKFLOW_CON)
+    // L_ID = data.l_id
+    // console.log('L_ID', L_ID)
+
+  }
+  async function confirm_leave_type() {
+    let name_th_check = document.getElementById('name_th').value
+    Swal.fire({
+      title: 'ต้องการเพิ่มข้อมูล',
+      showCancelButton: true,
+      confirmButtonText: 'บันทึก',
+    }).then(async (result) => {
+      if (result.isConfirmed && name_th_check) {
+        let headersList = {
+          "Accept": "*/*",
+          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+          "Content-Type": "application/json"
+        }
+
+        let bodyContent = JSON.stringify({
+          "token": localStorage.token,
+          "obj": {
+            "name_th": document.getElementById('name_th').value,
+            "name_en": document.getElementById('name_en').value,
+            "max": document.getElementById('max').value,
+            "count": 0,
+            "eid": 0,
+            "com_id": COM_ID,
+            "using": document.getElementById('com_list').value === "0" ? 'use-all-company' : document.getElementById('com_list').value,
+            "status": document.getElementById('activestatus_home').checked ? 'active' : 'inactive',
+            "using_company_switch": document.getElementById('using_com_switch').checked,
+            "min_leave": document.getElementById('min_leave').value ? document.getElementById('min_leave').value : 0,
+            "nodpd": document.getElementById('nodpd').value ? document.getElementById('nodpd').value : 0,
+            "condition_leave": document.getElementById('condition_leave').value,
+            "lh": document.getElementById('lh').checked,
+            "limit_leave": document.getElementById('tapleave1').checked,
+            "sex": document.getElementById('sex').value,
+            "through_work_trials": document.getElementById('through_work_trials').value,
+            "must_using_file": document.getElementById('must_using_file').checked,
+            "leave_per1": document.getElementById('leave_per1').checked,
+            "chald": document.getElementById('chald').checked,
+            "rsfwfsg": document.getElementById('rsfwfsg').checked,
+            "gda": document.getElementById('gda').checked,
+            "unpaid": document.getElementById('unpaid').checked,
+            "aoty": document.getElementById('tapleave2').checked,
+            "cobuitmob": document.getElementById('ctadtpp').checked,
+            "ctadtpp": document.getElementById('ctadtpp').checked,
+            "ec": document.getElementById('ec').value,
+            "leave_type": document.getElementById('leave_type').value,
+            "code": "-",
+            "workflow_type": "",
+            "workflow_con": [
+              {
+                "type": "เฉพาะหัวหน้าโดยตรง",
+                "sub_type": "อนุมัติทุกลำดับ",
+                "eid": 0,
+                "next_wf_id": 0
+              }
+            ]
+          }
+        });
+
+        let response = await fetch(ENDPOINT + "mobile/Add-Leave-Type", {
+          method: "POST",
+          body: bodyContent,
+          headers: headersList
+        });
+
+        let data = await response.json();
+        // window.location.reload()
+        Swal.fire('Saved!', '', 'success')
+        setTimeout(() => {
+          // window.location.reload()
+        }, 3000)
+      } else {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ')
+      }
+    })
+  }
+
+</script>
+
+</html>

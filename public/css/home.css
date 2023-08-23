@@ -1,0 +1,204 @@
+.header {
+	width: 100%;
+	height: 20vh;
+	display: flex;
+	padding: 0;
+
+
+
+}
+
+.headtext {
+	color: #064BF9;
+	/* font-family: 'Inter'; */
+	font-style: normal;
+	/* font-weight: 800; */
+	/* font-size: 20px; */
+
+}
+
+.headerbox {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+body {
+	background-image: url(http://localhost:8080/imgs/background1.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+
+}
+
+.homecontent {
+	padding: 0 20px;
+	height: 100vh;
+	width: 100vw;
+}
+
+.content_template {
+	/* background-color: beige; */
+	padding-top: 0;
+
+
+}
+
+.bluebox1 {
+	width: 100%;
+	height: 220px;
+	margin: 20px 0;
+	padding: 16px;
+	color: #E6EDFF;
+	position: relative;
+
+
+	background: linear-gradient(297.83deg, #03398A 12.54%, #064BF9 100%);
+	border-radius: 32px;
+}
+
+.blueboxline {
+	border-bottom: 1px solid #608DFF;
+	margin-top: 5px;
+
+}
+
+.blueboxcontent {
+	height: 80%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bluebox2 {
+	height: 80%;
+	width: 95%;
+	position: absolute;
+	background: linear-gradient(297.83deg, #03398A 12.54%, #064BF9 100%);
+	opacity: 0.7;
+	border-radius: 32px;
+	bottom: -5%;
+	z-index: -1;
+	left: 2.5%;
+
+}
+
+.vector1 {
+	height: 100%;
+	position: absolute;
+	right: 0;
+
+}
+
+.vector2 {
+	height: 100%;
+	position: absolute;
+	right: 0%;
+
+}
+
+.menuicon {
+	height: 44px;
+	width: 44px;
+	background: linear-gradient(151.45deg, #608DFF 8.41%, #043C9A 73.27%);
+	border-radius: 10px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menuicon img {
+	width: 24px;
+	height: 24px;
+	color: white;
+
+}
+
+.menucontainer {
+	width: 100%;
+	display: flex;
+	/* overflow-y: scroll; */
+	margin: 16px 0;
+}
+
+.menubox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 5%;
+}
+
+.bluep2box1 {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+}
+
+.bluep2container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.txt1 {
+	color: #C7C9D9;
+}
+
+.timein {}
+
+#render {
+	width: 100%;
+	height: 100%;
+}
+
+
+/* circle progress */
+@keyframes growProgressBar {
+
+	0%,
+	33% {
+		--pgPercentage: 0;
+	}
+
+	100% {
+		--pgPercentage: var(--value);
+	}
+}
+
+
+
+div[role="progressbar"] {
+	--size: 8rem;
+	--fg: #1CB5E0;
+	--bg: #def;
+	--remain: #C7C9D9;
+	--base: #1CB5E0;
+	--pgPercentage: var(--value);
+	animation: growProgressBar 3s 1 forwards;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background:
+		radial-gradient(closest-side, #03398A 80%, transparent 0 100%, #C7C9D9 0),
+		conic-gradient(var(--base) calc(var(--pgPercentage) * 1%), var(--remain) 0);
+	font-size: calc(var(--size) / 5);
+	color: white;
+}
+
+div[role="progressbar"]::before {
+	counter-reset: percentage var(--value);
+	content: counter(percentage) '%';
+}
+
+/* End circle progress */

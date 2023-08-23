@@ -1,0 +1,3784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon"
+    href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+  <title>HRM</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global.css">
+  <script src="./global.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Swal2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global_hrm.css" />
+
+  <!-- Global JS -->
+  <script src='./global_js.js'></script>
+  <script src="config.js"></script>
+  <!-- This css font  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+
+  <link rel="stylesheet" href="./jquery.Thailand.js/dist/jquery.Thailand.min.css">
+
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .tapmenu-faq {
+
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+
+  .tapactive {
+    border-bottom: 3px solid #009688;
+  }
+
+  .PH_I {
+    margin-left: 25px;
+    max-height: 120px;
+    min-height: 120px;
+    max-width: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    border: 1px solid rgb(223, 223, 232);
+  }
+
+  .img_I {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    left: -27px;
+    top: 40px;
+    border: none;
+    background-color: #009688;
+    border-radius: 50px;
+    color: white;
+  }
+
+  .input_from {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .input-tx1 {
+    width: 46.5%;
+    float: left;
+    padding: 0.5em;
+    margin: 10px 0;
+    height: 40px;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--color_gray_Dark_3);
+    margin-bottom: 50px;
+
+  }
+
+  .textt {
+    width: 100%;
+    display: flex;
+  }
+
+  .input_box1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    outline: unset;
+    height: 55px;
+    background: var(--color_white_Light_4);
+    border-radius: 6px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid var(--color_gray_Dark_3);
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    width: 100%;
+    padding-left: 20px;
+
+
+  }
+
+  .input_box2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    outline: unset;
+    height: 55px;
+    background: var(--color_white_Light_4);
+    border-radius: 6px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid var(--color_gray_Dark_3);
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    width: 100%;
+    padding-left: 55px;
+
+
+  }
+
+  .cardslide {
+    width: 97%;
+    padding: 0 7px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .fa-arrow-down {
+    transform: rotate(0deg);
+    transition: transform 0.5s linear;
+  }
+
+  .fa-arrow-down.open {
+    transform: rotate(180deg);
+    transition: transform 0.5s linear;
+  }
+
+  /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #d2d2da;
+    border-radius: 3px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked~.checkmark {
+    background-color: orangered;
+    border: 1px solid orangered;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .dropdown_arrow_input1 {
+    height: 50%;
+    position: absolute;
+    top: 12px;
+    right: 95px;
+  }
+
+  .tapnon-activebank {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7b7979;
+  }
+
+  .tapactivebank {
+    border: 1.5px solid #F47243;
+    color: #F47243;
+    background-color: #FFF3EC;
+  }
+</style>
+
+<body style="overflow: hidden;">
+  <div id="open-loader" style="display: none;" class="loader-overlay">
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <script>
+    $.get("./menu-top.html", function (data) {
+      $("#sidebar-tabtop").html(data);
+    });
+  </script>
+  <script>
+    $.get("./menu-left.html", function (data) {
+      $("#sidebar-tableft").html(data);
+    });
+  </script>
+  <div style="display: flex;">
+
+    <div id="blur_bg" class=""
+      style="width: 100%; height: 100%; position: absolute; top: 0; z-index: 2; background-color: rgb(151 151 151 / 20%); backdrop-filter: blur(3px); display: none;">
+    </div>
+
+    <div class="overlay_branch_info overlay-slide_branch_info">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> เพิ่มบริษัท </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; overflow: scroll;">
+        <p style="padding-top: 20px;"> ข้อมูลสาขา </p>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">ชื่อสาขา*</span>
+          <div class="inpu_long" style="width: unset;">
+            <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="กรอกชื่อสาขา">
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">ชื่อสาขา (EN)</span>
+          <div class="inpu_long" style="width: unset;">
+            <input id="branch_name_en" type="text" class="kanit font_normal inputinside_css"
+              placeholder="กรอกชื่อสาขา (EN)">
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 12px;">เลขที่สาขา</span>
+          <div class="inpu_long" style="width: unset;">
+            <input id="branch_number" type="text" class="kanit font_normal inputinside_css"
+              placeholder="กรอกเลขที่สาขา">
+          </div>
+        </div>
+
+        <div
+          style="align-items: center; justify-content: space-between; display: flex; margin-top: 30px; margin-bottom: 15px;">
+          <span>ข้อมูลสถานที่ตั้ง</span>
+          <label class="switch_hrm">
+            <input id="location_information" type="checkbox"
+              onchange="checkshow('location_information' ,'details_location_information')">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div id="details_location_information" style="display: none;">
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">ที่อยู่</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_address" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                  placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">จังหวัด</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_province" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                  placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">เขต/อำเภอ</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_district" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                  placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">แขวง/ตำบล</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_sup_district" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รหัสไปรษณีย์</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_zip_code" type="text" class="kanit weight_regular font_normal input95perinside_ovecss"
+                  placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">เบอร์โทรศัพท์</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_phone_number" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="align-items: center; justify-content: space-between; display: flex; margin-bottom: 20px;">
+          <span>อัตราสมทบเงินทดแทน</span>
+          <label class="switch_hrm">
+            <input id="compensation_contribution_rate" type="checkbox"
+              onchange="checkshow('compensation_contribution_rate' , 'details_compensation_contribution_rate')">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div id="details_compensation_contribution_rate" style="display: none;">
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">เลขที่บัญชีประกันสังคม</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_social_security_account_number" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รหัสกิจการ</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_business_code" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">อัตราสมทบผู้ประกันตน (%)</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_contribution_rate" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+            <div style="width:48%">
+              <div style="display: flex; align-items: baseline;">
+                <p class="" style="margin-bottom: 5px; margin-right: 5px;">รายได้ต่อเดือนไม่เกิน</p>
+              </div>
+              <div class=" inpu_long_overtimecon">
+                <input id="branch_monthly_income_not_more_than" type="text"
+                  class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="align-items: center; display: flex;">
+          <span style="margin-right: 10px;">สถานะใช้งาน</span>
+          <label class="switch_hrm">
+            <input id="branch_status" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div
+            onclick="clear_add_branch();$('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display','none');"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div id="save_branch"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="overlay_doccompany_info overlay-slide_doccompany_info">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> หนังสือรับรองการทำงาน </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_doccompany_info').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; ">
+        <div style="width: 100% ">
+          <div style="display: flex; align-items: baseline;">
+            <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ผู้มีอำนาจลงนาม </p>
+            <span style="color: var(--color_gray_Dark_3);">*</span>
+          </div>
+          <div style="position: relative;">
+            <select id="signatory_documentcompany" class="input_box">กรุณาเลือก
+              <option value="0">เลือกพนักงาน</option>
+              <option value="0">2</option>
+            </select>
+            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+          </div>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: baseline;">
+            <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ผู้มีอำนาจลงนาม </p>
+          </div>
+          <div id="click_sign" onclick="document.getElementById('sign_store').click()"
+            style="display: flex; border: 1px dashed  gray; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius: 6px; width: 100%;height: 80px;background-color: white;">
+            <img id="person_sign" src="./symbol_hrm/scanandpay_info_circle_icon.png"
+              style="width: 50px; height: 50px;" />
+            <span>เลือกไฟล์</span>
+          </div>
+
+          <!-- if add img  -->
+          <!-- <div style="display: flex; border: 1px dashed  gray; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius: 6px; width: 100px;height: 80px;background-color: white;">
+                      <img id="haveimg_modal_documentcompany"  src="./symbol_hrm/scanandpay_info_circle_icon.png" style=" height: 80%" />
+                    </div> -->
+        </div>
+      </div>
+      <input id="sign_store" onchange="preview_person_sign()" style="display: none;" type="file" id="imageInput"
+        accept="image/*">
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: end; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div id="cancel_modal_documentcompany"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div id="save_modal_documentcompany"
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="myhistroyprint_modal" class="blur_bg ">
+      <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+        <div class="histroyprint-content">
+          <div
+            style="padding:10px 19px; align-items: center; display: flex; justify-content: space-between; border-bottom: 1px solid #888;">
+            <span class="font_semi_large"> ประวัติการพิมพ์ </span>
+            <span class="close">&times;</span>
+          </div>
+          <div style="padding: 0 10px;">
+            <div style="height: 70px; align-items: center;   display: flex; justify-content: end;">
+              <div style="width: 76px;margin-right: 10px; ">
+                <div style="position: relative;">
+                  <select id="" class="input_box_myhistroyprint_modal">
+                    <option value="0">งวด</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <img class="dropdown_arrow_input_myhistroyprint_modal" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div style="width: 100px ">
+                <div style="position: relative;">
+                  <select id="" class="input_box_myhistroyprint_modal">
+                    <option value="0">สถานะ</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <img class="dropdown_arrow_input_myhistroyprint_modal" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+            </div>
+            <div style="display: flex;   height: calc(450px - 123px)">
+              <div style="display: flex; flex-direction: column;  width: 100%;">
+                <!-- head -->
+                <div
+                  style="display: flex; border-radius:18px 18px 0 0; align-items: center; justify-content: center; background-color: lightgray; ">
+                  <div class="padd15019" style="width: 20%;">เลขที่รายการ</div>
+                  <div class="padd15019" style="width: 10%;">งวดที่</div>
+                  <div class="padd15019" style="width: 20%;">วันที่จ่าย</div>
+                  <div class="padd15019" style="width: 20%;">จำนวน</div>
+                  <div class="padd15019" style="width: 20%;">จำนวนเงิน</div>
+                  <div class="padd15019" style="width: 10%;">สถานะ</div>
+                </div>
+                <!-- tbody ไม่่มีข้อมูล -->
+                <div
+                  style=" display: none; height: 100%; flex-direction: column; justify-content: center;align-items: center; overflow: scroll;  ">
+                  <div
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <img src="./symbol_hrm/test.jpeg" style="width: 100px; height: 100px;" />
+                    <span> ไม่มีข้อมูล</span>
+                  </div>
+                </div>
+                <!-- tbody  มีข้อมูล -->
+                <div
+                  style=" display: flex; height: 100%; flex-direction: column; align-items: center; overflow: scroll; ">
+                  <!-- row1  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                  <!-- row2  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                  <!-- row3  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                  <!-- row4  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                  <!-- row5  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                  <!-- row6  -->
+                  <div class=" divis_tr">
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 10%;">rrrrr</div>
+                    <div class="padd15019" style="width: 20%;">rrrr</div>
+                    <div class="padd15019" style="width: 20%;">ffff</div>
+                    <div class="padd15019" style="width: 20%;">fffff</div>
+                    <div class="padd15019" style="width: 10%;">fffff</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay_addemployee overlay-slide_addemployee">
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+        <p style="font-size: 1.5vw;"> เพิ่มพนักงาน </p>
+        <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+          onclick="$('.overlay_addemployee').removeClass('open'); $('#blur_bg').css('display','none');">
+      </div>
+
+      <div style="height: 80%; padding: 0 25px; overflow:scroll ; background-color: #fff;">
+        <p style="padding-top: 20px;"> ตัวกรอง </p>
+
+        <div
+          style="  display: flex; flex-flow:row wrap; border-bottom: 1px solid rgba(199, 201, 217, 1); margin-top: 10px;">
+          <div style=" width: 100px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_small">
+                  <option value="" disabled selected hidden> สังกัด </option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_small" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 100px; height: 55px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_small">
+                  <option value="" disabled selected hidden>สาขา</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_small" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 100px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_small">
+                  <option value="" disabled selected hidden>อายุงาน</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_small" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 100px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_small">
+                  <option value="" disabled selected hidden>ระดับ</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_small" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 156px; height: 60px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_medium">
+                  <option value="" disabled selected hidden>ประเภทพนักงาน</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 156px; height: 60px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_medium" style="background: #ffdea3; border: 1px solid orangered">
+                  <option value="" disabled selected hidden>สถานะพนักงาน</option>
+                  <!-- <option value="0" >1</option>
+                                <option value="0">2</option> -->
+                </select>
+                <div class="number_medium"
+                  style="height: 15px; width: 15px; border-radius: 50%; background-color: orangered; font-size: 12px; color: #fff; display: flex; align-items: center; justify-content: center;">
+                  2</div>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 156px; height: 60px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_medium">
+                  <option value="" disabled selected hidden>กะการทำงาน</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 156px; height: 60px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_medium">
+                  <option value="" disabled selected hidden>ผู้บังคับบัญชา</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style=" width: 156px; height: 60px;">
+            <div style="width: 224px ">
+              <div style="position: relative;">
+                <select id="" class="input_box_medium">
+                  <option value="" disabled selected hidden>หัวหน้างาน</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_medium" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- ตาราง -->
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 10px 0;">
+          <div>รายชื่อ(1)</div>
+          <div>
+            <div style="width: 250px;" class=" search_long">
+              <div class="seachdiv">
+                <img src="./symbol_hrm/search_gray_icon.png" style="height: 50%;" />
+              </div>
+
+              <input id="" type="text" class="kanit font_normal seachinputinside_css" placeholder="search" />
+            </div>
+
+
+          </div>
+        </div>
+
+        <div>
+          <div
+            style="font-size: 14px; display: flex; width: 100%; background-color: lightgray; padding: 15px 0;border-radius: 10px 10px 0 0;">
+            <div style="width: 10%;  ">
+              <label class="container font_normal_1 weight_regular" style="margin-left: 15px;">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div style="width: 25%;  padding: 0 15px;">
+              รหัส
+            </div>
+            <div style="width: 65%; ">
+              ชื่อพนักกงาน
+            </div>
+          </div>
+          <!-- body -->
+          <div style="height: calc(60% - 20vh); overflow: scroll;">
+            <!-- row1 -->
+            <div
+              style="font-size: 14px; display: flex; width: 100%; background-color: #fff; padding: 10px 0; border-bottom: 1px solid rgba(199, 201, 217, 1);">
+              <div style="width: 10%; ">
+                <label class="container font_normal_1 weight_regular" style="margin: 15px;">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div style="width: 25%;  padding: 0 15px; display: flex; align-items: center;">
+                12345
+              </div>
+              <div style="width: 65%; ">
+                <div style="display: flex;">
+                  <div
+                    style="width: 50px; height: 50px; background-color: aqua; border-radius: 50%; background-image: url(./symbol_hrm/test.jpeg); background-size: contain;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 10px;">
+                    <p style="font-size: 14px;">Test</p>
+                    <p style="font-size: 12px;">พนักงานชั่วคราว</p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- row2 -->
+            <div
+              style="font-size: 14px; display: flex; width: 100%; background-color: #fff; padding: 10px 0; border-bottom: 1px solid rgba(199, 201, 217, 1);">
+              <div style="width: 10%; ">
+                <label class="container font_normal_1 weight_regular" style="margin: 15px;">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div style="width: 25%;  padding: 0 15px; display: flex; align-items: center;">
+                12345
+              </div>
+              <div style="width: 65%;">
+                <div style="display: flex;">
+                  <div
+                    style="width: 50px; height: 50px; background-color: aqua; border-radius: 50%; background-image: url(./symbol_hrm/test.jpeg); background-size: contain;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 10px;">
+                    <p style="font-size: 14px;">Test</p>
+                    <p style="font-size: 12px;">พนักงานชั่วคราว</p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- row3 -->
+            <div
+              style="font-size: 14px; display: flex; width: 100%; background-color: #fff; padding: 10px 0; border-bottom: 1px solid rgba(199, 201, 217, 1);">
+              <div style="width: 10%; ">
+                <label class="container font_normal_1 weight_regular" style="margin: 15px;">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div style="width: 25%;  padding: 0 15px; display: flex; align-items: center;">
+                12345
+              </div>
+              <div style="width: 65%; ">
+                <div style="display: flex;">
+                  <div
+                    style="width: 50px; height: 50px; background-color: aqua; border-radius: 50%; background-image: url(./symbol_hrm/test.jpeg); background-size: contain;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 10px;">
+                    <p style="font-size: 14px;">Test</p>
+                    <p style="font-size: 12px;">พนักงานชั่วคราว</p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- row4 -->
+            <div
+              style="font-size: 14px; display: flex; width: 100%; background-color: #fff; padding: 10px 0; border-bottom: 1px solid rgba(199, 201, 217, 1);">
+              <div style="width: 10%; ">
+                <label class="container font_normal_1 weight_regular" style="margin: 15px;">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div style="width: 25%;  padding: 0 15px; display: flex; align-items: center;">
+                12345
+              </div>
+              <div style="width: 65%;">
+                <div style="display: flex;">
+                  <div
+                    style="width: 50px; height: 50px; background-color: aqua; border-radius: 50%; background-image: url(./symbol_hrm/test.jpeg); background-size: contain;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 10px;">
+                    <p style="font-size: 14px;">Test</p>
+                    <p style="font-size: 12px;">พนักงานชั่วคราว</p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+      <div
+        style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+        <div style="align-items: center; display: flex;">
+          <span style="margin-right: 10px; font-size: 16px; color: orangered;">เลือกแล้ว 0 คน </span>
+        </div>
+
+        <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+            ยกเลิก
+          </div>
+          <div
+            style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+            บันทึก
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+      <div id="sidebar-tabtop">
+
+      </div>
+      <div>
+        <div
+          style="width: 100%; height: 60px; border-bottom: var(--border_dotDark_4); display: flex; align-items: center; justify-content: space-between;">
+          <div class="font_xl" style="width: 20%;  padding-left: 25px;">
+            ตั้งค่าบริษัท
+          </div>
+          <div style="display: flex; width: 20%;  justify-content: end;  padding-right: 25px; ">
+            <div class="font_normal" style="align-items: center;display: flex;"><img
+                style="height: 20px; margin-right: 10px; " src="./symbol_hrm/scanandpay_copy_icon_pin.png">ดูวีดีโอ
+            </div>
+            <div class="font_normal" style="align-items: center;display: flex;"><img
+                style="height: 20px; margin-left: 30px; margin-right: 10px;"
+                src="./symbol_hrm/scanandpay_copy_icon_pin.png">คู่มือการใช้งาน</div>
+
+          </div>
+        </div>
+        <div style="width: 100%; height: calc(100vh - 181px); display: flex;">
+          <div style="width: 25%; padding: 25px; border-right: var(--border_dotDark_4); overflow: scroll;">
+            <div id="add_com_01" onclick="add_new_company()"
+              style="height: 60px; border-radius: 10px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4); cursor: pointer;">
+              เพิ่มบริษัท
+            </div>
+            <div id="list_com">
+              <!-- <div
+                style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+                <div
+                  style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+                </div>
+                <span style="margin-left: 10px;">สาขา TEST</span>
+              </div> -->
+            </div>
+
+
+            <!-- <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div>
+
+            <div
+              style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580);">
+              </div>
+              <span style="margin-left: 10px;">สาขา TEST</span>
+            </div> -->
+
+          </div>
+          <div style="width: 75%; padding: 25px;">
+
+            <div style="height: 70px; width: 100%;">
+              <div style=" display: flex; font-size: 1.2vw;">
+                <div id="tapasq-1" onclick="menutapfaq(1)" class="tapmenu-faq tapactive">ข้อมูลบริษัท</div>
+                <div id="tapasq-2" onclick="menutapfaq(2)" class="tapmenu-faq">ข้อมูลสาขา</div>
+                <div id="tapasq-3" onclick="menutapfaq(3)" class="tapmenu-faq">เงื่อนไขการทำงาน</div>
+                <div id="tapasq-4" onclick="menutapfaq(4)" class="tapmenu-faq">เงื่อนไขล่วงเวลา</div>
+                <div id="tapasq-5" onclick="menutapfaq(5)" class="tapmenu-faq">เอกสาร</div>
+                <div id="tapasq-6" onclick="menutapfaq(6)" class="tapmenu-faq">สลิปเงินเดือน</div>
+              </div>
+            </div>
+            <input onchange="event_imgchange()" style="display: none;" type="file" id="img-store" accept="image/*">
+            <div id="company_information" style="width: 100%; overflow: scroll; height: calc(100vh - 280px);">
+              <div style="padding: 0.5rem; justify-content: center;display: flex;align-items: center;">
+                <img id="logo_company" src="./symbol_hrm/test.jpeg" alt="Company Logo"
+                  style="display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+
+                <!-- <div id="logo_company"
+                  style="align-items: center;width: 120px;height: 120px;border-radius: 50%; background-image: url(./symbol_hrm/test.jpeg); background-size: cover;">
+                </div> -->
+                <div id="select_file_img01" onchange="" onclick="document.getElementById('img-store').click()"
+                  class="img_I">
+                  <div style="position: absolute; top: 13px;" class="flex_center div_icon_menu">
+                    <i class='bx bx-image-add'></i>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size: 20px; margin-bottom: 18px;">ข้อมูลบริษัท</p>
+              <div class="textt">
+                <div style="width: 54%; position: relative; top: 10px;color: #7b7979;">ชื่อบริษัท</div>
+                <div style="width: 50%; padding-left:15px ;position: relative; top: 10px;color: #7b7979;">ชื่อบริษัท
+                  (EN)</div>
+              </div>
+              <div style="width: 100%;" class="input_from">
+                <input id="name_th" class="input-tx1" type="text">
+                <input id="name_en" class="input-tx1" type="text">
+              </div>
+              <div style="width: 100%;position: relative; top: 10px;color: #7b7979;">เลขประจำตัวผู้เสียภาษี</div>
+              <div class="input_from">
+                <input id="sff_no" class="input-tx1" type="text">
+              </div>
+              <div>
+                <p style="font-size: 20px; margin: 50px 0;">ข้อมูลที่อยู่</p>
+              </div>
+              <div class="textt">
+                <div style="width: 53%;position: relative; top: 10px;color: #7b7979;">ที่อยู่*</div>
+                <div style="width: 50%; padding-left:15px ;position: relative; top: 10px ;color: #7b7979;">ที่อยู่ (EN)
+                </div>
+              </div>
+              <div class="input_from">
+                <input id="addr" class="input-tx1" type="text">
+                <input id="addr_en" class="input-tx1" type="text">
+              </div>
+              <div style="display: flex; width: 100%;">
+                <div style="width: 53%;position: relative; bottom: 7px;color: #7b7979;">จังหวัด*</div>
+                <div style="width: 50%; margin-left: 20px;position: relative; bottom: 7px;color: #7b7979;">เขต/อำเภอ*
+                </div>
+              </div>
+
+              <div style="width: 100%; display: flex; justify-content: space-between;margin-bottom: 40px;">
+                <div style="width: 48%; position: relative; ">
+                  <input id="province_01" style="width: 96.6%;" class="input-tx1" type="text">
+                </div>
+                <div style="width: 48%;">
+                  <div style="position: relative;">
+                    <input id="aumpure" style="width: 96.6%;" class="input-tx1" type="text">
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; width: 100%; margin-bottom: 10px;">
+                <div style="width: 53%; color: #7b7979;">ตำบล*</div>
+                <div style="width: 50%; margin-left: 10px; color: #7b7979;">รหัสไปรษณีย์*</div>
+              </div>
+              <div style="width: 100%; display:flex;justify-content: space-between;margin-bottom: 40px;">
+                <div style="width: 48%;">
+                  <div style="position: relative; ">
+                    <input id="sub_distr" style="width: 96.6%;" class="input-tx1" type="text">
+                  </div>
+                </div>
+                <div style="width: 48%; ">
+                  <input id="postcode" placeholder="" style="width: 96.6%; margin: 0;" class="input-tx1" type="text">
+                </div>
+              </div>
+              <div class="textt">
+                <div style="width: 53%;position: relative; top: 10px;color: #7b7979;">ละติจูด*</div>
+                <div style="width: 50%; padding-left:15px ;position: relative; top: 10px ;color: #7b7979;">ลองจิจูด*
+                </div>
+              </div>
+              <div class="input_from">
+                <input id="lat" class="input-tx1" type="text">
+                <input id="long" class="input-tx1" type="text">
+              </div>
+              <div style="display: flex;justify-content: space-between;">
+
+                <div style="margin-bottom: 50px; font-size: 20px;">
+                  ข้อมูลธนาคาร
+                </div>
+                <label class="switch_hrm">
+                  <input id="location_information-1" type="checkbox" onchange="check1('location_information-1')">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div id="details-1_location_information-1" style="display: none;">
+                <p style="margin-bottom: 10px; color: #7b7979;">รูปแบบทำการจ่าย</p>
+                <!-- <div style="height: 70px; width: 100%;">
+                  <div style=" display: flex; font-size: 1.2vw;">
+                    <div id="tapbank-1" onclick="menutapbank(1)" class="tapmenu-faq tapactive">ข้อมูลบริษัท</div>
+                    <div id="tapbank-2" onclick="menutapbank(2)" class="tapmenu-faq">ข้อมูลสาขา</div>
+                    <div id="tapbank-3" onclick="menutapbank(3)" class="tapmenu-faq">เงื่อนไขการทำงาน</div>
+                    <div id="tapbank-4" onclick="menutapbank(4)" class="tapmenu-faq">เงื่อนไขล่วงเวลา</div>
+                  </div>
+                </div> -->
+
+                <div style="width: 650px; display: flex; justify-content: space-between;">
+
+                  <div id="tapbank-1" onclick="menutapbank(1)" class="tapnon-activebank tapactivebank">
+                    <div
+                      style="border-radius: 3px; width: 50px;height: 50px; margin-top: 5px; margin-bottom: 20px;background-image: url(./symbol_hrm/test.jpeg); background-size: cover;">
+                    </div>
+                    <p style=" text-align: center; width: 91px; line-break: anywhere;">1 บัญชี
+                      ทำจ่ายธนาคารเดียว</p>
+                  </div>
+                  <div id="tapbank-2" onclick="menutapbank(2)" class="tapnon-activebank">
+                    <div
+                      style="border-radius: 3px; width: 50px;height: 50px; margin-top: 5px; margin-bottom: 20px;background-image: url(./symbol_hrm/test.jpeg); background-size: cover;">
+                    </div>
+                    <p style="text-align: center;  width: 91px; line-break: anywhere;">1 บัญชี
+                      ทำจ่ายหลายธนาคาร</p>
+                  </div>
+                  <div id="tapbank-3" onclick="menutapbank(3)" class="tapnon-activebank">
+                    <div
+                      style="border-radius: 3px; justify-content: center; align-items: center; width: 50px;height: 50px; margin-top: 5px; margin-bottom: 20px;background-image: url(./symbol_hrm/test.jpeg); background-size: cover;">
+                    </div>
+                    <div>
+                      <p style="text-align: center;  width: 117px; line-break: anywhere;">หลายบัญชี
+                        ทำจ่ายธนาคารเดียว</p>
+                    </div>
+                  </div>
+                  <div id="tapbank-4" onclick="menutapbank(4)" class="tapnon-activebank">
+                    <div
+                      style="border-radius: 3px; text-align: center; width: 50px;height: 50px; margin-top: 5px; margin-bottom: 20px;background-image: url(./symbol_hrm/test.jpeg); background-size: cover;">
+                    </div>
+                    <p style="text-align: center;  width: 117px; line-break: anywhere;">หลายบัญชี
+                      ทำจ่ายหลายธนาคาร</p>
+                  </div>
+                </div>
+
+
+                <div id="infobank_1" style="width: 100%;  ">
+                  <div>
+                    <div style="margin: 30px 0;">
+                      <p style="color: #7b7979; font-size: 14.8px;">เหมาะสำหรับบริษัทที่ใช้หลายบัญชี
+                        และกำหนดให้บัญชีของบริษัทและของพนักงานทั้งหมดเป็นธนาคารเดียวกัน
+                        โดยบริษัทสามารถเพิ่มบัญชีต้นทางได้ไม่จำกัดจำนวน
+                        โดยจะสามารถเลือกธนาคารของบัญชีต้นทางเพื่อทำจ่ายให้พนักงานได้เพียงธนาคารเดียว
+                        ขึ้นอยู่กับธนาคารต้นทางที่เลือกบัญชีแรกบนระบบ</p>
+                    </div>
+
+                    <div>
+                      <div style="display: flex; width: 100%;">
+                        <div style="color: #7b7979; width: 53%;position: relative; bottom: 7px;">บัญชีธนาคาร*</div>
+                        <div style="color: #7b7979; width: 50%; margin-left: 20px;position: relative; bottom: 7px;">
+                          เลขที่บัญชี*</div>
+                      </div>
+                      <div style="width: 100%; display:flex;justify-content: space-between;margin-bottom: 40px;">
+                        <div style="width: 48%;">
+                          <div style="position: relative; ">
+                            <img id="img-bank" style="border-radius: 30px; position: absolute; top: 13px; left: 13px;"
+                              src="./symbol_hrm/scb.jpeg" width="30px">
+                            <select id="list_bank" onchange="bank_list_change()" class="input_box2">
+                              <img style="position: absolute;top: 17px; left: 13px;" src="./symbol_hrm/scb.jpeg"
+                                width="30px">
+                              <option value="0">ธนาคารไทยพาณิชย์</option>
+                            </select>
+                            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                          </div>
+                        </div>
+
+                        <div style="width: 48%; ">
+                          <input id="bank_no" style="width: 96.6%; margin: 0;" class="input-tx1" type="text">
+                        </div>
+                      </div>
+                      <div class="textt">
+                        <div style="color: #7b7979; width: 54%; position: relative; top: 10px;">รหัสบริษัทอ้างอิงธนาคาร
+                        </div>
+                        <div style="color: #7b7979; width: 50%; padding-left:15px ;position: relative; top: 10px;">
+                          รหัสบริการ
+                        </div>
+                      </div>
+                      <div style="width: 100%;" class="input_from">
+                        <input id="bank_ref" class="input-tx1" type="text">
+                        <input id="bank_service" class="input-tx1" type="text">
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="infobank_2" style="width: 100%;  display: none;">
+                  <div>
+                    <div style="margin: 30px 0;">
+                      <p style="color: #7b7979; font-size: 14.8px;">เหมาะสำหรับบริษัทที่ต้องการใช้ 1 บัญชี
+                        เพื่อทำจ่ายให้บัญชีพนักงานหลากหลายธนาคาร
+
+                        โดยบริษัทสามารถเพิ่มบัญชีต้นทางได้ 1 บัญชี โดยไม่ว่าจะเลือกใช้ธนาคารต้นทางเป็นธนาคารใด
+                        ก็จะสามารถทำจ่ายให้บัญชีปลายทางได้ทุกธนาคาร *ขณะนี้ ตัวเลือกนี้รองรับเฉพาะบัญชีต้นทางของ
+                        ธ.ไทยพาณิชย์ (SCB) ธ.ฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น (HSBC) ธ.ซิตี้แบงก์ (CITI) หรือ
+                        ธ.กรุงไทย (KTB)</p>
+                    </div>
+
+                    <div>
+                      <div style="display: flex; width: 100%;">
+                        <div style="color: #7b7979; width: 53%;position: relative; bottom: 7px;">บัญชีธนาคาร*</div>
+                        <div style="color: #7b7979; width: 50%; margin-left: 20px;position: relative; bottom: 7px;">
+                          เลขที่บัญชี*</div>
+                      </div>
+                      <div style="width: 100%; display:flex;justify-content: space-between;margin-bottom: 40px;">
+                        <div style="width: 48%;">
+                          <div style="position: relative; ">
+                            <img style="border-radius: 30px; position: absolute; top: 13px; left: 13px;"
+                              src="./symbol_hrm/scb.jpeg" width="30px">
+                            <select id="" class="input_box2">
+                              <img style="position: absolute;top: 17px; left: 13px;" src="./symbol_hrm/scb.jpeg"
+                                width="30px">
+                              <option value="0"> ธนาคารไทยพาณิชย์</option>
+                            </select>
+                            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                          </div>
+                        </div>
+
+                        <div style="width: 48%; ">
+                          <input style="width: 96.6%; margin: 0;" class="input-tx1" type="text">
+                        </div>
+                      </div>
+                      <div class="textt">
+                        <div style="color: #7b7979; width: 54%; position: relative; top: 10px;">รหัสบริษัทอ้างอิงธนาคาร
+                        </div>
+                        <div style="color: #7b7979; width: 50%; padding-left:15px ;position: relative; top: 10px;">
+                          รหัสบริการ
+                        </div>
+                      </div>
+                      <div style="width: 100%;" class="input_from">
+                        <input class="input-tx1" type="text">
+                        <input class="input-tx1" type="text">
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div id="infobank_3" style="width: 100%;  display: none;">
+                  <div>
+                    <div style="margin: 30px 0;">
+                      <p style="color: #7b7979; font-size: 14.8px;">เหมาะสำหรับบริษัทที่ใช้หลายบัญชี
+                        และกำหนดให้บัญชีของบริษัทและของพนักงานทั้งหมดเป็นธนาคารเดียวกัน
+
+                        โดยบริษัทสามารถเพิ่มบัญชีต้นทางได้ไม่จำกัดจำนวน
+                        โดยจะสามารถเลือกธนาคารของบัญชีต้นทางเพื่อทำจ่ายให้พนักงานได้เพียงธนาคารเดียว
+                        ขึ้นอยู่กับธนาคารต้นทางที่เลือกในบัญชีแรกบนระบบ </p>
+                    </div>
+
+                    <div>
+                      <div style="display: flex; width: 100%;">
+                        <div style="color: #7b7979; width: 53%;position: relative; bottom: 7px;">บัญชีธนาคาร*</div>
+                        <div style="color: #7b7979; width: 50%; margin-left: 20px;position: relative; bottom: 7px;">
+                          เลขที่บัญชี*</div>
+                      </div>
+                      <div style="width: 100%; display:flex;justify-content: space-between;margin-bottom: 40px;">
+                        <div style="width: 48%;">
+                          <div style="position: relative; ">
+                            <img style="border-radius: 30px; position: absolute; top: 13px; left: 13px;"
+                              src="./symbol_hrm/scb.jpeg" width="30px">
+                            <select id="" class="input_box2">
+                              <img style="position: absolute;top: 17px; left: 13px;" src="./symbol_hrm/scb.jpeg"
+                                width="30px">
+                              <option value="0"> ธนาคารไทยพาณิชย์</option>
+                            </select>
+                            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                          </div>
+                        </div>
+
+                        <div style="width: 48%; ">
+                          <input style="width: 96.6%; margin: 0;" class="input-tx1" type="text">
+                        </div>
+                      </div>
+                      <div class="textt">
+                        <div style="color: #7b7979; width: 54%; position: relative; top: 10px;">รหัสบริษัทอ้างอิงธนาคาร
+                        </div>
+                        <div style="color: #7b7979; width: 50%; padding-left:15px ;position: relative; top: 10px;">
+                          รหัสบริการ
+                        </div>
+                      </div>
+                      <div style="width: 100%;" class="input_from">
+                        <input class="input-tx1" type="text">
+                        <input class="input-tx1" type="text">
+                      </div>
+                      <div style="color: #7b7979; width: 100%;position: relative; top: 10px;">ชื่อบัญชี*</div>
+                      <div class="input_from">
+                        <input style="margin-bottom: 20px;" class="input-tx1" type="text">
+                      </div>
+                      <div
+                        style="width: 130px;border-radius: 7px; padding: 13px;border: 1px solid #cecece; cursor: pointer; margin-bottom: 30px; background-color: #fff;">
+                        + เพิ่มบัญชีธนาคาร
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div id="infobank_4" style="width: 100%;  display: none;">
+                  <div>
+                    <div style="margin: 30px 0;">
+                      <p style="color: #7b7979; font-size: 14.8px;">เหมาะสำหรับบริษัทที่ใช้หลายบัญชี
+                        และหลายธนาคารในการทำธุรกรรมภายในบริษัท เพื่อทำจ่ายให้พนักงานที่มีบัญชีตามธนาคารนั้นๆ
+
+                        โดยบริษัทสามารถเพิ่มบัญชีต้นทางได้หลากหลายธนาคาร จำนวน 1 บัญชี ต่อ 1 ธนาคาร โดยแต่ละบัญชีต้นทาง
+                        จะสามารถใช้ทำจ่ายให้บัญชีปลายทางที่เป็นธนาคารเดียวกันเท่านั้น</p>
+                    </div>
+
+                    <div>
+                      <div style="display: flex; width: 100%;">
+                        <div style="color: #7b7979; width: 53%;position: relative; bottom: 7px;">บัญชีธนาคาร*</div>
+                        <div style="color: #7b7979; width: 50%; margin-left: 20px;position: relative; bottom: 7px;">
+                          เลขที่บัญชี*</div>
+                      </div>
+                      <div style="width: 100%; display:flex;justify-content: space-between;margin-bottom: 40px;">
+                        <div style="width: 48%;">
+                          <div style="position: relative; ">
+                            <img style="border-radius: 30px; position: absolute; top: 13px; left: 13px;"
+                              src="./symbol_hrm/scb.jpeg" width="30px">
+                            <select id="" class="input_box2">
+                              <img style="position: absolute;top: 17px; left: 13px;" src="./symbol_hrm/scb.jpeg"
+                                width="30px">
+                              <option value="0"> ธนาคารไทยพาณิชย์</option>
+                            </select>
+                            <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                          </div>
+                        </div>
+
+                        <div style="width: 48%; ">
+                          <input style="width: 96.6%; margin: 0;" class="input-tx1" type="text">
+                        </div>
+                      </div>
+                      <div class="textt">
+                        <div style="color: #7b7979; width: 54%; position: relative; top: 10px;">รหัสบริษัทอ้างอิงธนาคาร
+                        </div>
+                        <div style="color: #7b7979; width: 50%; padding-left:15px ;position: relative; top: 10px;">
+                          รหัสบริการ
+                        </div>
+                      </div>
+                      <div style="width: 100%;" class="input_from">
+                        <input class="input-tx1" type="text">
+                        <input class="input-tx1" type="text">
+                      </div>
+                      <div style="color: #7b7979; width: 100%;position: relative; top: 10px;">ชื่อบัญชี*</div>
+                      <div class="input_from">
+                        <input style="margin-bottom: 20px;" class="input-tx1" type="text">
+                      </div>
+                      <div
+                        style="width: 130px;border-radius: 7px; padding: 13px;border: 1px solid #cecece; cursor: pointer; margin-bottom: 30px; background-color: #fff;">
+                        + เพิ่มบัญชีธนาคาร
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div style="color: #7b7979; font-size: 20px;margin-bottom: 50px">
+                ข้อมูลการติดต่อ
+              </div>
+              <div style="color: #7b7979; width: 50%;position: relative; top: 10px;">เบอร์โทรศัพท์</div>
+              <div class="input_from">
+                <input id="tel_c" class="input-tx1" type="text">
+              </div>
+            </div>
+
+            <div id="branch_information"
+              style="background-color: white;  width: 100%; height: calc(100vh - 280px); display: none; flex-direction: column;">
+              <div style="width: 100%; height: 48px; align-items: center; display: flex;">
+
+                <div style="width: 50%;">
+                  <div class=" search_long">
+                    <div class="seachdiv">
+                      <img src="./symbol_hrm/search_gray_icon.png" style="height: 50%;">
+                    </div>
+
+                    <input id="seach_branch_info" type="text" class="kanit font_normal seachinputinside_css"
+                      placeholder="search">
+                  </div>
+                </div>
+
+                <div
+                  style="width: 50%; height: 100%; align-items: center; justify-content: space-around; display: flex;">
+                  <div style="width: 30%;">
+                    <div style="position: relative;">
+                      <select id="province_branch" class="input_box">
+                        <option value="0">จังหวัด</option>
+                        <option value="0">1</option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+                  <div style="width: 25%;">
+                    <div style="position: relative;">
+                      <select id="status_branch" class="input_box">
+                        <option value="0">สถานะ</option>
+                        <option value="0">1</option>
+                      </select>
+                      <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                    </div>
+                  </div>
+
+                  <div id="add_branch_click"
+                    onclick="$('.overlay_branch_info').addClass('open'); $('#blur_bg').css('display','flex');"
+                    style="width: 30%; height: 100%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); cursor: pointer;">
+                    เพิ่มสาขา
+                  </div>
+
+                </div>
+              </div>
+
+              <div style="width: 100%; height: calc(100% - 48px - 70px); overflow: scroll; margin-top: 20px; ">
+                <table id="dtable" class="display">
+                  <thead>
+                    <tr>
+                      <th>ชื่อสาขา</th>
+                      <th>เลขลำดับสาขา</th>
+                      <th>จังหวัด</th>
+                      <th>สถานะ</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="mytbody">
+                    <tr>
+                      <td>Row 1 Data 1</td>
+                      <td>Row 1 Data 2</td>
+                      <td>Row 1 Data 1</td>
+                      <td>Row 1 Data 2</td>
+                      <td><button>แก้ไข</button> <button>ลบ</button></td>
+                    </tr>
+                    <tr>
+                      <td>Row 2 Data 1</td>
+                      <td>Row 2 Data 2</td>
+                      <td>Row 1 Data 1</td>
+                      <td>Row 1 Data 2</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <div id="working_conditions"
+              style="background-color: #fff; width: 100%; height: calc(100vh - 280px); display: none; overflow: scroll;">
+              <!-- 1 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 90%; ">
+
+                <div id="rotaeoil_cntainer" onclick="slideworking_conditions()" id="cardmain" class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          ชั่วโมงทำงานและสถานะการทำงาน
+                        </div>
+                        <div class="font_normal_1">
+                          กำหนดชั่วโมงการทำงานต่อวันเพื่อคำนวณสิทธิ์การลาประจำปี
+                          และเงื่อนไขการเข้างานเพื่อกำหนดสถานะสายหรือขาดงาน
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 5%;   display: flex; justify-content: end;">
+                      <div
+                        style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding-left: 10px;">
+                        <img style="height: 20px;" id="imgoilrotae" class="fa-arrow-down"
+                          src="./symbol_hrm/arrow-down-black.png" class="" style="height: 40%;" />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="slideworking"
+                  style=" height: 250px; margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px; display: none;  align-items: center;  ">
+                  <div style="width: 100%;">
+                    <div style="width: 70%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            จำนวนชั่วโมงการทำงานใน 1 วัน* <img style="height: 10px;"
+                              src="./symbol_hrm/search_gray_icon.png"> </p>
+                        </div>
+                        <div style="width: 70%;" class=" inpu_long_overtimecon">
+                          <input id="h-statuswork" class="kanit weight_regular font_normal input95perinside_ovecss"
+                            placeholder="h-statuswork" />
+                        </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            บริษัทจะตัดรอบปีปฏิทินใหม่ในวันที่* <img style="height: 10px;"
+                              src="./symbol_hrm/search_gray_icon.png"></p>
+                        </div>
+                        <div style="width: 70%;" class=" inpu_long_overtimecon">
+                          <input id="d-statuswork" type="date"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="ไม่จำกัด" />
+                        </div>
+                      </div>
+                    </div>
+                    <div style="width: 70%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            นาทีก่อนเริ่มนับเป็นสาย* <img style="height: 10px;" src="./symbol_hrm/search_gray_icon.png">
+                          </p>
+                        </div>
+                        <div style="width: 70%;" class=" inpu_long_overtimecon">
+                          <input id="mstart-statuswork" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="0 นาที" />
+                        </div>
+                        <div style="color: orangered; display: flex; align-items: center;  margin-top: 20px;"> <img
+                            style="height: 20px; margin-right: 5px;" src="./symbol_hrm/search_gray_icon.png">
+                          ตั้งค่าการหักกรณีสาย </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            นาทีก่อนเริ่มนับเป็นขาดงาน* <img style="height: 10px;"
+                              src="./symbol_hrm/search_gray_icon.png"> </p>
+                        </div>
+                        <div style="width: 70%;" class=" inpu_long_overtimecon">
+                          <input id="mend-statuswork" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="30 นาที" />
+                        </div>
+                        <div style="color: orangered; display: flex; align-items: center;  margin-top: 20px;"> <img
+                            style="height: 20px; margin-right: 5px;" src="./symbol_hrm/search_gray_icon.png">
+                          ตั้งค่าการหักกรณีขาดงาน </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+              <!-- 2 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 90%; ">
+
+                <div id="rotaeoil_cntainer" onclick="slideworking_conditions()" id="cardmain" class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          กะทำงาน
+                        </div>
+                        <div class="font_normal_1">
+                          กำหนดเงื่อนไขการเปลี่ยนแปลงกะทำงาน และการทำจ่ายค่ากะพิเศษให้พนักงาน
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 5%;   display: flex; justify-content: end;">
+                      <div
+                        style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding-left: 10px;">
+                        <img style="height: 20px;" id="imgoilrotae" class="fa-arrow-down"
+                          src="./symbol_hrm/arrow-down-black.png" class="" style="height: 40%;" />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="slideworking"
+                  style=" height: 250px; margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px; display: none;  align-items: center;  ">
+                  <div>
+                    <p class="font_normal">การเปลี่ยนกะ</p>
+                    <div style="width: 80%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            เงื่อนไขการขอเปลี่ยนกะ <img style="height: 10px;" src="./symbol_hrm/search_gray_icon.png">
+                          </p>
+                        </div>
+                        <div
+                          style="position: relative; width: 100%; border-radius: 6px; background-color: transparent;">
+                          <select style="height: 43px; padding: 10px 16px;  width: 80%;" id="shift_condition"
+                            class="input_overtm_box kanit">
+                            <option value="ให้ขอย้อนหลังได้"> ให้ขอย้อนหลังได้ </option>
+                            <option value="ขอล่วงหน้าและย้อนหลังได้"> ขอล่วงหน้าและย้อนหลังได้ </option>
+                            <option value="ต้องขอล่วงหน้า"> ต้องขอล่วงหน้า </option>
+                          </select>
+                          <img class="dropdown_arrow_input1" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            ขอย้อนหลังได้ไม่เกิน</p>
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="d_shiftwork" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="45 วัน" />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="container font_normal_1 weight_regular">หัวหน้างานสามารถเปลี่ยนกะได้ตลอดเวลา
+                        <input id="submit_sw" type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <p style=" margin: 15px 0;" class="font_normal">การคำนวณค่ากะ</p>
+                    <div>
+                      <label class="container font_normal_1 weight_regular">พนักงานจะได้รับค่ากะหรือค่ากะพิเศษ
+                        ต่อเมื่อสถานะการทำงานเป็นปกติเท่านั้น <img style="height: 10px;"
+                          src="./symbol_hrm/search_gray_icon.png">
+                        <input type="checkbox">
+                        <span id="shiftwork_cal" class="checkmark"></span>
+                      </label>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+              <!-- 3 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 90%; ">
+
+                <div id="rotaeoil_cntainer" onclick="slideworking_conditions()" id="cardmain" class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          การทดลองงาน
+                        </div>
+                        <div class="font_normal_1">
+                          กำหนดเงื่อนไขการทดลองงานของพนักงาน
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 5%;   display: flex; justify-content: end;">
+                      <div
+                        style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding-left: 10px;">
+                        <img style="height: 20px;" id="imgoilrotae" class="fa-arrow-down"
+                          src="./symbol_hrm/arrow-down-black.png" class="" style="height: 40%;" />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="slideworking"
+                  style=" height: 200px; margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px; display: none;  align-items: center;  ">
+                  <div>
+                    <p class="font_normal">การเปลี่ยนกะ</p>
+                    <div style="width: 80%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3); overflow: hidden;text-overflow: ellipsis; white-space: nowrap;width: 80%;">
+                            เริ่มคิดโปรเรตสิทธิ์การลาในเดือนแรก เมื่อเริ่มงานก่อน* </p><img style="height: 10px;"
+                            src="./symbol_hrm/search_gray_icon.png">
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="probation_leave" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="15 วัน" />
+                        </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            พนักงานจะต้องทดลองงานเป็นระยะเวลา </p>
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="dayofprobation" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="120 วัน" />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="container font_normal_1 weight_regular">คิดโปรเรตให้ครึ่งเดือน
+                        หากเริ่มงานตั้งแต่วันที่ 15 <img style="height: 10px;" src="./symbol_hrm/search_gray_icon.png">
+                        <input type="checkbox">
+                        <span id="probation_check" class="checkmark"></span>
+                      </label>
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+              <!-- 4 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 90%; ">
+
+                <div id="rotaeoil_cntainer" onclick="slideworking_conditions()" id="cardmain" class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          การเกษียณอายุ
+                        </div>
+                        <div class="font_normal_1">
+                          กำหนดเงื่อนไขการเกษียณอายุพนักงาน
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 5%;   display: flex; justify-content: end;">
+                      <div
+                        style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding-left: 10px;">
+                        <img style="height: 20px;" id="imgoilrotae" class="fa-arrow-down"
+                          src="./symbol_hrm/arrow-down-black.png" class="" style="height: 40%;" />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="slideworking"
+                  style=" height: 100px; margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px; display: none;  align-items: center;  ">
+                  <div>
+
+                    <div style="width: 80%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3); overflow: hidden;text-overflow: ellipsis; white-space: nowrap;width: 80%;">
+                            อายุเกษียณพนักงานชาย </p>
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="retire_male" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="55 ปี" />
+                        </div>
+                      </div>
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3);">
+                            อายุเกษียณพนักงานหญิง </p>
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="retire_female" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="55 ปี" />
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+              </div>
+              <!-- 5 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 90%; ">
+
+                <div id="rotaeoil_cntainer" onclick="slideworking_conditions()" id="cardmain" class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          การพ้นสภาพ
+                        </div>
+                        <div class="font_normal_1">
+                          กำหนดระยะเวลาสิ้นสุดการทำงานของพนักงาน และเงื่อนไขการขอลาออกล่วงหน้า
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 5%;   display: flex; justify-content: end;">
+                      <div
+                        style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding-left: 10px;">
+                        <img style="height: 20px;" id="imgoilrotae" class="fa-arrow-down"
+                          src="./symbol_hrm/arrow-down-black.png" class="" style="height: 40%;" />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="slideworking"
+                  style=" height: 100px; margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px; display: none;  align-items: center;  ">
+                  <div>
+
+                    <div style="width: 80%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                      <div style="width:48%">
+                        <div style="display: flex; align-items: baseline;">
+                          <p class=""
+                            style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px; color: var(--color_gray_Dark_3); overflow: hidden;text-overflow: ellipsis; white-space: nowrap;width: 80%;">
+                            นับเป็นเดือนทำงาน เมื่อทำงานวันสุดท้ายหลัง </p> <img style="height: 10px;"
+                            src="./symbol_hrm/search_gray_icon.png">
+                        </div>
+                        <div style="width: 80%;" class=" inpu_long_overtimecon">
+                          <input id="separation_day" type="text"
+                            class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="15 วัน" />
+                        </div>
+                      </div>
+
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div id="overtime_conditions"
+              style="background-color: white; width: 100%; height: calc(100vh - 280px); display: none; overflow: scroll;">
+              <div style="display: flex; flex-direction: column;">
+                <span class="font_semi_large weight_medium" style="margin-bottom: 10px;">การขอเบิก</span>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                        นาทีขั้นต่ำในการเบิก </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="minuteper_overtime" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="30 นาที" />
+                    </div>
+                  </div>
+                  <div style="width:48%">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                        จำกัดจำนวนเอกสารต่อวัน </p>
+                      <span style="color: var(--color_gray_Dark_3);">*</span>
+                    </div>
+                    <div class=" inpu_long_overtimecon">
+                      <input id="docperday_overtime" type="text"
+                        class="kanit weight_regular font_normal input95perinside_ovecss" placeholder="ไม่จำกัด" />
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เงื่อนไขการขอเบิก </p>
+                    <span style="color: var(--color_gray_Dark_3);">*</span>
+                  </div>
+                  <div style="position: relative; width: 40%; border-radius: 6px; background-color: transparent;">
+                    <select id="conditions_reimbursement_overtime" class="input_overtm_box kanit">
+                      <option value="เบิกล่วงหน้าและย้อนหลังได้"> เบิกล่วงหน้าและย้อนหลังได้ </option>
+                      <option value="ต้องเบิกล่วงหน้า"> ต้องเบิกล่วงหน้า </option>
+                      <option value="ให้เบิกย้อนหลัง"> ให้เบิกย้อนหลัง </option>
+                    </select>
+                    <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ผ่านทดลองงาน </p>
+                    <span style="color: var(--color_gray_Dark_3);">*</span>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label onclick="showinput_time()" class="switch_hrm">
+                      <input id="pass_overtime" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <span class="font_semi_large weight_medium" style="margin-bottom: 10px;">เงือนไข</span>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">กำหนดช่วงเวลาพักงาน
+                    </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="switchto_settime" onchange="checkshow('switchto_settime' ,'des_switchto_settime')"
+                        type="checkbox">
+                      <span class="slider round hide-off"></span>
+                    </label>
+                  </div>
+                </div>
+                <div id="des_switchto_settime" style="display: none;">
+                  <div class="showtime_inout">
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ระยะเวลาพักงาน </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="startbreakperiod_overtime" value="00:30" type="time"
+                          class="kanit weight_regular font_normal input95perinside_ovecss textoverlef"
+                          placeholder="00:00" />
+                      </div>
+                    </div>
+                    <div style="width:48%">
+                      <div style="display: flex; align-items: baseline;">
+                        <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">เมื่อทำงานไปแล้ว
+                        </p>
+                        <span style="color: var(--color_gray_Dark_3);">*</span>
+                      </div>
+                      <div class=" inpu_long_overtimecon">
+                        <input id="endbreak_ovetime" value="00:40" type="time"
+                          class="kanit weight_regular font_normal input95perinside_ovecss textoverlef"
+                          placeholder="00:40" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                      กำหนดรอบการคำนวณค่าล่วงเวลา </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="calccalculate_overtime"
+                        onchange="checkshow('calccalculate_overtime' ,'des_calccalculate_overtime')" type="checkbox">
+                      <span class="slider round hide-off"></span>
+                    </label>
+                  </div>
+                </div>
+                <div id="des_calccalculate_overtime" style="display: none;">
+                  <div style="width: 100%;flex-direction: column; margin-bottom: 20px;  display: flex;  padding-bottom: 30px;
+                                    border-bottom: 1px solid var(--color_gray_Dark_3)">
+                    <div style="display: flex; align-items: baseline;">
+                      <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                        คำนวณค่าล่วงเวลาให้ทุกๆ* </p>
+                    </div>
+                    <div style=" width: 40%; border-radius: 6px; background-color: transparent;">
+                      <div class=" inpu_long_overtimecon">
+                        <input id="calceverytime_overtime" type="text"
+                          class="kanit weight_regular font_normal input95perinside_ovecss " placeholder="30นาที" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;  padding-bottom: 30px;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                      ใช้เรตการจ่ายค่าล่วงเวลาของวันหยุดตามกะการทำงาน </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="ratepayovetime_perka" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                      หักเวลาพักการทำงานล่วงเวลาในวันหยุดตามกะวันทำงาน </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="withholdovertime_perka" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                      ได้รับค่าล่วงเวลาในวันที่สถานะการทำงานไม่ปกติ </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="receivemonneywhendefective_overtime" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">
+                      ได้รับค่าล่วงเวลาเต็มจำนวน เมื่อเข้างานตามกะยืดหยุ่น </p>
+                  </div>
+                  <div
+                    style=" width: 40%; border-radius: 6px; display: flex; align-items: end; justify-content: end; background-color: transparent;">
+                    <label class="switch_hrm">
+                      <input id="receivemonneywhennormal_overtime" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+            <div id="document_company"
+              style="background-color: white; width: 100%; overflow: scroll; height: calc(100vh - 280px); display: none;  overflow: scroll;">
+              <div style="display: flex; flex-direction: column;">
+                <span class="font_semi_large weight_medium" style="margin-bottom: 10px;">เทมเพลตเอกสาร</span>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;"> รูปแบบเอกสารบริษัท
+                    </p>
+                  </div>
+                  <div style="position: relative; width: 40%; border-radius: 6px; background-color: transparent;">
+                    <select id="typedoc_documentcompany" class="input_overtm_box kanit">
+                      <option value="มีหัวกระดาษ"> มีหัวกระดาษ </option>
+                      <option value="แสดงเฉพาะเนื้อหา"> แสดงเฉพาะเนื้อหา </option>
+                    </select>
+                    <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;"> ขนาดเอกสารของ Payslip
+                    </p>
+                  </div>
+                  <div style="position: relative; width: 40%; border-radius: 6px; background-color: transparent;">
+                    <select id="sizedoc_documentcompany" class="input_overtm_box kanit">
+                      <option value="A4"> A4 </option>
+                      <option value="A5"> A5 </option>
+                    </select>
+                    <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: none;">
+                  <div style="display: flex; align-items: baseline;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;"> สีธีม </p>
+                  </div>
+                  <div
+                    style=" width: 40%; align-items: center; background-color: transparent; display: flex; justify-content: end;">
+                    <div
+                      style="border-radius: 6px; display: flex; cursor: pointer; border-radius: 6px; width: 80px; height: 54px; background-color: teal;">
+                      fff
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 100%;justify-content: space-between; margin-bottom: 20px; display: flex;">
+                  <div style="display: flex; align-items: center;">
+                    <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;"> ตราประทับบริษัท </p>
+
+                  </div>
+                  <input id="seal_store" onchange="preview_seal()" style="display: none;" type="file" id="imageInput"
+                    accept="image/*">
+
+                  <div id="click_seal" onclick="document.getElementById('seal_store').click();"
+                    style=" width: 40%; align-items: center; background-color: transparent; display: flex; justify-content: end;">
+                    <div
+                      style="display: flex; border: 1px dashed  gray; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius: 6px; width: 100px;height: 80px;background-color: white;">
+                      <img id="seal_preview" src="./symbol_hrm/scanandpay_info_circle_icon.png"
+                        style="width: 20px; height: 20px;" />
+                      <span>เลือกไฟล์</span>
+                    </div>
+
+                    <!-- if add img  -->
+                    <!-- <div style="display: flex; border: 1px dashed  gray; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius: 6px; width: 100px;height: 80px;background-color: white;">
+                                    <img id="haveimg_document_company"  src="./symbol_hrm/scanandpay_info_circle_icon.png" style=" height: 80%" />
+                                  </div> -->
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <span class="font_semi_large weight_medium" style="margin-bottom: 10px;">ลายเซ็นเอกสาร</span>
+                <!-- ตาราง -->
+                <div style="width: 100%;" id="table_sign">
+                  <!-- head -->
+                  <div
+                    style="display: flex; border-radius: 18px 18px 0 0; align-items: center; justify-content: center; background-color: lightgray; ">
+                    <div class="padd15019" style="width: 50%;">ประเภทเอกสาร</div>
+                    <div class="padd15019" style="width: 10%;">ลายเซ็น</div>
+                    <div class="padd15019" style="width: 30%;">ผู้มีอำนาจลงนาม</div>
+                    <div class="padd15019" style="width: 10%;">&nbsp;</div>
+                  </div>
+                  <!-- tbody  -->
+                  <div id="sign_tbody" style=" display: flex; flex-direction: column; align-items: center; ">
+                    <!-- row1  -->
+                    <div class=" divis_tr " onclick="$('#showiconedit_doc').css('display','flex')">
+                      <div class="divis_td46 padd15019"> หนังสือรับรองเงินเดือน </div>
+                      <div class="divis_td10 padd15019">
+                        <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" />
+                      </div>
+                      <div class="divis_td29 padd15019">
+                        <span>name</span>
+                        <span> กรรมการผู้จัดการ (CEO) </span>
+                      </div>
+                      <div onclick="$('.overlay_doccompany_info').addClass('open'); $('#blur_bg').css('display','flex')"
+                        class="divis_td09 padd15019">
+                        <!-- show icon edit when you click  and call modal id="...." -->
+                        <img id="showiconedit_doc" src="./symbol_hrm/edit-orange.png"
+                          style="width: 20px; height: 20px; display: none;" />
+                      </div>
+                    </div>
+                    <!-- row2  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> หนังสือรับรองการทำงาน </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padd15019 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                    <!-- row3  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> หนังสือรับรองการทำงานเพื่อทำวีซ่า
+                      </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padd15019 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                    <!-- row4  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> ทวิ 50 </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padd15019 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                    <!-- row5  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> ภ.ง.ด.1ก </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padd15019 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                    <!-- row6  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> หนังสือรับรองการปรับเงินเดือน </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padpadd15019d15 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                    <!-- row7  -->
+                    <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> หนังสือรับรองการเลื่อนตำแหน่ง </div>
+                      <div class="padd15019 divis_td10">
+                      </div>
+                      <div class="padd15019 divis_td29"></div>
+                      <div class="padd15019 divis_td09">
+                        <!-- <img src="./symbol_hrm/close_black.png" style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="slipsalary"
+              style="background-color: #fff; width: 100%; height: calc(100vh - 280px); display: none; overflow: scroll;">
+              <!-- 1 -->
+              <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 99%; ">
+
+                <div class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          พนักงานสามารถเลือกช่องทางการรับ Payslip ได้
+                        </div>
+                        <div class="font_normal_1">
+                          อนุญาตให้พนักงานสามารถเลือกและเปลี่ยนช่องทางการรับ Payslip ได้ด้วยตนเอง ตามช่องทางดังนี้
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div style="width: 15%;   display: flex; justify-content: end;">
+                      <div style="display: flex; align-items: center; margin-right: 5px;">
+                        ใช้งาน
+                      </div>
+                      <label class="switch_hrm">
+                        <input id="tapslipsalary1" type="checkbox"
+                          onchange="checkshow('tapslipsalary1' ,'details_tapslipsalary1')">
+                        <span class="slider round"></span>
+                      </label>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div id="details_tapslipsalary1"
+                  style="  margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px;   align-items: center; display: none;  ">
+                  <div style="width: 100%;">
+                    <label class="container font_normal_1 weight_regular"
+                      style="display: flex; margin-left: 5vh; padding-bottom: 5px;">
+                      <input id="payslipmobile" type="checkbox">
+                      <div>รับ Payslip ผ่านแอปมือถือเท่านั้น</div>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container font_normal_1 weight_regular"
+                      style="display: flex; margin-left: 5vh; padding-bottom: 5px;">
+                      <input id="payslipemail" type="checkbox">
+                      <div> รับ Payslip ผ่านอีเมล </div>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container font_normal_1 weight_regular"
+                      style="display: flex; margin-left: 5vh; padding-bottom: 5px;">
+                      <input id="payslippaper" type="checkbox">
+                      <div> รับ Payslip ในรูปแบบกระดาษ </div>
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <!-- 2 -->
+              <!-- <div
+                style="position: relative;  background-color: #fff; margin-bottom: 15px;  border-radius: 12px;border: 1px solid #dfdfe8; width: 99%; ">
+
+                <div class="cardslide">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; width: 90%;">
+                      <div style="width: 10%; display: flex; justify-content: center; align-items: center;">
+                        <img style="height: 70%;" src="./symbol_hrm/calenda_black_icon.png">
+                      </div>
+                      <div>
+                        <div class="font_normal">
+                          บริการสั่งพิมพ์สลิปเงินเดือน
+                        </div>
+                        <div class="font_normal_1">
+                          ตั้งค่ารายชื่อพนักงานที่จะได้รับสลิปเงินเดือนในรูปแบบกระดาษและเงื่อนไขการจัดส่ง
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div id="myBtn_hisprt" onclick=""
+                      style="width: 200px;   display: flex; align-items: center; justify-content: space-evenly;  height: 35px; border-radius: 6px; border: 1px solid #d2d2da;">
+                      <img style="height: 15px;" src="./symbol_hrm/close_black.png">
+                      <div>ประวัติการสั่งพิมพ์</div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div
+                  style="  margin: -1px 9px 0px; border-top: 1px solid #dfdfe8;  padding: 16px  7px;   align-items: center;  ">
+                  <div style="width: 97%; ">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <div style="padding-left: 5vh;"> พนักงานที่รับ Payslip </div>
+                      <div onclick="$('.overlay_addemployee').addClass('open'); $('#blur_bg').css('display','flex');"
+                        style="color: orangered; cursor: pointer;">+ เพิ่มพนักงาน </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                      <div style="padding-left: 5vh;"> ที่อยู่จัดส่ง <img style="height: 10px;"
+                          src="./symbol_hrm/search_gray_icon.png"> </div>
+                      <div style="width: 25%;">
+                        <div style="position: relative;">
+                          <select id="" class="input_box">
+                            <option value="0">สำนักงานใหญ่</option>
+                            <option value="0">2</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                      <div style="padding-left: 5vh;"> รูปแบบการจัดเรียง <img style="height: 10px;"
+                          src="./symbol_hrm/search_gray_icon.png"> </div>
+                      <div style="width:25%;">
+                        <div style="position: relative;">
+                          <select id="" class="input_box">
+                            <option value="0">เรียงตามสังกัด</option>
+                            <option value="0">2</option>
+                          </select>
+                          <img class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div
+                    style="margin-top: 30px; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 30px; width: 100%;">
+                    <div>
+                      <img style="height: 20vh; width: 100%;" src="./symbol_hrm/test.jpeg">
+                    </div>
+                    <div>
+                      <img style="height: 20vh; width: 100%;" src="./symbol_hrm/test.jpeg">
+                    </div>
+                    <div>
+                      <img style="height: 20vh; width: 100%;" src="./symbol_hrm/test.jpeg">
+                    </div>
+                    <div>
+                      <img style="height: 20vh; width: 100%;" src="./symbol_hrm/test.jpeg">
+                    </div>
+
+
+
+                  </div>
+
+
+                </div>
+              </div> -->
+
+
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        <div
+          style="height: 60px; display: flex; align-items: center; justify-content: space-between; padding-left: 4%; padding-right: 25px; border-top: var(--border_dotDark_4);">
+
+          <div style="align-items: center; display: flex;">
+            <span style="margin-right: 10px;">สถานะใช้งาน</span>
+            <label class="switch_hrm">
+              <input id="activestatus_home" type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div style="width: 20%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div id="cancel_settinghome"
+              style="width: 45%; height: 50%; cursor: pointer; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก
+            </div>
+            <div id="save_settinghome"
+              style="width: 45%; height: 50%; cursor: pointer; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              บันทึก
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
+
+  <!-- dependencies for zip mode -->
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/zip.js/zip.js"></script>
+  <!-- / dependencies for zip mode -->
+
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/JQL.min.js"></script>
+  <script type="text/javascript" src="./jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+
+  <script type="text/javascript" src="./jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
+</body>
+
+<script>
+  $(document).ready(function () {
+    $('#dtable').DataTable();
+  });
+
+  $.Thailand({
+    database: './jquery.Thailand.js/database/db.json',
+
+    $district: $('#aumpure'),
+    $amphoe: $('#sub_distr'),
+    $province: $('#province_01'),
+    $zipcode: $('#postcode'),
+
+    onDataFill: function (data) {
+      console.info('Data Filled', data);
+    },
+
+    onLoad: function () {
+      console.info('Autocomplete is ready!');
+    }
+  });
+
+  function menutapfaq(id) {
+    $("#tapasq-1").removeClass('tapactive')
+    $("#tapasq-2").removeClass('tapactive')
+    $("#tapasq-3").removeClass('tapactive')
+    $("#tapasq-4").removeClass('tapactive')
+    $("#tapasq-5").removeClass('tapactive')
+    $("#tapasq-6").removeClass('tapactive')
+
+    $("#company_information").css("display", 'none')
+    $("#branch_information").css("display", 'none')
+    $("#working_conditions").css("display", 'none')
+    $("#overtime_conditions").css("display", 'none')
+    $("#document_company").css("display", 'none')
+    $("#slipsalary").css("display", 'none')
+
+    if (id == 1) {
+      $("#tapasq-1").addClass('tapactive')
+      $("#tapasq-2").removeClass('tapactive')
+      $("#tapasq-3").removeClass('tapactive')
+      $("#tapasq-4").removeClass('tapactive')
+      $("#tapasq-5").removeClass('tapactive')
+      $("#tapasq-6").removeClass('tapactive')
+
+      $("#company_information").css("display", 'block')
+    }
+    if (id == 2) {
+      $("#tapasq-1").removeClass('tapactive')
+      $("#tapasq-2").addClass('tapactive')
+      $("#tapasq-3").removeClass('tapactive')
+      $("#tapasq-4").removeClass('tapactive')
+      $("#tapasq-5").removeClass('tapactive')
+      $("#tapasq-6").removeClass('tapactive')
+
+      $("#branch_information").css("display", 'block')
+    }
+    if (id == 3) {
+      $("#tapasq-1").removeClass('tapactive')
+      $("#tapasq-2").removeClass('tapactive')
+      $("#tapasq-3").addClass('tapactive')
+      $("#tapasq-4").removeClass('tapactive')
+      $("#tapasq-5").removeClass('tapactive')
+      $("#tapasq-6").removeClass('tapactive')
+
+      $("#working_conditions").css("display", 'block')
+    }
+    if (id == 4) {
+      $("#tapasq-1").removeClass('tapactive')
+      $("#tapasq-2").removeClass('tapactive')
+      $("#tapasq-3").removeClass('tapactive')
+      $("#tapasq-4").addClass('tapactive')
+      $("#tapasq-5").removeClass('tapactive')
+      $("#tapasq-6").removeClass('tapactive')
+
+      $("#overtime_conditions").css("display", 'block')
+    }
+    if (id == 5) {
+      $("#tapasq-1").removeClass('tapactive')
+      $("#tapasq-2").removeClass('tapactive')
+      $("#tapasq-3").removeClass('tapactive')
+      $("#tapasq-4").removeClass('tapactive')
+      $("#tapasq-5").addClass('tapactive')
+      $("#tapasq-6").removeClass('tapactive')
+
+      $("#document_company").css("display", 'block')
+    }
+    if (id == 6) {
+      $("#tapasq-1").removeClass('tapactive')
+      $("#tapasq-2").removeClass('tapactive')
+      $("#tapasq-3").removeClass('tapactive')
+      $("#tapasq-4").removeClass('tapactive')
+      $("#tapasq-5").removeClass('tapactive')
+      $("#tapasq-6").addClass('tapactive')
+
+      $("#slipsalary").css("display", 'block')
+    }
+  }
+</script>
+<script>
+  function slideworking_conditions() {
+    $(".slideworking").slideToggle("slow");
+    // $(".cardslide").css('border-bottom','none');
+  }
+
+
+</script>
+<script>
+  // Get the modal
+  var modal = document.getElementById("myhistroyprint_modal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn_hisprt");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+<script>
+
+  $(document).on('click', '.hide-off', function () {
+    $('.hideme').show();
+    $(this).removeClass('hide-off');
+    $(this).addClass('hide-on');
+  })
+
+  $(document).on('click', '.hide-on', function () {
+    $('.hideme').hide();
+    $(this).removeClass('hide-on');
+    $(this).addClass('hide-off');
+  })
+
+  function check(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#details_" + id).css("display", 'block')
+    } else {
+      $("#details_" + id).css("display", 'none')
+    }
+  }
+
+  function checkshow(id, id_show) {
+    var check = $('#' + id).is(":checked")
+
+    console.log('check ==>', check)
+
+    if (check) {
+      $("#" + id_show).css("display", 'block')
+    }
+    else {
+      $("#" + id_show).css("display", 'none')
+    }
+
+  }
+
+
+</script>
+<script>
+  function menutapbank(id) {
+    $("#tapbank-1").removeClass('tapactivebank')
+    $("#tapbank-2").removeClass('tapactivebank')
+    $("#tapbank-3").removeClass('tapactivebank')
+    $("#tapbank-4").removeClass('tapactivebank')
+
+
+    $("#infobank_1").css("display", 'none')
+    $("#infobank_2").css("display", 'none')
+    $("#infobank_3").css("display", 'none')
+    $("#infobank_4").css("display", 'none')
+
+
+    if (id == 1) {
+      $("#tapbank-1").addClass('tapactivebank')
+      $("#tapbank-2").removeClass('tapactivebank')
+      $("#tapbank-3").removeClass('tapactivebank')
+      $("#tapbank-4").removeClass('tapactivebank')
+
+
+      $("#infobank_1").css("display", 'block')
+    }
+    if (id == 2) {
+      $("#tapbank-1").removeClass('tapactivebank')
+      $("#tapbank-2").addClass('tapactivebank')
+      $("#tapbank-3").removeClass('tapactivebank')
+      $("#tapbank-4").removeClass('tapactivebank')
+
+
+      $("#infobank_2").css("display", 'block')
+    }
+    if (id == 3) {
+      $("#tapbank-1").removeClass('tapactivebank')
+      $("#tapbank-2").removeClass('tapactivebank')
+      $("#tapbank-3").addClass('tapactivebank')
+      $("#tapbank-4").removeClass('tapactivebank')
+
+      $("#infobank_3").css("display", 'block')
+    }
+    if (id == 4) {
+      $("#tapbank-1").removeClass('tapactivebank')
+      $("#tapbank-2").removeClass('tapactivebank')
+      $("#tapbank-3").removeClass('tapactivebank')
+      $("#tapbank-4").addClass('tapactivebank')
+
+      $("#infobank_4").css("display", 'block')
+    }
+
+  }
+</script>
+
+
+<script>
+  function check(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#des_" + id).css("display", 'block')
+    } else {
+      $("#des_" + id).css("display", 'none')
+    }
+  }
+</script>
+<script>
+  function check1(id) {
+    console.log($('#' + id).prop('checked'))
+
+    if ($('#' + id).prop('checked')) {
+      $("#details-1_" + id).css("display", 'block')
+    } else {
+      $("#details-1_" + id).css("display", 'none')
+    }
+  }
+
+
+</script>
+<script>
+  let ENDPOINT = window.API_URL;
+
+  let COMPANY_INFO = ''
+  let COM_ID = ''
+  let WC_ID = ''
+  let OC_ID = ''
+
+  async function get_company() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token
+      });
+      open_loader()
+
+      let response = await fetch(ENDPOINT + "mobile/my_company/admin", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let result = await response.json();
+      console.log(result)
+      let list_data = result.company
+      let html = '';
+      let arr = []
+      list_data.forEach(e => {
+        arr.push(e.com_id)
+        html += ` <div onclick=show_info(${e.com_id})
+                style="height: 60px; border-radius: 10px; align-items: center; display: flex; padding: 0 10px; border: var(--border_solid_Thridnary_1); box-shadow: var(--box_shadow_sos); cursor: pointer; margin-top: 20px;">
+                <div
+                  style="width: 50px; height: 50px; border-radius: 100px; background-size: cover; background-position: center; background-image: url(${e.logo_company ? e.logo_company : 'https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&amp;height=580'} );">
+                </div>
+                <span style="margin-left: 10px;">${e.com_name}</span>
+              </div>`
+      });
+      document.getElementById('list_com').innerHTML = html
+      if (arr.length) {
+        show_info(arr[0])
+      } else {
+        document.getElementById('add_com_01').click();
+      }
+      open_loader(false)
+    } catch (err) {
+      open_loader(false)
+      console.log(err)
+      Swal.fire(
+        'Something went wrong in company',
+        '',
+        'error'
+      )
+    }
+  }
+  async function add_branch() {
+    clear_add_branch()
+  }
+  async function confirm_addbranch(com_id) {
+    try {
+      open_loader()
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "com_id": com_id,
+        "name": document.getElementById('branch_name').value,
+        "name_en": document.getElementById('branch_name_en').value,
+        "branch_no": document.getElementById('branch_number').value,
+        "address": { "zipcode": branch_zip_code.value, "district": branch_district.value, "branch_sup_district": branch_sup_district.value, "contry_en": branch_province.value, "contry_th": branch_province.value, "address": branch_address.value },
+        "ssa_no": branch_social_security_account_number.value,
+        "tel": branch_phone_number.value,
+        "b_status": branch_status.checked,
+        "contribution_rate": branch_contribution_rate.value ? branch_contribution_rate.value : 0,
+        "branch_income": branch_monthly_income_not_more_than.value ? branch_monthly_income_not_more_than.value : 0
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/Add-branch-in-company", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      if (data.msg === 'OK') {
+        $('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display', 'none');
+        render_talble_branch(com_id)
+        open_loader(false)
+      } else {
+        Swal.fire(
+          'โปรดตรวจสอบข้อมูลของท่าน',
+          '',
+          'success'
+        )
+        open_loader(false)
+        // alert('โปรดตรวจสอบข้อมูลของท่าน')
+      }
+    } catch (error) {
+      console.log(error)
+      open_loader(false)
+    }
+
+  }
+  function clear_add_branch() {
+    document.getElementById('branch_name').value = ''
+    document.getElementById('branch_name_en').value = ''
+    document.getElementById('branch_number').value = ''
+    let check_sw1 = document.getElementById('details_location_information').style.display
+    let check_sw2 = document.getElementById('details_location_information').style.display
+    if (check_sw1 === "block") {
+      document.getElementById('location_information').click()
+    }
+    if (check_sw2 === "block") {
+      document.getElementById('compensation_contribution_rate').click()
+    }
+    branch_status.checked = false
+    branch_address.value = ''
+    branch_province.value = ''
+    branch_district.value = ''
+    branch_zip_code.value = ''
+    branch_phone_number.value = ''
+    branch_social_security_account_number.value = ''
+    branch_monthly_income_not_more_than.value = ''
+
+  }
+  get_company()
+  var tempglobal;
+  async function show_info(com_id) {
+    try {
+      COM_ID = com_id
+      document.getElementById('save_settinghome').onclick = () => { update_company() }
+      getBank()
+      render_talble_branch(com_id)
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "com_id": parseInt(com_id)
+      });
+      open_loader()
+      let response = await fetch(ENDPOINT + "mobile/Get-information-company-by-id", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      let d = data.data
+      tempglobal = d
+      WC_ID = d.wc_id
+      OC_ID = d.oc_id
+      console.log('OC_ID', OC_ID)
+
+      document.getElementById('name_th').value = d.com_name;
+      document.getElementById('name_en').value = d.com_name_en ? d.com_name_en : '';
+      document.getElementById('sff_no').value = d.ssf_no ? d.ssf_no : '';
+      document.getElementById('postcode').value = d.postcode ? d.postcode : '';
+      document.getElementById('tel_c').value = d.tel ? d.tel : '';
+      document.getElementById('addr').value = d.com_address ? d.com_address : '';
+      document.getElementById('addr_en').value = d.com_address_en ? d.com_address_en : '';
+      document.getElementById('lat').value = d.lat ? d.lat : '';
+      document.getElementById('long').value = d.lng ? d.lng : '';
+      if (d.com_status === 'active') {
+        document.getElementById('activestatus_home').checked = true
+      } else {
+        document.getElementById('activestatus_home').checked = false
+      }
+      document.getElementById('h-statuswork').value = d.min_hours_of_work ? d.min_hours_of_work : '';
+      console.log('h-statuswork', d.min_hours_of_work)
+      document.getElementById('d-statuswork').value = getLastDayOfYear()
+      document.getElementById('mstart-statuswork').value = d.minutes_late ? d.minutes_late : '';
+      document.getElementById('mend-statuswork').value = d.minutes_absent_from_work ? d.minutes_absent_from_work : '';
+      document.getElementById('shift_condition').value = d.shift_condition ? d.shift_condition : '';
+      document.getElementById('d_shiftwork').value = d.request_shift_late ? d.request_shift_late : '';
+      document.getElementById('submit_sw').checked = d.supervisor_change_shift_alway ? d.supervisor_change_shift_alway : false
+      document.getElementById('probation_leave').value = d.pro_late ? d.pro_late : '';
+      document.getElementById('dayofprobation').value = d.trial_work_day ? d.trial_work_day : '';
+      document.getElementById('retire_male').value = d.employee_retirement_age_man ? d.employee_retirement_age_man : '';
+      document.getElementById('retire_female').value = d.employee_retirement_age_woman ? d.employee_retirement_age_woman : '';
+      document.getElementById('separation_day').value = d.resign_late ? d.resign_late : '';
+      document.getElementById('docperday_overtime').value = d.document_limit_per_day ? d.document_limit_per_day : 'limit';
+      document.getElementById('pass_overtime').checked = d.permanent_employees_only ? d.permanent_employees_only : false
+      document.getElementById('minuteper_overtime').value = d.minimum_period ? d.minimum_period : '30';
+      document.getElementById('conditions_reimbursement_overtime').value = d.overtime_request_condition ? d.overtime_request_condition : '';
+      document.getElementById('switchto_settime').checked = d.calculate_break_time ? d.calculate_break_time : false;
+      document.getElementById('calccalculate_overtime').checked = d.overtime_rounding ? d.overtime_rounding : false;
+      document.getElementById('ratepayovetime_perka').checked = d.calculate_overtime_in_every ? d.calculate_overtime_in_every : false;
+      document.getElementById('withholdovertime_perka').checked = d.calculate_overtime_on_holiday_by_shift ? d.calculate_overtime_on_holiday_by_shift : false;
+      document.getElementById('withholdovertime_perka').checked = d.receivemonneywhendefective_overtime ? d.receivemonneywhendefective_overtime : false;
+      document.getElementById('receivemonneywhendefective_overtime').checked = d.allow_overtime_on_uncomplete_workdays ? d.allow_overtime_on_uncomplete_workdays : false;
+      document.getElementById('receivemonneywhennormal_overtime').checked = d.pay_overtime_fully_on_flexible_shifts ? d.pay_overtime_fully_on_flexible_shifts : false;
+      document.getElementById('typedoc_documentcompany').value = d.template_document ? d.template_document : 'มีหัวกระดาษ'
+      document.getElementById('sizedoc_documentcompany').value = d.doc_size ? d.doc_size : "A4"
+      document.getElementById('tapslipsalary1').checked = d.emp_get_slip_yourself ? d.emp_get_slip_yourself : false
+      document.getElementById('location_information-1').checked = d.bank_info_status ? d.bank_info_status : false
+      d.bank_info_status ? check1('location_information-1') : check1('location_information-1')
+      if (document.getElementById('tapslipsalary1').checked) {
+        checkshow('tapslipsalary1', 'details_tapslipsalary1')
+      }
+      document.getElementById('payslipmobile').checked = d.slip_mobile ? d.slip_mobile : false
+      document.getElementById('payslipemail').checked = d.slip_email ? d.slip_email : false
+      document.getElementById('payslippaper').checked = d.slip_paper ? d.slip_paper : false
+      document.getElementById('bank_no').value = d.bank_no ? d.bank_no : ''
+      document.getElementById('bank_ref').value = d.bank_ref ? d.bank_ref : ''
+      document.getElementById('bank_service').value = d.bank_service ? d.bank_service : ''
+      document.getElementById('province_01').value = d.province ? d.province : 0
+      document.getElementById('aumpure').value = d.district ? d.district : 0
+      document.getElementById('sub_distr').value = d.subdistrict ? d.subdistrict : 0
+      document.getElementById('calceverytime_overtime').value = d.calculate_overtime_in_every ? d.calculate_overtime_in_every : 30
+      console.log('ppprovice : ', d.province)
+      document.getElementById('logo_company').src = d.logo_company ? d.logo_company : './symbol_hrm/test.jpeg'
+      // console.log('sss',d.logo_company ? d.logo_company : './symbol_hrm/test.jpeg')
+      if (!isBase64Image(d.logo_company ? d.logo_company : './symbol_hrm/test.jpeg')) {
+        convertImageToBase64('./symbol_hrm/test.jpeg', 500, function (base64img, error) {
+          if (error) {
+            console.log('Error:', error);
+            logo_company_base64 = ''
+          } else {
+            // console.log('Base64 image:', base64img);
+            logo_company_base64 = base64img
+          }
+        });
+      } else {
+        logo_company_base64 = d.logo_company ? d.logo_company : ''
+      }
+      // let seal_html = `<img id="seal_preview" src="./symbol_hrm/scanandpay_info_circle_icon.png" style="width: 20px; height: 20px;"><span>เลือกไฟล์</span>`
+      if (isBase64Image(d.seal_base64)) {
+        SEAL_BASE64 = d.seal_base64
+        document.getElementById('seal_preview').src = SEAL_BASE64
+      } else {
+        SEAL_BASE64 = ''
+        document.getElementById('seal_preview').src = './symbol_hrm/scanandpay_info_circle_icon.png'
+      }
+      open_loader(false)
+      get_sign_document()
+    } catch (error) {
+      console.log(error)
+      open_loader(false)
+    }
+  }
+
+  function getLastDayOfYear() {
+    var currentYear = new Date().getFullYear();
+    var lastDay = new Date(currentYear, 11, 31); // 11 represents December
+    return lastDay.toISOString().slice(0, 10);
+  }
+
+  // Call the function
+  async function render_talble_branch(com_id) {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "com_id": com_id
+      });
+      open_loader()
+
+      let response = await fetch(ENDPOINT + "mobile/Get-branch-in-company", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      let list = data.data
+      let html = ``
+      list.forEach(e => {
+        let contry = JSON.parse(e.address).contry_th
+        html += `
+        <tr>
+          <td>${e.name ? e.name : ''}</td>
+          <td>${e.branch_no ? e.branch_no : ''}</td>
+          <td>${contry ? contry : ''}</td>
+          <td>${e.status ? 'ใช้งาน' : 'ยกเลิกการใข้'}</td>
+          <td>
+            <div style=" display: flex;">
+                  <div class="icon-role" style="" onclick="">
+                    <img onclick="fix_branch(${e.br_id})" style="height: 25px;" src="https://img.icons8.com/?size=512&amp;id=2o0oz6BtYr5E&amp;format=png">
+                  </div>
+                  <div class="icon-role" style="" onclick="">
+                    <img onclick="remove_br(${e.br_id})" style="height: 25px;" src="https://img.icons8.com/?size=512&amp;id=85194&amp;format=png">
+                  </div>
+                </div>
+            
+            </td>
+        </tr>`
+      });
+      // <button onclick="fix_branch(${e.br_id})">แก้ไข</button>
+      //       <button onclick="remove_br(${e.br_id})">ลบ</button>
+      
+      document.getElementById('mytbody').innerHTML = html
+      open_loader(false)
+    } catch (err) {
+      open_loader(false)
+      console.log(err)
+      Swal.fire(
+        'Somthing went wrong',
+        '',
+        'error'
+      )
+      // alert('err')
+    }
+  }
+  async function confirm_update(br_id) {
+    try {
+      open_loader()
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "data": {
+          "name": document.getElementById('branch_name').value,
+          "branch_no": document.getElementById('branch_number').value,
+          "address": JSON.stringify(
+            {
+              "zipcode": document.getElementById('branch_business_code').value,
+              "district": document.getElementById('branch_district').value,
+              "branch_sup_district": document.getElementById('branch_sup_district').value,
+              "contry_en": document.getElementById('branch_name_en').value,
+              "contry_th": document.getElementById('branch_name').value,
+              "address": document.getElementById('branch_address').value
+            })
+          ,
+          "status": true,
+          "ssa_no": document.getElementById('branch_social_security_account_number').value,
+          "contribution_rate": document.getElementById('branch_contribution_rate').value,
+          "branch_income": document.getElementById('branch_monthly_income_not_more_than').value,
+          "name_en": document.getElementById('branch_name_en').value,
+          "tel": document.getElementById('branch_phone_number').value,
+          "br_code": document.getElementById('branch_business_code').value
+        }, "br_id": br_id
+      });
+      let response = await fetch(ENDPOINT + "mobile/Update-Branch-By-id", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      console.log(data);
+      let check = data.msg === "OK"
+      if (check) {
+        Swal.fire(
+          'Update Success',
+          '',
+          'success'
+        )
+        $('.overlay_branch_info').removeClass('open'); $('#blur_bg').css('display', 'none');
+        render_talble_branch(COM_ID)
+        open_loader(false)
+      }
+    } catch (error) {
+      open_loader(false)
+    }
+  }
+  async function fix_branch(br_id) {
+    try {
+      open_loader()
+      document.getElementById('save_branch').onclick = () => confirm_update(br_id)
+      clear_add_branch()
+      $('.overlay_branch_info').addClass('open'); $('#blur_bg').css('display', 'flex');
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "br_id": parseInt(br_id)
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/Get-Branch-by-id", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      console.log(data)
+      let d = data.data
+
+      let address = JSON.parse(d.address)
+      // console.log('d.status ', d.status)
+      console.log('d.branch_no', d)
+      document.getElementById('branch_name').value = d.name ? d.name : ''
+      document.getElementById('branch_name_en').value = d.name_en ? d.name_en : ''
+      document.getElementById('branch_number').value = d.branch_no ? d.branch_no : ''
+      document.getElementById('branch_address').value = address.address ? address.address : ''
+      document.getElementById('branch_province').value = address.contry_th ? address.contry_th : ''
+      document.getElementById('branch_district').value = address.district ? address.district : ''
+      document.getElementById('branch_sup_district').value = address.branch_sup_district ? address.branch_sup_district : ''
+      document.getElementById('branch_zip_code').value = address.zipcode ? address.zipcode : ''
+      document.getElementById('branch_phone_number').value = d.tel ? d.tel : ''
+      document.getElementById('branch_social_security_account_number').value = d.ssa_no ? d.ssa_no : ''
+      document.getElementById('branch_monthly_income_not_more_than').value = d.branch_income ? d.branch_income : ""
+      $("#branch_status").prop("checked", d.status ? d.status : false);
+      document.getElementById('branch_business_code').value = d.br_code ? d.br_code : ''
+      document.getElementById('branch_contribution_rate').value = d.contribution_rate ? d.contribution_rate : 0
+      open_loader(false)
+    } catch (error) {
+      open_loader(false)
+    }
+  }
+  let bank_data = ''
+  async function getBank() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token
+      });
+      open_loader()
+      let response = await fetch(ENDPOINT + "mobile/Get-Bank", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      console.log(data);
+      let html = '<option value="0">เลือกธนาคาร</option>';
+      let list = data.data
+      bank_data = list
+      list.forEach(e => {
+        html += `<option value="${e.optionname}">${e.optionname}</option>`
+      })
+      document.getElementById('list_bank').innerHTML = html
+      open_loader(false)
+    } catch (error) {
+      open_loader(false)
+    }
+
+  }
+  function bank_list_change() {
+    let value = event.target.value
+    let img = bank_data.filter(e => e.optionname === value)
+    document.getElementById('img-bank').src = 'data:image/png;base64, ' + img[0].img
+  }
+  async function remove_br(br_id) {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "br_id": parseInt(br_id)
+      });
+      Swal.fire({
+        title: 'ต้องการลบสาขาใช่ไหม ?',
+        showCancelButton: true,
+        confirmButtonText: 'บันทึก'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          open_loader()
+          let response = await fetch(ENDPOINT + "mobile/Remove-Branch", {
+            method: "POST",
+            body: bodyContent,
+            headers: headersList
+          });
+
+          let data = await response.json();
+          console.log(data);
+          render_talble_branch(COM_ID)
+          Swal.fire('Saved!', '', 'success')
+          open_loader(false)
+        }
+      })
+    } catch (error) {
+      open_loader(false)
+    }
+  }
+
+  add_branch_click.addEventListener('click', () => {
+    document.getElementById('save_branch').onclick = () => confirm_addbranch(COM_ID)
+  })
+  async function confirm_add_company() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+      let name_th = document.getElementById('name_th').value
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "obj": {
+          "com_name": document.getElementById('name_th').value,
+          "com_address": document.getElementById('addr').value,
+          "tel": document.getElementById('tel_c').value,
+          "subdistrict": document.getElementById('sub_distr').value,
+          "district": document.getElementById('aumpure').value,
+          "province": document.getElementById('province_01').value,
+          "postcode": document.getElementById('postcode').value,
+          "lat": document.getElementById('lat').value,
+          "lng": document.getElementById('long').value,
+          "com_status": document.getElementById('activestatus_home').checked ? 'active' : 'inactive',
+          "ssf_no": document.getElementById('sff_no').value,
+          "com_address_en": document.getElementById('addr_en').value,
+          "logo_company": logo_company_base64,
+          "bank_status": document.getElementById('location_information-1').checked,
+          "bank_name": document.getElementById('list_bank').value,
+          "bank_no": document.getElementById('bank_no').value,
+          "wc_id": WC_ID,
+          "oc_id": OC_ID,
+          "template_document": document.getElementById('typedoc_documentcompany').value,
+          "doc_size": document.getElementById('sizedoc_documentcompany').value,
+          "seal_base64": SEAL_BASE64,
+          "emp_get_slip_yourself": document.getElementById('tapslipsalary1').checked,
+          "min_hours_of_work": document.getElementById('h-statuswork').value,
+          "calendar_end": document.getElementById('d-statuswork').value,
+          "minutes_late": document.getElementById('mstart-statuswork').value,
+          "minutes_absent_from_work": document.getElementById('mend-statuswork').value,
+          "shift_condition": document.getElementById('shift_condition').value,
+          "request_shift_late": document.getElementById('d_shiftwork').value,
+          "supervisor_change_shift_alway": document.getElementById('submit_sw').checked,
+          "pro_late": document.getElementById('probation_leave').value,
+          "trial_work_day": document.getElementById('dayofprobation').value,
+          "employee_retirement_age_man": document.getElementById('retire_male').value,
+          "employee_retirement_age_woman": document.getElementById('retire_female').value,
+          "resign_late": document.getElementById('separation_day').value,
+          "document _limit_per day": document.getElementById('docperday_overtime').value,
+          "minimum_period": document.getElementById('minuteper_overtime').value,
+          "overtime_request_condition": document.getElementById('conditions_reimbursement_overtime').value,
+          "permanent_employees_only": document.getElementById('pass_overtime').checked,
+          "calculate_break_time": document.getElementById('switchto_settime').checked,
+          "break_period": document.getElementById('startbreakperiod_overtime').value,
+          "working_period_before_start_break_deduction_per_hour": document.getElementById('endbreak_ovetime').value,
+          "overtime_rounding": document.getElementById('calccalculate_overtime').checked,
+          "calculate_overtime_in_every": document.getElementById('calceverytime_overtime').value,
+          "calculate_overtime_on_holiday_by_shift": document.getElementById('ratepayovetime_perka').checked,
+          "deduct_break_time_on_holiday_by_normal_shift": document.getElementById('withholdovertime_perka').checked,
+          "allow_overtime_on_uncomplete_workdays": document.getElementById('receivemonneywhendefective_overtime').checked,
+          "pay_overtime_fully_on_flexible_shifts": document.getElementById('receivemonneywhennormal_overtime').checked,
+          "com_name_en": document.getElementById('name_en').value,
+          slip_mobile: document.getElementById('payslipmobile').checked,
+          slip_email: document.getElementById('payslipemail').checked,
+          slip_paper: document.getElementById('payslippaper').checked
+        }
+      });
+      Swal.fire({
+        title: 'ต้องการบันทึกข้อมูลใช่ไหม',
+        showCancelButton: true,
+        confirmButtonText: 'บันทึก',
+
+      }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          if (name_th) {
+            try {
+              let response = await fetch(ENDPOINT + "mobile/Add-company", {
+                method: "POST",
+                body: bodyContent,
+                headers: headersList
+              });
+              let data = await response.json();
+              open_loader()
+              let msg = data.msg
+              if (msg === 'good') {
+                Swal.fire('เพิ่มข้อมูลสำเร็จ', '', 'success')
+                window.location.reload()
+              } else {
+                Swal.fire('กรอกข้อมูลให้ครบถ้วน')
+                open_loader(false)
+              }
+            } catch (error) {
+              console.log(error)
+              open_loader(false)
+            }
+          } else {
+            open_loader(false)
+            Swal.fire('ตรวจสอบข้อมูลว่ากรอกข้อมูลครบ')
+          }
+        }
+        // else if (result.isDenied) {
+        //   Swal.fire('Changes are not saved', '', 'info')
+        // }
+      })
+
+    } catch (err) {
+      open_loader(false)
+      console.log('err', err)
+      Swal.fire('Somthing went wrong !!!', '', 'error')
+    }
+
+  }
+  function add_new_company() {
+    let demo = 'data:image/png;base64,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'
+    document.getElementById('logo_company').src = demo
+    logo_company_base64 = demo
+    COM_ID = 0
+    document.getElementById('save_settinghome').onclick = () => { confirm_add_company() }
+    render_talble_branch(COM_ID)
+    document.getElementById('name_th').value = ''
+    document.getElementById('name_en').value = ''
+    document.getElementById('sff_no').value = ''
+    document.getElementById('postcode').value = ''
+    document.getElementById('tel_c').value = ''
+    document.getElementById('addr').value = ''
+    document.getElementById('addr_en').value = ''
+    document.getElementById('lat').value = ''
+    document.getElementById('long').value = ''
+    document.getElementById('activestatus_home').checked = true
+    document.getElementById('h-statuswork').value = ''
+    document.getElementById('d-statuswork').value = getLastDayOfYear()
+    document.getElementById('mstart-statuswork').value = '';
+    document.getElementById('mend-statuswork').value = '';
+    document.getElementById('shift_condition').value = ''
+    document.getElementById('d_shiftwork').value = ''
+    document.getElementById('submit_sw').checked = false
+    document.getElementById('probation_leave').value = ''
+    document.getElementById('dayofprobation').value = ''
+    document.getElementById('retire_male').value = ''
+    document.getElementById('retire_female').value = ''
+    document.getElementById('separation_day').value = ''
+    document.getElementById('docperday_overtime').value = 'limit';
+    document.getElementById('pass_overtime').checked = false
+    document.getElementById('minuteper_overtime').value = '30';
+    document.getElementById('conditions_reimbursement_overtime').value = '';
+    document.getElementById('switchto_settime').checked = false;
+    document.getElementById('calccalculate_overtime').checked = false;
+    document.getElementById('ratepayovetime_perka').checked = false;
+    document.getElementById('withholdovertime_perka').checked = false;
+    document.getElementById('receivemonneywhendefective_overtime').checked = false;
+    document.getElementById('receivemonneywhennormal_overtime').checked = false;
+    document.getElementById('typedoc_documentcompany').value = 'มีหัวกระดาษ'
+    document.getElementById('sizedoc_documentcompany').value = "A4"
+    document.getElementById('tapslipsalary1').checked = false
+    document.getElementById('location_information-1').checked = false
+    false ? check1('location_information-1') : check1('location_information-1')
+    if (document.getElementById('tapslipsalary1').checked) {
+      checkshow('tapslipsalary1', 'details_tapslipsalary1')
+    }
+    document.getElementById('payslipmobile').checked = false
+    document.getElementById('payslipemail').checked = false
+    document.getElementById('payslippaper').checked = false
+    document.getElementById('bank_no').value = ''
+    document.getElementById('bank_ref').value = ''
+    document.getElementById('bank_service').value = ''
+    document.getElementById('province_01').value = ''
+    document.getElementById('aumpure').value = ''
+    document.getElementById('sub_distr').value = ''
+  }
+  async function update_company() {
+    let headersList = {
+      "Accept": "*/*",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+      "token": localStorage.token,
+      "obj": {
+        "com_id": COM_ID,
+        "com_name": document.getElementById('name_th').value,
+        "com_address": document.getElementById('addr').value,
+        "tel": document.getElementById('tel_c').value,
+        "subdistrict": document.getElementById('sub_distr').value,
+        "district": document.getElementById('aumpure').value,
+        "province": document.getElementById('province_01').value,
+        "postcode": document.getElementById('postcode').value,
+        "lat": document.getElementById('lat').value,
+        "lng": document.getElementById('long').value,
+        "com_status": document.getElementById('activestatus_home').checked ? 'active' : 'inactive',
+        "ssf_no": document.getElementById('sff_no').value,
+        "com_address_en": document.getElementById('addr_en').value,
+        "logo_company": logo_company_base64,
+        "bank_status": document.getElementById('location_information-1').checked,
+        "bank_name": document.getElementById('list_bank').value,
+        "bank_no": document.getElementById('bank_no').value,
+        "wc_id": WC_ID,
+        "oc_id": OC_ID,
+        "template_document": document.getElementById('typedoc_documentcompany').value,
+        "doc_size": document.getElementById('sizedoc_documentcompany').value,
+        "seal_base64": SEAL_BASE64,
+        "emp_get_slip_yourself": document.getElementById('tapslipsalary1').checked,
+        "min_hours_of_work": document.getElementById('h-statuswork').value,
+        "calendar_end": document.getElementById('d-statuswork').value,
+        "minutes_late": document.getElementById('mstart-statuswork').value,
+        "minutes_absent_from_work": document.getElementById('mend-statuswork').value,
+        "shift_condition": document.getElementById('shift_condition').value,
+        "request_shift_late": document.getElementById('d_shiftwork').value,
+        "supervisor_change_shift_alway": document.getElementById('submit_sw').checked,
+        "pro_late": document.getElementById('probation_leave').value,
+        "trial_work_day": document.getElementById('dayofprobation').value,
+        "employee_retirement_age_man": document.getElementById('retire_male').value,
+        "employee_retirement_age_woman": document.getElementById('retire_female').value,
+        "resign_late": document.getElementById('separation_day').value,
+        "document _limit_per day": document.getElementById('docperday_overtime').value,
+        "minimum_period": document.getElementById('minuteper_overtime').value,
+        "overtime_request_condition": document.getElementById('conditions_reimbursement_overtime').value,
+        "permanent_employees_only": document.getElementById('pass_overtime').checked,
+        "calculate_break_time": document.getElementById('switchto_settime').checked,
+        "break_period": document.getElementById('startbreakperiod_overtime').value,
+        "working_period_before_start_break_deduction_per_hour": document.getElementById('endbreak_ovetime').value,
+        "overtime_rounding": document.getElementById('calccalculate_overtime').checked,
+        "calculate_overtime_in_every": document.getElementById('calceverytime_overtime').value,
+        "calculate_overtime_on_holiday_by_shift": document.getElementById('ratepayovetime_perka').checked,
+        "deduct_break_time_on_holiday_by_normal_shift": document.getElementById('withholdovertime_perka').checked,
+        "allow_overtime_on_uncomplete_workdays": document.getElementById('receivemonneywhendefective_overtime').checked,
+        "pay_overtime_fully_on_flexible_shifts": document.getElementById('receivemonneywhennormal_overtime').checked,
+        "com_name_en": document.getElementById('name_en').value,
+        slip_mobile: document.getElementById('payslipmobile').checked,
+        slip_email: document.getElementById('payslipemail').checked,
+        slip_paper: document.getElementById('payslippaper').checked
+      }
+    });
+    Swal.fire({
+      title: 'ต้องการบันทึกข้อมูลใช่หรือไม่?',
+      showCancelButton: true,
+      confirmButtonText: 'บันทึก',
+    }).then(async (result) => {
+      open_loader()
+      if (result.isConfirmed) {
+        try {
+          let response = await fetch(ENDPOINT + "mobile/Update-all-information-by-id", {
+            method: "POST",
+            body: bodyContent,
+            headers: headersList
+          });
+          let data = await response.json();
+          if (data.msg === "good") {
+            Swal.fire('บันทึกสำเร็จ', '', 'success')
+            open_loader(false)
+            location.reload();
+          } else {
+            open_loader(false)
+            Swal.fire('เกิดข้อผิดพลาด', '', 'error')
+          }
+        } catch (error) {
+          open_loader(false)
+          console.log(error)
+        }
+      }
+    })
+  }
+  function isBase64Image(str) {
+    // ตรวจสอบว่าข้อความเริ่มต้นด้วย "data:image/"
+    if (str.startsWith("data:image/") && str) {
+      // ตรวจสอบว่ามีคำว่า "base64," ตามหลัง "data:image/"
+      var index = str.indexOf("base64,");
+      if (index > -1) {
+        return true;
+      }
+    }
+    return false;
+  }
+  function convertImageToBase64(url, maxSizeInKB, callback) {
+    var img = new Image();
+    img.onload = function () {
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      var width = img.width;
+      var height = img.height;
+      var maxSize = maxSizeInKB * 1024; // แปลงเป็นขนาดเป็น byte
+
+      // คำนวณสัดส่วนเพื่อลดขนาดรูปภาพ
+      if (width > height) {
+        if (width > maxSize) {
+          height *= maxSize / width;
+          width = maxSize;
+        }
+      } else {
+        if (height > maxSize) {
+          width *= maxSize / height;
+          height = maxSize;
+        }
+      }
+      canvas.width = width;
+      canvas.height = height;
+
+      // ลดขนาดรูปภาพโดยวาดบน canvas
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // แปลงรูปภาพใน canvas เป็น base64
+      var base64img = canvas.toDataURL('image/jpeg');
+
+      // ตรวจสอบขนาดของ base64img
+      var fileSizeInBytes = Math.floor((base64img.length - 22) * 3 / 4); // ลบขนาดของข้อความด้านหน้าของ base64 และแปลงเป็นขนาดเป็น byte
+
+      if (fileSizeInBytes > maxSize) {
+        callback(null, 'ขนาดของรูปภาพใหญ่กว่า ' + maxSizeInKB + 'KB');
+      } else {
+        callback(base64img, null);
+      }
+    };
+    img.onerror = function () {
+      callback(null, 'ไม่สามารถโหลดรูปภาพ');
+    };
+    img.src = url;
+  }
+
+  let logo_company_base64 = ''
+  let SEAL_BASE64 = ''
+  function event_imgchange() {
+    console.log('xxxx')
+    var file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('logo_company').src = e.target.result;
+        logo_company_base64 = e.target.result
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function preview_seal() {
+    let file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('seal_preview').src = e.target.result;
+        SEAL_BASE64 = e.target.result
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  let PERSON_SIGN_BASE64 = ''
+  function preview_person_sign() {
+    let file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('person_sign').src = e.target.result;
+        convertImageToBase64(document.getElementById('person_sign').src, 500, function (base64img, error) {
+          if (error) {
+            console.log('Error:', error);
+            PERSON_SIGN_BASE64 = ''
+          } else {
+            // console.log('Base64 image:', base64img);
+            PERSON_SIGN_BASE64 = base64img
+          }
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  async function update_sign() {
+    try {
+      let eid = document.getElementById('signatory_documentcompany').value
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "sign_img": PERSON_SIGN_BASE64,
+        "eid": eid,
+        "id": SD_ID
+      });
+      open_loader()
+
+      let response = await fetch(ENDPOINT + "mobile/Update-list-signature-document", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.text();
+      console.log(data);
+      open_loader(false)
+    } catch (error) {
+      console.log(error)
+      open_loader(false)
+    }
+  }
+  document.getElementById('save_modal_documentcompany')
+    .addEventListener('click', () => {
+      Swal.fire({
+        title: 'ต้องการอัพเดทข้อมูลใช่ไหม',
+
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+      }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          update_sign()
+          open_loader(false)
+        } else {
+          Swal.fire('something went wrong !!!', '', 'error')
+          open_loader(false)
+        }
+      })
+    })
+  let sign_btn_cancel = document.getElementById('cancel_modal_documentcompany')
+  sign_btn_cancel.addEventListener('click', () => {
+    $('.overlay_doccompany_info').removeClass('open'); $('#blur_bg').css('display', 'none');
+  })
+  async function get_sign_document() {
+    try {
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "com_id": COM_ID ? COM_ID : 0
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/Get-list-signature-document", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      open_loader()
+      // console.log(data);
+      let list = data.data
+      let html = ``
+      list.forEach(e => {
+        let d = '-'
+        if (e.fname && e.lname && e.name_th) {
+          d = e.fname + " " + e.lname + "(" + e.name_th + ")"
+        }
+        html += ` <div class=" divis_tr">
+                      <div class="padd15019 divis_td46"> ${e.name} </div>
+                      <div class="padd15019 divis_td10">
+                        <img src=" ${isBase64Image(e.signature ? e.signature : '') ? './symbol_hrm/close_black.png' : ''}" style="width: 20px; height: 20px;" />
+                      </div>
+                      <div class="padd15019 divis_td29">
+                        ${d}
+                      </div>
+                      <div class="padd15019 divis_td09">
+                        <div onclick="open_sign_doc_input(${e.sd_id})"
+                        class="divis_td09 padd15019">
+                        <img id="showiconedit_doc" src="./symbol_hrm/edit-orange.png"
+                          style="width: 20px; height: 20px;" />
+                      </div>
+                      </div>
+                    </div>`
+
+      })
+      document.getElementById('sign_tbody').innerHTML = html
+
+      const render_emp_in_sign_doc = async () => {
+        try {
+          let headersList = {
+            "Accept": "*/*",
+            "Content-Type": "application/json"
+          }
+
+          let bodyContent = JSON.stringify({
+            "token": localStorage.token
+          });
+          open_loader()
+          let response = await fetch(ENDPOINT + "mobile/Get-All-Employee", {
+            method: "POST",
+            body: bodyContent,
+            headers: headersList
+          });
+
+          let data = await response.json();
+          console.log(data);
+          let list = data.data
+          let html = '<option value="0">เลือกพนักงาน</option>'
+          list.forEach(e => {
+            html += `<option value="${e.eid}">${e.fname + " " + e.lname + "(" + e.name_th + ")"}</option>`
+          })
+          document.getElementById('signatory_documentcompany').innerHTML = html
+          open_loader(false)
+        } catch (error) {
+          open_loader(false)
+        }
+
+        // signatory_documentcompany
+      }
+      render_emp_in_sign_doc()
+    } catch (error) {
+      console.log(error)
+      open_loader(false)
+    }
+
+  }
+  let SD_ID = ''
+  async function open_sign_doc_input(sd_id) {
+    try {
+      open_loader()
+      SD_ID = sd_id
+      $('.overlay_doccompany_info').addClass('open'); $('#blur_bg').css('display', 'flex')
+      let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      }
+
+      let bodyContent = JSON.stringify({
+        "token": localStorage.token,
+        "sd_id": sd_id
+      });
+
+      let response = await fetch(ENDPOINT + "mobile/signature-document-id", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      console.log(data);
+      let eid = data.data[0].eid
+      data = data.data[0]
+      // console.log(sd_id_va,'sd_id_vasd_id_vasd_id_va')
+      document.getElementById('signatory_documentcompany').value = eid ? parseInt(eid) : 0
+      if (isBase64Image(data.signature ? data.signature : '')) {
+        PERSON_SIGN_BASE64 = data.signature
+        document.getElementById('person_sign').src = PERSON_SIGN_BASE64
+      } else {
+        PERSON_SIGN_BASE64 = ''
+        document.getElementById('person_sign').src = './symbol_hrm/scanandpay_info_circle_icon.png'
+      }
+      open_loader(false)
+    } catch (error) {
+      open_loader(false)
+    }
+  }
+
+</script>
+
+</html>

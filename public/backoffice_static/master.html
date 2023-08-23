@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+    <title>Master data</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./global.css">
+    <script src="./global.js"></script>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Swal2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./global_hrm.css" />
+
+    <!-- Global JS -->
+    <script src='./global_js.js'></script>
+    <script src="config.js"></script>
+    <!-- This css font  -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+        rel="stylesheet">
+
+
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .master-container {
+        display: grid;
+        padding: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+        grid-gap: 10px;
+        width: 71%;
+        height: 40%;
+        grid-auto-flow: dense;
+    }
+
+    .master-box {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        cursor: pointer;
+    }
+
+    .master-box:hover {
+        border: 1px solid #45c9aa;
+    }
+    .font-bold {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .font-grey {
+        font-size: 13px;
+        font-weight: 400;
+        color: grey;
+    }
+</style>
+
+<body style="overflow: hidden;">
+    <script>
+        $.get("./menu-top.html", function (data) {
+            $("#sidebar-tabtop").html(data);
+        });
+    </script>
+    <script>
+        $.get("./menu-left.html", function (data) {
+            $("#sidebar-tableft").html(data);
+        });
+    </script>
+    <script>
+        $.get("./setup-menu.html", function (data) {
+            $("#setup-menu").html(data);
+        });
+    </script>
+    <div style="margin-left: 4vw;">
+        <div id="sidebar-tableft">
+
+        </div>
+        <div style="width: calc(100% - 60px);">
+            <div id="sidebar-tabtop">
+
+            </div>
+
+            <div>
+                <div style="width: 100%; height: calc(100vh - 60px); display: flex;">
+                    <div id="setup-menu" style="width: 25%;">
+
+                    </div>
+                    <!--Start here-->
+                    <div class="master-container">
+                        <div class="master-box" onclick="location.href='master_home.html'">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">มาสเตอร์ทั่วไป</p>
+                                <p class="font-grey">ตั้งค่าทั่วไป</p>
+                            </div>
+                        </div>
+                        <div class="master-box" onclick="location.href='social-security-rate.html'">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">อัตราสมทบประกันสังคม</p>
+                                <p class="font-grey">กำหนดอัตราเงินสมทบกองทุนประกันสังคม</p>
+                            </div>
+                        </div>
+                        <div class="master-box" onclick="location.href='accumulate.html'">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">เงินสะสมประจำปี</p>
+                                <p class="font-grey">กำหนดหรือแก้ไขรายการเงินสะสมประจำปี ที่มีผลกับสลิปเงินเดือน</p>
+                            </div>
+                        </div>
+                        <!-- <div class="master-box">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">ตั้งค่าเนื้อหาการแจ้งเตือน</p>
+                                <p class="font-grey">กำหนดเนื้อหาการแจ้งเตือนทางอีเมลหรือโมบายแอป</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="master-box">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">ฟิลด์ข้อมูลพนักงาน</p>
+                                <p class="font-grey">เพิ่มฟิลด์สำหรับกรอกข้อมูลภายในโปรไฟล์ พนักงานได้ตามต้องการ</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="master-box">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">ตั้งค่าการแจ้งเตือนทางอีเมล</p>
+                                <p class="font-grey">ตั้งค่าเปิดปิดการแจ้งเตือนทางอีเมล</p>
+                            </div>
+                        </div> -->
+                        <div class="master-box" onclick="location.href='expense.html'">
+                            <img src="./symbol_hrm/calendar.png" width="30px" height="30px">
+                            <div style="margin-left: 10px;">
+                                <p class="font-bold">ค่าใช้จ่าย</p>
+                                <p class="font-grey">กำหนดประเภทของค่าใช้จ่ายและวงเงินในการเบิกของแต่ละสังกัด</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End here-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function setup_menu(id) {
+        $('#basic_info').css('display', 'none')
+        $('#time_attendance').css('display', 'none')
+        $('#salary_info').css('display', 'none')
+
+        $('#basicinfo').css('border', '1.5px solid transparent')
+        $('#timeattendance').css('border', '1.5px solid transparent')
+        $('#salary').css('border', '1.5px solid transparent')
+
+        if (id == 'basicinfo') {
+            $('#basic_info').css('display', 'block')
+
+            $('#basicinfo').css('border', '1.5px solid #ef6d35')
+        }
+        else if (id == 'timeattendance') {
+            $('#time_attendance').css('display', 'block')
+
+            $('#timeattendance').css('border', '1.5px solid #5797fb')
+        }
+        else if (id == 'salary') {
+            $('#salary_info').css('display', 'block')
+
+            $('#salary').css('border', '1.5px solid #45c9aa')
+        }
+    }
+</script>
+
+
+<script>
+    function menuuser(id) {
+        $("#tapuser-1").removeClass('tapuseractive')
+        $("#tapuser-2").removeClass('tapuseractive')
+        $("#tapuser-3").removeClass('tapuseractive')
+        $("#tapuser-4").removeClass('tapuseractive')
+
+
+        $("#tab_user").css("display", 'none')
+        $("#tab_roles").css("display", 'none')
+        $("#tab_permission").css("display", 'none')
+        $("#tab_payrollpermission").css("display", 'none')
+
+
+        if (id == 1) {
+            $("#tapuser-1").addClass('tapuseractive')
+            $("#tapuser-2").removeClass('tapuseractive')
+            $("#tapuser-3").removeClass('tapuseractive')
+            $("#tapuser-4").removeClass('tapuseractive')
+
+
+            $("#tab_user").css("display", 'block')
+            $(".seach_userhrmlimilt").css("display", 'block')
+        }
+        if (id == 2) {
+            $("#tapuser-1").removeClass('tapuseractive')
+            $("#tapuser-2").addClass('tapuseractive')
+            $("#tapuser-3").removeClass('tapuseractive')
+            $("#tapuser-4").removeClass('tapuseractive')
+
+
+            $("#tab_roles").css("display", 'block')
+            $(".seach_userhrmlimilt").css("display", 'none')
+
+        }
+        if (id == 3) {
+            $("#tapuser-1").removeClass('tapuseractive')
+            $("#tapuser-2").removeClass('tapuseractive')
+            $("#tapuser-3").addClass('tapuseractive')
+            $("#tapuser-4").removeClass('tapuseractive')
+
+
+            $("#tab_permission").css("display", 'block')
+            $(".seach_userhrmlimilt").css("display", 'none')
+
+        }
+        if (id == 4) {
+            $("#tapuser-1").removeClass('tapuseractive')
+            $("#tapuser-2").removeClass('tapuseractive')
+            $("#tapuser-3").removeClass('tapuseractive')
+            $("#tapuser-4").addClass('tapuseractive')
+
+
+            $("#tab_payrollpermission").css("display", 'block')
+            $(".seach_userhrmlimilt").css("display", 'none')
+
+        }
+    }
+</script>
+<script>
+    function btneditrole(id) {
+        if (id == 1) {
+            $("#btu_haffrole").addClass('editrole_btu_active')
+            $("#btu_fullrole").removeClass('editrole_btu_active')
+
+        }
+        if (id == 2) {
+            $("#btu_haffrole").removeClass('editrole_btu_active')
+            $("#btu_fullrole").addClass('editrole_btu_active')
+        }
+    }
+
+    function check(id) {
+        console.log($('#' + id).prop('checked'))
+
+        if ($('#' + id).prop('checked')) {
+            $("#details_" + id).css("display", 'block')
+        } else {
+            $("#details_" + id).css("display", 'none')
+        }
+    }
+</script>
+
+
+</html>

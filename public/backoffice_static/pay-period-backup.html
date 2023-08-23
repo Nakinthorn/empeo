@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+    <title>สร้างงวด</title>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Swal2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+
+    <!-- Global JS -->
+    <script src="config.js"></script>
+    <!-- This css font  -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .con {
+        display: flex;
+        gap: 10px;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        width: 165px;
+        border-radius: 13px;
+        border: solid 1px grey;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .selected {
+        border-color: #009688;
+        background-color: #009688;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    .day-btn {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .day-btn:hover {
+        background-color: #ccc;
+    }
+
+    .add-period {
+        margin-left: 5vw;
+        padding: 20px;
+        height: 82vh;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+    }
+
+    .box-container {
+        display: flex;
+        gap: 10px;
+        padding: 7px 7px 7px 7px;
+    }
+
+    .box img {
+        width: 40px;
+    }
+
+    .select-type {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        width: 120px;
+        border-radius: 13px;
+        border: solid 1px grey;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .day-box-first {
+        padding: 10px;
+        width: 25vw;
+    }
+
+    .day-box-start {
+        padding: 10px;
+        width: 275px;
+    }
+
+    .cus-day {
+        display: flex;
+        gap: 10px;
+    }
+
+    .fixed-bottom {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .send-btn {
+        width: 120px;
+        height: 40px;
+        border: none;
+        background-color: #009688;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    .daySelect {
+        border: solid 1px grey;
+        width: 50px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .daySelect:hover {
+        background-color: #009688;
+        color: #fff;
+    }
+</style>
+
+<body style="overflow: hidden;">
+    <script>
+        $.get("./menu-top.html", function (data) {
+            $("#sidebar-tabtop").html(data);
+        });
+    </script>
+    <script>
+        $.get("./menu-left.html", function (data) {
+            $("#sidebar-tableft").html(data);
+        });
+    </script>
+
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+        <div id="sidebar-tabtop">
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="add-period">
+        <h3>สร้างงวดทำเงินเดือน</h3>
+        <br>
+        <div class="con">
+            <div class="select-type" onclick="toggleSelected(this)">
+                <p>Daily</p>
+            </div>
+            <div class="select-type" onclick="toggleSelected(this)">
+                <p>Month</p>
+            </div>
+        </div>
+        <br>
+        <hr>
+
+        <div>
+            <h3>กำหนดงวดเงินเดือน</h3>
+            <p>งวดการจ่ายเงินเดือน</p>
+
+            <div class="box-container">
+                <div class="box">
+                    <div onclick="generatePayPeriods(1)">
+                        <img src="./symbol_hrm/calendar.png">
+                        <p>เดือนละ 1 งวด</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div onclick="generatePayPeriods(2)">
+                        <img src="./symbol_hrm/calendar.png">
+                        <p>เดือนละ 2 งวด</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div onclick="generatePayPeriods(4)">
+                        <img src="./symbol_hrm/calendar.png">
+                        <p>สับดาห์ละงวด</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="line-height: 45px;">
+                <div>
+                    <p>วันที่เริ่มงวดแรกของปี *</p>
+                    <input type="date" id="startDate" value="2023-01-01" class="day-box-first">
+                </div>
+                <div>
+                    <p>งวดที่เริ่มทำเงินเดือนบน empeo *</p>
+                    <select id="payPeriodsSelect" class="day-box-start">select</select>
+                </div>
+            </div>
+
+            <br>
+            <div id="payPeriodsContainer"></div>
+
+            <div id="additionalDataContainer"></div>
+            <br>
+            <div class="fixed-bottom">
+                <button class="send-btn" onclick="sendPeriod();">สร้างงวด</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let ENDPOINT = window.API_URL;
+        const token = localStorage.getItem('token');
+        var selectedOptions = [];
+
+        function toggleSelected(element) {
+            if (element.className.indexOf('selected') === -1) {
+                element.className += ' selected';
+                selectedOptions.push(element.textContent.trim());
+            } else {
+                element.className = element.className.replace('selected', '').trim();
+                const index = selectedOptions.indexOf(element.textContent.trim());
+                if (index !== -1) {
+                    selectedOptions.splice(index, 1);
+                }
+            }
+
+        }
+
+        var STARTDATE = [];
+        var ENDDATE = [];
+        var PERIOD = [];
+
+        function generatePayPeriods(periodsPerMonth) {
+            const startDateInput = document.getElementById('startDate');
+            const startDate = new Date(startDateInput.value);
+            const payPeriodsSelect = document.getElementById('payPeriodsSelect');
+            const payPeriodsContainer = document.getElementById('payPeriodsContainer');
+
+            payPeriodsSelect.innerHTML = '';
+            payPeriodsContainer.innerHTML = '';
+
+            const months = [
+                'January', 'February', 'March', 'April',
+                'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'
+            ];
+
+            // เคลียร์ข้อมูลในอาร์เรย์เดิมหากมีการเปลี่ยนเงื่อนไข
+            STARTDATE = [];
+            ENDDATE = [];
+
+            for (let i = 0; i < 12; i++) {
+                const monthStartDate = new Date(startDate);
+                monthStartDate.setMonth(startDate.getMonth() + i);
+
+                let monthEndDate; // ประกาศตัวแปร monthEndDate ที่นี่เพื่อให้สามารถใช้งานได้ในทุกกรณี
+
+                if (periodsPerMonth === 2) {
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งแรก (วันที่ 1 - วันที่ 15)
+                    const firstPayPeriodStartDate = new Date(monthStartDate);
+                    const firstPayPeriodEndDate = new Date(monthStartDate);
+                    firstPayPeriodEndDate.setDate(15);
+
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งที่สอง (วันที่ 16 - วันสุดท้ายของเดือน)
+                    const secondPayPeriodStartDate = new Date(monthStartDate);
+                    const lastDayOfMonth = new Date(monthStartDate.getFullYear(), monthStartDate.getMonth() + 1, 0);
+                    monthEndDate = new Date(lastDayOfMonth); // เก็บค่าในตัวแปร monthEndDate
+                    secondPayPeriodStartDate.setDate(16);
+                    const secondPayPeriodEndDate = new Date(monthEndDate); // ใช้ตัวแปร monthEndDate ที่เก็บค่าไว้
+
+                    // เพิ่มตัวเลือกใน select element สำหรับเลือกช่วงเวลาการจ่ายเงินเดือน
+                    const payPeriodOption1 = document.createElement('option');
+                    const payPeriodText1 = `${months[firstPayPeriodStartDate.getMonth()]} ${firstPayPeriodStartDate.getDate()} - ${months[firstPayPeriodEndDate.getMonth()]} ${firstPayPeriodEndDate.getDate()}`;
+                    payPeriodOption1.text = `Pay Period ${i + 1} (1st): ${payPeriodText1}`;
+                    payPeriodsSelect.add(payPeriodOption1);
+
+                    const payPeriodOption2 = document.createElement('option');
+                    const payPeriodText2 = `${months[secondPayPeriodStartDate.getMonth()]} ${secondPayPeriodStartDate.getDate()} - ${months[secondPayPeriodEndDate.getMonth()]} ${secondPayPeriodEndDate.getDate()}`;
+                    payPeriodOption2.text = `Pay Period ${i + 1} (2nd): ${payPeriodText2}`;
+                    payPeriodsSelect.add(payPeriodOption2);
+
+                    STARTDATE.push(firstPayPeriodStartDate.getTime());
+                    STARTDATE.push(secondPayPeriodStartDate.getTime());
+
+                    PERIOD.push(firstPayPeriodStartDate.getTime());
+                    PERIOD.push(secondPayPeriodStartDate.getTime());
+
+                    ENDDATE.push(firstPayPeriodEndDate.getTime());
+                    ENDDATE.push(secondPayPeriodEndDate.getTime());
+
+
+                } else if (periodsPerMonth === 4) {
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งแรก (วันที่ 1 - วันที่ 7)
+                    const firstPayPeriodStartDate = new Date(monthStartDate);
+                    const firstPayPeriodEndDate = new Date(monthStartDate);
+                    firstPayPeriodEndDate.setDate(7);
+
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งที่สอง (วันที่ 8 - วันที่ 14)
+                    const secondPayPeriodStartDate = new Date(monthStartDate);
+                    secondPayPeriodStartDate.setDate(8);
+                    const secondPayPeriodEndDate = new Date(monthStartDate);
+                    secondPayPeriodEndDate.setDate(14);
+
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งที่สาม (วันที่ 15 - วันที่ 21)
+                    const thirdPayPeriodStartDate = new Date(monthStartDate);
+                    thirdPayPeriodStartDate.setDate(15);
+                    const thirdPayPeriodEndDate = new Date(monthStartDate);
+                    thirdPayPeriodEndDate.setDate(21);
+
+                    // สร้างช่วงเวลาการจ่ายเงินเดือนครั้งที่สี่ (วันที่ 22 - วันสุดท้ายของเดือน)
+                    const fourthPayPeriodStartDate = new Date(monthStartDate);
+                    fourthPayPeriodStartDate.setDate(22);
+                    const lastDayOfMonth = new Date(monthStartDate.getFullYear(), monthStartDate.getMonth() + 1, 0);
+                    monthEndDate = new Date(lastDayOfMonth); // เก็บค่าในตัวแปร monthEndDate
+                    const fourthPayPeriodEndDate = new Date(monthEndDate); // ใช้ตัวแปร monthEndDate ที่เก็บค่าไว้
+
+                    // เพิ่มตัวเลือกใน select element สำหรับเลือกช่วงเวลาการจ่ายเงินเดือน
+                    const payPeriodOption1 = document.createElement('option');
+                    const payPeriodText1 = `${months[firstPayPeriodStartDate.getMonth()]} ${firstPayPeriodStartDate.getDate()} - ${months[firstPayPeriodEndDate.getMonth()]} ${firstPayPeriodEndDate.getDate()}`;
+                    payPeriodOption1.text = `Pay Period ${i + 1} (1st): ${payPeriodText1}`;
+                    payPeriodsSelect.add(payPeriodOption1);
+
+                    const payPeriodOption2 = document.createElement('option');
+                    const payPeriodText2 = `${months[secondPayPeriodStartDate.getMonth()]} ${secondPayPeriodStartDate.getDate()} - ${months[secondPayPeriodEndDate.getMonth()]} ${secondPayPeriodEndDate.getDate()}`;
+                    payPeriodOption2.text = `Pay Period ${i + 1} (2nd): ${payPeriodText2}`;
+                    payPeriodsSelect.add(payPeriodOption2);
+
+                    const payPeriodOption3 = document.createElement('option');
+                    const payPeriodText3 = `${months[thirdPayPeriodStartDate.getMonth()]} ${thirdPayPeriodStartDate.getDate()} - ${months[thirdPayPeriodEndDate.getMonth()]} ${thirdPayPeriodEndDate.getDate()}`;
+                    payPeriodOption3.text = `Pay Period ${i + 1} (3rd): ${payPeriodText3}`;
+                    payPeriodsSelect.add(payPeriodOption3);
+
+                    const payPeriodOption4 = document.createElement('option');
+                    const payPeriodText4 = `${months[fourthPayPeriodStartDate.getMonth()]} ${fourthPayPeriodStartDate.getDate()} - ${months[fourthPayPeriodEndDate.getMonth()]} ${fourthPayPeriodEndDate.getDate()}`;
+                    payPeriodOption4.text = `Pay Period ${i + 1} (4th): ${payPeriodText4}`;
+                    payPeriodsSelect.add(payPeriodOption4);
+
+                    STARTDATE.push(firstPayPeriodStartDate.getTime());
+                    STARTDATE.push(secondPayPeriodStartDate.getTime());
+                    STARTDATE.push(thirdPayPeriodStartDate.getTime());
+                    STARTDATE.push(fourthPayPeriodStartDate.getTime());
+
+                    ENDDATE.push(firstPayPeriodEndDate.getTime());
+                    ENDDATE.push(secondPayPeriodEndDate.getTime());
+                    ENDDATE.push(thirdPayPeriodEndDate.getTime());
+                    ENDDATE.push(fourthPayPeriodEndDate.getTime());
+
+                } else {
+                    // ส่วนอื่น ๆ ของโค้ดที่เหมือนเดิม
+                    monthEndDate = new Date(monthStartDate);
+                    monthEndDate.setMonth(monthStartDate.getMonth() + periodsPerMonth);
+                    monthEndDate.setDate(monthEndDate.getDate() - 1);
+
+                    const payPeriodOption = document.createElement('option');
+                    const payPeriodText = `${months[monthStartDate.getMonth()]} ${monthStartDate.getDate()} - ${months[monthEndDate.getMonth()]} ${monthEndDate.getDate()}`;
+                    payPeriodOption.text = `Pay Period ${i + 1}: ${payPeriodText}`;
+                    payPeriodsSelect.add(payPeriodOption);
+                }
+
+                showAdditionalData(periodsPerMonth);
+
+                STARTDATE.push(monthStartDate.getTime());
+                ENDDATE.push(monthEndDate.getTime());
+
+            }
+        }
+
+        function showAdditionalData(periodsPerMonth) {
+            const additionalDataContainer = document.getElementById('additionalDataContainer');
+            additionalDataContainer.innerHTML = '';
+
+            const dataElement = document.createElement('div');
+            dataElement.className = 'additional-data';
+
+            // สร้างข้อมูลเพิ่มเติมที่แตกต่างกันตาม periodsPerMonth ด้วย if-else
+            if (periodsPerMonth === 1) {
+                dataElement.innerHTML = `
+                    <h4>การจ่ายเงินเดือน</h4>
+                    <div style="line-height: 45px;">
+                        <input type="radio" name="options" value="first-day" onclick="handleOptionSelect()"> วันที่หนึ่งของเดือน
+                        <br>
+                        <input type="radio" name="options" value="last-day" onclick="handleOptionSelect()"> วันสุดท้ายของเดือน
+                        <br>
+                        <input type="radio" name="options" value="custom-day" onclick="handleOptionSelect()"> เลือกวันเอง 
+                        <br>
+                        <div id="customDayContainer"></div>
+                    </div>
+                `;
+            } else if (periodsPerMonth === 2) {
+                dataElement.innerHTML = `
+                <h3>เลือกงวด</h3>
+                <div style="display:flex; gap: 10px;">
+                    <div style="display:flex; gap: 10px;">
+                        <input type="checkbox" name="payPeriod" value="1" checked disabled>
+                        <p>วันที่ 1</p>
+                    </div>
+                    <div style="display:flex; gap: 10px;">
+                        <input type="checkbox" name="payPeriod" value="16" checked disabled>
+                        <p>วันที่ 16</p>
+                    </div>
+                </div>
+                `;
+            } else if (periodsPerMonth === 4) {
+                dataElement.innerHTML = `
+
+                <div style="display: flex;">
+                    <div class="daySelect" onclick="selectDay('Monday')">จ</div>
+                    <div class="daySelect" onclick="selectDay('Tuesday')">อ</div>
+                    <div class="daySelect" onclick="selectDay('Wednesday')">พ</div>
+                    <div class="daySelect" onclick="selectDay('Thursday')">พฤ</div>
+                    <div class="daySelect" onclick="selectDay('Friday')">ศ</div>
+                    <div class="daySelect" onclick="selectDay('Saturday')">ส</div>
+                    <div class="daySelect" onclick="selectDay('Sunday')">อ</div>
+                </div>
+                
+                <p>จ่ายเงินทุกๆวัน: <span id="selectedDay">None</span></p>
+                
+                `;
+            } else {
+                dataElement.innerHTML = '<p>ไม่พบข้อมูลเพิ่มเติมสำหรับระบบที่เลือก</p>';
+            }
+
+            additionalDataContainer.appendChild(dataElement);
+        }
+
+        function selectDay(day) {
+            const selectedDayElement = document.getElementById('selectedDay');
+            selectedDayElement.textContent = day;
+
+            // Log all days and dates of the selected day in the current year
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const selectedDayIndex = daysOfWeek.indexOf(day);
+
+            if (selectedDayIndex !== -1) {
+                const startDate = new Date(currentYear, 0, 1); // January 1st of the current year
+                const endDate = new Date(currentYear + 1, 0, 0); // December 31st of the current year
+
+                let currentDateLoop = startDate;
+                PERIOD = [];
+                while (currentDateLoop <= endDate) {
+                    if (currentDateLoop.getDay() === selectedDayIndex) {
+                        const timestamp = currentDateLoop.getTime(); // Get the timestamp in milliseconds
+                        console.log(`${day}, ${currentDateLoop.toDateString()}, Timestamp: ${timestamp}`);
+                        PERIOD.push(timestamp);
+                    }
+                    currentDateLoop.setDate(currentDateLoop.getDate() + 1); // Move to the next day
+                }
+            } else {
+                console.log('Invalid day selected.');
+            }
+        }
+
+        function handleOptionSelect() {
+            const customDayContainer = document.getElementById('customDayContainer');
+            const checkedOption = document.querySelector('input[name="options"]:checked');
+
+            if (checkedOption) {
+                if (checkedOption.value === 'custom-day') {
+                    customDayContainer.innerHTML = `
+                    <div class="cus-day">
+                        <p>เลือกวันที่: </p>
+                        <input type="number" id="dayInput" min="1" max="31">
+                    </div>
+                    <div class="cus-day">
+                        <input type="checkbox" id="isWeekend" >
+                        <p>หากวันจ่ายเงินตรงกับวันหยุด พนักงานจะได้รับเงินในวันก่อนหน้า: </p>
+                    </div>
+                `;
+
+                    const dayInput = document.getElementById('dayInput');
+                    dayInput.addEventListener('change', handleTimestamp);
+
+                } else {
+                    customDayContainer.innerHTML = ''; // Clear the content if the selected option is not "custom-day"
+                }
+
+                const year = new Date().getFullYear();
+                const months = [
+                    'January', 'February', 'March', 'April',
+                    'May', 'June', 'July', 'August',
+                    'September', 'October', 'November', 'December'
+                ];
+
+                PERIOD = [];
+
+                for (let month = 0; month < months.length; month++) {
+
+                    const firstDayOfMonth = new Date(year, month, 1);
+                    const lastDayOfMonth = new Date(year, month + 1, 0);
+                    const timestampFirstDay = firstDayOfMonth.getTime();
+                    const timestampLastDay = lastDayOfMonth.getTime();
+
+                    if (checkedOption.value === 'last-day') {
+                        console.log(`Timestamp for the last day of ${months[month]}: ${timestampLastDay}`);
+                        PERIOD.push(timestampLastDay)
+                    } else if (checkedOption.value === 'first-day') {
+                        console.log(`Timestamp for the first day of ${months[month]}: ${timestampFirstDay}`);
+                        PERIOD.push(timestampFirstDay)
+                    }
+                }
+            }
+        }
+
+        function handleTimestamp() {
+            const year = new Date().getFullYear();
+            const day = parseInt(document.getElementById('dayInput').value); // นำค่าวันที่ที่ผู้ใช้เลือกมาแปลงเป็นตัวเลข
+
+            const months = [
+                'January', 'February', 'March', 'April',
+                'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'
+            ];
+
+            const timestampsByMonth = []; // สร้างตัวแปรเก็บ Timestamp ของแต่ละเดือน
+            const payPeriods = months.length; // ตัวแปรที่เก็บจำนวนงวดการจ่ายเงินเดือน
+
+            // ตรวจสอบค่าของ checkbox เพื่อกำหนดค่าของ isWeekend
+            const isWeekendCheckbox = document.getElementById('isWeekend');
+            const isWeekend = isWeekendCheckbox.checked;
+
+
+
+            for (let month = 0; month < months.length; month++) {
+                const timestamp = new Date(year, month, day).getTime(); // ใช้ Date เพื่อแปลงวันที่ให้เป็น Timestamp
+
+                // ตรวจสอบว่าถ้า Timestamp ตรงกับวันเสาร์หรืออาทิตย์ให้เพิ่มค่า Timestamp ให้เป็นวันศุกร์ก่อนหน้า
+                if (isWeekend) {
+                    const date = new Date(timestamp);
+                    const dayOfWeek = date.getDay();
+                    if (dayOfWeek === 0) { // ถ้าเป็นวันอาทิตย์ (Sunday)
+                        date.setDate(date.getDate() - 2); // ลดวันที่ลง 2 วันเพื่อให้กลับไปเป็นวันศุกร์ก่อนหน้า
+                    } else if (dayOfWeek === 6) { // ถ้าเป็นวันเสาร์ (Saturday)
+                        date.setDate(date.getDate() - 1); // ลดวันที่ลง 1 วันเพื่อให้กลับไปเป็นวันศุกร์ก่อนหน้า
+                    }
+                    timestampsByMonth.push(date.getTime());
+                } else {
+                    timestampsByMonth.push(timestamp);
+                }
+            }
+
+            PERIOD = [];
+            for (let month = 0; month < months.length; month++) {
+                console.log(`${months[month]}: ${timestampsByMonth[month]} (${month + 1})`);
+                PERIOD.push(timestampsByMonth[month]);
+            }
+
+            console.log(`จำนวนงวดการจ่ายเงินเดือน: ${payPeriods}`);
+        }
+
+        function onStartDateChanged() {
+            generatePayPeriods(1);
+        }
+
+        const startDateInput = document.getElementById('startDate');
+        startDateInput.addEventListener('change', onStartDateChanged);
+        generatePayPeriods(1)
+
+
+        console.log(selectedOptions);
+        console.log('START', STARTDATE);
+        console.log('END', ENDDATE);
+        console.log('PERIOD', PERIOD);
+
+
+        function sendPeriod() {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "token": token,
+                "payType": selectedOptions,
+                "payDate": PERIOD,
+                "startDate": STARTDATE,
+                "endDate": ENDDATE
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(ENDPOINT + "api/payPeriod", requestOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(error => {
+                    console.log('error', error)
+                });     
+        }
+    </script>
+</body>
+
+</html>

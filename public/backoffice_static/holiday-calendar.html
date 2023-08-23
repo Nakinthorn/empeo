@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580">
+
+    <title>ปฏิทินวันหยุด</title>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Swal2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- This css font  -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+        rel="stylesheet">
+
+    <script src="config.js"></script>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .holiday-body {
+        margin-left: 5vw;
+        padding: 20px;
+    }
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #009688;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009688;
+    }
+
+    .title-box {
+        width: 200px;
+        height: 60px;
+        border: #009688 1px solid;
+        border-radius: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .dot-img {
+        width: 30px;
+        padding-bottom: 50px;
+        cursor: pointer;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Style the modal content */
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .btn-closed {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .input-overlay {
+        width: 100%;
+        height: 30px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid grey;
+    }
+
+    .btn-add-category {
+        width: 120px;
+        height: 40px;
+        background-color: #009688;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn-cancel-category {
+        width: 120px;
+        height: 40px;
+        background: none;
+        border: 1px solid #009688;
+        border-radius: 10px;
+        color: #009688;
+        cursor: pointer;
+    }
+
+    .edit-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .edit-modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    .delete-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .delete-modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    .button-container {
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .header-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .add-btn-calendar {
+        width: 170px;
+        height: 60px;
+        background: none;
+        border-radius: 13px;
+        border: #009688 1px solid;
+        color: #009688;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 17px;
+    }
+
+    .em-btn {
+        width: 170px;
+        height: 60px;
+        background: #009688;
+        border-radius: 13px;
+        border: #009688 1px solid;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 17px;
+    }
+
+    .calendar-holiday-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .calendar-holiday-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        text-align: center;
+    }
+
+    .add-name-calendar {
+        width: 200px;
+        padding: 10px;
+        border: solid 1px #009688;
+        border-radius: 10px;
+    }
+
+
+    .overlay-holiday-update {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .overlay-content-holiday-update {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .btn-container {
+        text-align: center;
+    }
+
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .container {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        font-size: 1.5rem;
+        user-select: none;
+    }
+
+    .checkmark {
+        --clr: #009688;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 1.3em;
+        width: 1.3em;
+        background-color: #ccc;
+        border-radius: 50%;
+        transition: 300ms;
+    }
+
+    .container input:checked~.checkmark {
+        background-color: var(--clr);
+        border-radius: .5rem;
+        animation: pulse 500ms ease-in-out;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    .container .checkmark:after {
+        left: 0.45em;
+        top: 0.25em;
+        width: 0.25em;
+        height: 0.5em;
+        border: solid #E0E0E2;
+        border-width: 0 0.15em 0.15em 0;
+        transform: rotate(45deg);
+    }
+
+    .change-delete {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .changeName {
+        width: 150px;
+        padding: 10px;
+        border: 1px solid grey;
+        border-radius: 10px;
+    }
+
+    .change-delete img {
+        width: 30px;
+        height: 30px;
+    }
+</style>
+
+<body style="overflow: hidden;">
+    <script>
+        $.get("./menu-top.html", function (data) {
+            $("#sidebar-tabtop").html(data);
+        });
+    </script>
+    <script>
+        $.get("./menu-left.html", function (data) {
+            $("#sidebar-tableft").html(data);
+        });
+    </script>
+
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+        <div id="sidebar-tabtop">
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <div class="holiday-body">
+        <div class="header-field">
+            <h2>ปฏิทินวันหยุด</h2>
+            <div>
+                <button class="em-btn"
+                    onclick="window.location.href = 'employee-in-calendar.html'">พนักงานในปฏิทิน</button>
+                <button class="add-btn-calendar" onclick="addNewCalendarOverlay();">เพิ่มปฏิทิน</button>
+            </div>
+
+        </div>
+
+        <br>
+        <hr>
+
+        <div id="holidayTablesContainer" style=" overflow-y: scroll; height: 650px;">
+
+        </div>
+    </div>
+
+    <div id="addCalendarModal" class="calendar-holiday-modal">
+        <div class="calendar-holiday-content">
+            <h2>เพิ่มปฏิทิน</h2>
+            <p>กรุณากรอกชื่อปฏิทิน</p>
+            <br>
+            <input class="add-name-calendar" type="text" id="newNameCalendar" placeholder="ชื่อปฏิทิน...">
+            <div class="button-container">
+                <button class="btn-cancel-category" onclick="closeModalCalendar()">Close</button>
+                <button class="btn-add-category" onclick="newCalendarHoliday()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <button class="btn-closed" onclick="closeModal()">X</button>
+            <h2 id="modalHeader">Modal Header</h2>
+            <div class="change-delete">
+                <input class="changeName" type="text" id="titleInput" placeholder="Enter title">
+                <div>
+                    <img style="cursor: pointer;" src="../backoffice_static/symbol_hrm/pen.png" onclick="closeModal(); openModalEdit();">
+                    <img style="cursor: pointer;" src="../backoffice_static/symbol_hrm/trash.png" onclick="closeModal(); openModalDelete();">
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <h3>เพิ่มวันหยุด</h3>
+
+            <div style="padding: 5px;">
+                <p>Day</p>
+                <input type="date" class="input-overlay" id="date-input">
+            </div>
+
+            <div style="padding: 5px;">
+                <p>Holiday Name TH</p>
+                <input type="text" class="input-overlay" id="holiday-th" onkeypress="return isThaiCharacter(event)">
+            </div>
+            <div style="padding: 5px;">
+                <p>Holiday Name EN</p>
+                <input type="text" class="input-overlay" id="holiday-en" onkeypress="return isEnglishCharacter(event)">
+            </div>
+
+            <div style="padding: 5px;">
+                <p style="color: grey;">ประเภทวันหยุด</p>
+                <form id="holiday-type-form">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayType" value="traditional_holiday">
+                        <p>Traditional Holiday</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayType" value="company_holiday">
+                        <p>Company Holiday</p>
+                    </div>
+                </form>
+            </div>
+
+            <div style="padding: 5px;">
+                <p style="color: grey;">เปิดใช้งานในปฏิทิน*</p>
+                <form id="holiday-status-form">
+
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayStatus" value="true">
+                        <p>ใช้</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayStatus" value="false">
+                        <p>ไม่ใช้</p>
+                    </div>
+                </form>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn-cancel-category" onclick="closeModal();">Cancel</button>
+                <button class="btn-add-category" onclick="addHoliday();">Create</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myEditModal" class="edit-modal">
+        <div class="edit-modal-content">
+            <h2>เปลี่ยนชื่อวันหยุด</h2>
+            <p id="name-change">Are you sure you want to proceed?</p>
+            <div class="button-container">
+                <button class="btn-cancel-category" onclick="closeModalEdit()">Close</button>
+                <button class="btn-add-category" onclick="updateHolidayTitle()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="myDeleteModal" class="delete-modal">
+        <div class="delete-modal-content">
+            <h2>ลบวันหยุด</h2>
+            <p id="name-delete">Are you sure you want to proceed?</p>
+            <div class="button-container">
+                <button class="btn-cancel-category" onclick="closeModalDelete()">Close</button>
+                <button class="btn-add-category" onclick="deleteHoliday()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editHolidayOverlay" class="overlay-holiday-update">
+        <div class="overlay-content-holiday-update">
+            <h2>แก้ไขวันหยุด</h2>
+            <hr>
+
+            <div style="padding: 10px;">
+                <p>วัน</p>
+                <input type="date" class="input-overlay" id="date-input-update">
+            </div>
+
+            <div style="padding: 10px;">
+                <p>Holiday Name TH</p>
+                <input type="text" class="input-overlay" id="holiday-th-update"
+                    onkeypress="return isThaiCharacter(event)">
+            </div>
+            <div style="padding: 10px;">
+                <p>Holiday Name EN</p>
+                <input type="text" class="input-overlay" id="holiday-en-update"
+                    onkeypress="return isEnglishCharacter(event)">
+            </div>
+
+            <div style="padding: 20px;">
+                <p>Holiday Type</p>
+                <form id="holiday-type-form-update">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayType" value="traditional_holiday">
+                        <p>Traditional Holiday</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayType" value="company_holiday">
+                        <p>Company Holiday</p>
+                    </div>
+                </form>
+            </div>
+
+            <div style="padding: 20px;">
+                <p>Holiday Status</p>
+                <form id="holiday-status-form-update">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayStatus" value="true">
+                        <p>ใช้</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="radio" name="holidayStatus" value="false">
+                        <p>ไม่ใช้</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn-cancel-category" onclick="editCloseHolidayOverlay()">Close</button>
+                <button id="update-button" class="btn-add-category">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let ENDPOINT = window.API_URL;
+
+        const token = localStorage.getItem('token')
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "token": token
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch(ENDPOINT + "api/readHoliday", requestOptions)
+            .then(response => {
+                return response.json()
+            })
+            .then(result => {
+
+                const holidayTables = {};
+
+                result.holiday.forEach(holiday => {
+
+                    if (!holidayTables[holiday.title_holiday]) {
+                        holidayTables[holiday.title_holiday] = [];
+                    }
+                    holidayTables[holiday.title_holiday].push(holiday);
+                });
+
+                const holidayTablesContainer = document.querySelector("#holidayTablesContainer");
+
+
+                for (const titleHoliday in holidayTables) {
+
+                    let countHoliday = 0;
+
+                    let tbodyContent = '';
+
+                    holidayTables[titleHoliday].forEach(holiday => {
+
+                        countHoliday++;
+
+                        const isChecked = holiday.holiday_status ? 'checked' : '';
+
+                        const statusDisplay = holiday.holiday_status ? 'ใช้' : 'ไม่ใช้';
+
+                        tbodyContent += `
+                        <tr class="active-row">
+                            <td>${new Date(parseInt(holiday.date)).toLocaleDateString()}</td>
+                            <td>${holiday.holiday_name_th}</td>
+                            <td>${holiday.holiday_name_en}</td>
+                            <td>${holiday.holiday_type}</td>
+                            <td>
+                                <label class="container">
+                                    <input type="checkbox" ${isChecked} disabled>
+                                    <div class="checkmark"></div>
+                                </label>
+                            </td>
+                            <td>
+                                <div onclick="editHolidayOverlay(
+                                    ${holiday.id},
+                                    ${holiday.date},
+                                    '${holiday.holiday_name_th}',
+                                    '${holiday.holiday_name_en}',
+                                    '${holiday.holiday_type}',
+                                    '${holiday.holiday_status}'
+                                    );">
+                                    <img style="cursor: pointer;" src="./symbol_hrm/edit.png" width="30px">
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    });
+
+                    const tableHtml = `
+                        <br>
+                        <div class="title-box">
+                            <div style="display: flex; align-items: center; gap: 10px">
+                                <img src="../backoffice_static/symbol_hrm/calendar.png" width=30>    
+                                <div>
+                                    <h3>${titleHoliday}</h3>
+                                    <p>วันหยุด ${countHoliday} วัน</p>
+                                </div>
+                            </div>
+                            
+                            <img class="dot-img" src="../backoffice_static/symbol_hrm/dot.png" onclick="openModal('${titleHoliday}')">    
+                        </div>
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <td style="width: 15%;">Day</td>
+                                    <td>Holiday Name TH</td>
+                                    <td>Holiday Name EN</td>
+                                    <td>Holiday Type</td>
+                                    <td>Active</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>${tbodyContent}</tbody>
+                        </table>
+                        <br>
+                        <hr>
+                    `;
+                    holidayTablesContainer.innerHTML += tableHtml;
+                }
+            })
+            .catch(error => {
+                console.log('error', error);
+            });
+
+        function openModal(titleHoliday) {
+            var modal = document.getElementById('myModal');
+            var modalHeader = document.getElementById('modalHeader');
+            var titleInput = document.getElementById('titleInput');
+
+            modalHeader.innerText = titleHoliday;
+            titleInput.value = titleHoliday;
+
+            modal.setAttribute('data-holiday-id', titleHoliday);
+
+            modal.style.display = 'block';
+        }
+
+        function deleteHoliday() {
+            var modal = document.getElementById('myModal');
+            var titleHoliday = modal.getAttribute('data-holiday-id');
+            console.log('Deleting holiday with title:', titleHoliday);
+
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "token": token,
+                "holidayTitle": titleHoliday
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(ENDPOINT + "api/deleteHolidayByTitle", requestOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(result => {
+                    console.log(result)
+                    if (result.code === 200) {
+                        Swal.fire(
+                            'Delete',
+                            '',
+                            'success'
+                        )
+                        location.reload()
+                    }
+                })
+                .catch(error => {
+                    console.log('error', error)
+                });
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        function addHoliday() {
+
+            let holidayTitle = document.getElementById('titleInput').value;
+
+            let dateInput = document.getElementById('date-input').value;
+            let date = Date.parse(dateInput);
+            let holidayTH = document.getElementById('holiday-th').value;
+            let holidayEN = document.getElementById('holiday-en').value;
+            var holidayTypeForm = document.getElementById('holiday-type-form');
+            var holidayStatusForm = document.getElementById('holiday-status-form');
+            var selectedHolidayType = holidayTypeForm.elements['holidayType'].value;
+            var selectedHolidayStatus = holidayStatusForm.elements['holidayStatus'].value;
+
+            switch (true) {
+                case !dateInput:
+                    // alert('Please enter a valid date.');
+                    Swal.fire(
+                        'Please enter a valid date.',
+                        '',
+                        'error'
+                    )
+                    throw new Error('Please enter a valid date.');
+
+                case isNaN(Date.parse(dateInput)):
+                    // alert('Invalid date format. Please enter a valid date.');
+                    Swal.fire(
+                        'Invalid date format. Please enter a valid date.',
+                        '',
+                        'error'
+                    )
+                    throw new Error('Invalid date format. Please enter a valid date.');
+
+                case !holidayTH:
+                    Swal.fire(
+                        'Please enter the holiday name in Thai.',
+                        '',
+                        'error'
+                    )
+                    // alert('Please enter the holiday name in Thai.');
+                    throw new Error('Please enter the holiday name in Thai.');
+
+                case !holidayEN:
+                    // alert('Please enter the holiday name in English.');
+                    Swal.fire(
+                        'Please enter the holiday name in English.',
+                        '',
+                        'error'
+                    )
+                    throw new Error('Please enter the holiday name in English.');
+
+                case !selectedHolidayType:
+                    // alert('Please select the holiday type.');
+                    Swal.fire(
+                        'Please select the holiday type.',
+                        '',
+                        'error'
+                    )
+                    throw new Error('Please select the holiday type.');
+
+                case !selectedHolidayStatus:
+                    // alert('Please select the holiday status.');
+                    Swal.fire(
+                        'Please select the holiday status.',
+                        '',
+                        'error'
+                    )
+                    throw new Error('Please select the holiday status.');
+
+                default:
+                    break;
+            }
+
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "token": token,
+                "day": date,
+                "holidayTH": holidayTH,
+                "holidayEN": holidayEN,
+                "holidayType": selectedHolidayType,
+                "holidayStatus": selectedHolidayStatus,
+                "holidayTitle": holidayTitle
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(ENDPOINT + "api/addHoliday", requestOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(result => {
+                    console.log(result)
+                    if (result.code === 200) {
+                        // alert('Success')
+                        Swal.fire(
+                            'Success',
+                            '',
+                            'success'
+                        )
+                        location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.log('error', error)
+                });
+        }
+
+        function isThaiCharacter(event) {
+            var charCode = event.charCode || event.keyCode;
+            var charTyped = String.fromCharCode(charCode);
+            var thaiPattern = /[\u0E00-\u0E7F]/;
+
+            if (!thaiPattern.test(charTyped)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        function isEnglishCharacter(event) {
+            var charCode = event.charCode || event.keyCode;
+            var charTyped = String.fromCharCode(charCode);
+            var englishPattern = /^[a-zA-Z\s]*$/;
+
+            if (!englishPattern.test(charTyped)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        function updateHolidayTitle() {
+            let oldName = document.getElementById('modalHeader').textContent;
+            let newName = document.getElementById('titleInput').value;
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "token": token,
+                "oldNameTitle": oldName,
+                "newNameTitle": newName
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(ENDPOINT + "api/updateHolidayTitle", requestOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(result => {
+                    console.log(result)
+                    if (result.code === 200) {
+                        // alert('update success')
+                        Swal.fire(
+                            'Update',
+                            '',
+                            'success'
+                        )
+                        location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.log('error', error)
+                });
+        }
+
+        function openModalEdit() {
+            var titleInput = document.getElementById('titleInput').value;
+
+            var nameChange = document.getElementById('name-change');
+            nameChange.textContent = `คุณต้องการเปลี่ยนชื่อเป็น "${titleInput}" ใช่หรือไม่?`;
+
+            console.log(titleInput);
+            const modal = document.getElementById('myEditModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModalEdit() {
+            const modal = document.getElementById('myEditModal');
+            modal.style.display = 'none';
+        }
+
+        function openModalDelete() {
+            var titleInput = document.getElementById('modalHeader').textContent;
+
+            var nameDelete = document.getElementById('name-delete');
+            nameDelete.textContent = `คุณต้องการลบ "${titleInput}" ใช่หรือไม่?`;
+
+            console.log(titleInput);
+            const modal = document.getElementById('myDeleteModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModalDelete() {
+            const modal = document.getElementById('myDeleteModal');
+            modal.style.display = 'none';
+        }
+
+        function addNewCalendarOverlay() {
+            const modal = document.getElementById('addCalendarModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModalCalendar() {
+            const modal = document.getElementById('addCalendarModal');
+            modal.style.display = 'none';
+        }
+
+        function newCalendarHoliday() {
+            const newNameCalendar = document.getElementById('newNameCalendar').value;
+
+            if (!newNameCalendar.trim()) {
+                // alert('Error: Please enter a valid holiday name.');
+                Swal.fire(
+                            'Error: Please enter a valid holiday name.',
+                            '',
+                            'error'
+                        )
+                return;
+            }
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "token": token,
+                "title_holiday": newNameCalendar
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(ENDPOINT + "api/copyHoliday", requestOptions)
+                .then(response => {
+                    return response.json();
+                })
+                .then(result => {
+                    console.log(result)
+                    if (result.code === 200) {
+                        // alert('Add success!')
+                        Swal.fire(
+                            'Add success!',
+                            '',
+                            'success'
+                        )
+                        setTimeout(()=>{
+                            location.reload();
+                        },3000)
+                       
+                    }
+                })
+                .catch(error => {
+                    Swal.fire(
+                            'Something when wrong !',
+                            '',
+                            'error'
+                        )
+                    console.log('error', error)
+                });
+        }
+
+        function editHolidayOverlay(id, date, holidayTH, holidayEN, holidayType, holidayStatus) {
+
+            console.log(id, date, holidayTH, holidayEN, holidayType, holidayStatus);
+
+            var dateInput = document.getElementById("date-input-update");
+            dateInput.value = formatDateFromTimestamp(date);
+
+            var holidayTHInput = document.getElementById("holiday-th-update");
+            holidayTHInput.value = holidayTH;
+
+            var holidayENInput = document.getElementById("holiday-en-update");
+            holidayENInput.value = holidayEN;
+
+            var holidayTypeForm = document.getElementById("holiday-type-form-update");
+            var holidayTypeRadios = holidayTypeForm.elements["holidayType"];
+            for (var i = 0; i < holidayTypeRadios.length; i++) {
+                if (holidayTypeRadios[i].value === holidayType) {
+                    holidayTypeRadios[i].checked = true;
+                    break;
+                }
+            }
+            var holidayStatusForm = document.getElementById("holiday-status-form-update");
+            var holidayStatusRadios = holidayStatusForm.elements["holidayStatus"];
+            for (var i = 0; i < holidayStatusRadios.length; i++) {
+                if (holidayStatusRadios[i].value === holidayStatus) {
+                    holidayStatusRadios[i].checked = true;
+                    break;
+                }
+            }
+
+            document.getElementById('update-button').addEventListener('click', function () {
+                var updatedDate = formatTimestampFromDate(dateInput.value);
+                var updatedHolidayTH = holidayTHInput.value;
+                var updatedHolidayEN = holidayENInput.value;
+                var updateHolidayType = holidayTypeForm.elements["holidayType"].value;
+                var updateHolidayStatus = holidayStatusForm.elements["holidayStatus"].value;
+
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                var raw = JSON.stringify({
+                    "token": token,
+                    "id": id,
+                    "date": updatedDate,
+                    "holidayTH": updatedHolidayTH,
+                    "holidayEN": updatedHolidayEN,
+                    "holidayType": updateHolidayType,
+                    "holidayStatus": updateHolidayStatus
+                });
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                };
+
+                fetch(ENDPOINT + "api/updateHoliday", requestOptions)
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(result => {
+                        console.log(result)
+                        if (result.code === 200) {
+                            Swal.fire(
+                            'OK',
+                            '',
+                            'success'
+                        )
+                        setTimeout(()=>{
+                            location.reload();
+                        },3000)
+                            // location.reload();
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            })
+
+            const modal = document.getElementById('editHolidayOverlay');
+            modal.style.display = 'block';
+        }
+
+        function editCloseHolidayOverlay() {
+            const modal = document.getElementById('editHolidayOverlay');
+            modal.style.display = 'none';
+        }
+
+        function formatDateFromTimestamp(timestamp) {
+            var date = new Date(timestamp);
+            var year = date.getFullYear();
+            var month = ("0" + (date.getMonth() + 1)).slice(-2);
+            var day = ("0" + date.getDate()).slice(-2);
+            return year + "-" + month + "-" + day;
+        }
+
+        function formatTimestampFromDate(dateString) {
+            var dateParts = dateString.split("-");
+            var year = parseInt(dateParts[0]);
+            var month = parseInt(dateParts[1]) - 1;
+            var day = parseInt(dateParts[2]);
+            var date = new Date(year, month, day);
+            return date.getTime();
+        }
+    </script>
+</body>
+
+</html>

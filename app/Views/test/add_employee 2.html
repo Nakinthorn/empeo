@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #e1ecf2;
+        }
+
+        .wrapper {
+            margin: 10px;
+        }
+
+        .wrapper .top_navbar {
+            width: calc(100% - 20px);
+            height: 60px;
+            display: flex;
+            position: fixed;
+            top: 10px;
+        }
+
+        .wrapper .top_navbar .hamburger {
+            width: 70px;
+            height: 100%;
+            background: #2e4ead;
+            padding: 15px 17px;
+            border-top-left-radius: 20px;
+            cursor: pointer;
+        }
+
+        .wrapper .top_navbar .hamburger div {
+            width: 35px;
+            height: 4px;
+            background: #92a6e2;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .wrapper .top_navbar .top_menu {
+            width: calc(100% - 70px);
+            height: 100%;
+            background: #fff;
+            border-top-right-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper .top_navbar .top_menu .logo {
+            color: #2e4ead;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .wrapper .top_navbar .top_menu ul {
+            display: flex;
+        }
+
+        .wrapper .top_navbar .top_menu ul li a {
+            display: block;
+            margin: 0 10px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid #2e4ead;
+            border-radius: 50%;
+            color: #2e4ead;
+        }
+
+        .wrapper .top_navbar .top_menu ul li a:hover {
+            background: #4360b5;
+            color: #fff;
+        }
+
+        .wrapper .top_navbar .top_menu ul li a:hover i {
+            color: #fff;
+        }
+
+        .wrapper .sidebar {
+            position: fixed;
+            top: 70px;
+            left: 10px;
+            background: #2e4ead;
+            width: 200px;
+            height: calc(100% - 80px);
+            border-bottom-left-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+            margin-bottom: 1px;
+            color: #92a6e2;
+            white-space: nowrap;
+        }
+
+        .wrapper .sidebar ul li a:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: #92a6e2;
+            display: none;
+        }
+
+        .wrapper .sidebar ul li a span.icon {
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .wrapper .sidebar ul li a span.title {
+            display: inline-block;
+        }
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            background: #4360b5;
+            color: #fff;
+        }
+
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before {
+            display: block;
+        }
+
+        .wrapper .main_container {
+            width: (100% - 200px);
+            margin-top: 70px;
+            margin-left: 200px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper .main_container .item {
+            background: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 22px;
+            height: max-content;
+        }
+
+        .wrapper.collapse .sidebar {
+            width: 70px;
+        }
+
+        .wrapper.collapse .sidebar ul li a {
+            text-align: center;
+        }
+
+        .wrapper.collapse .sidebar ul li a span.icon {
+            margin: 0;
+        }
+
+        .wrapper.collapse .sidebar ul li a span.title {
+            display: none;
+        }
+
+        .wrapper.collapse .main_container {
+            width: (100% - 70px);
+            margin-left: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <div class="wrapper">
+
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+            </div>
+            <div class="top_menu">
+                <div class="logo">
+                    logo
+                </div>
+                <ul>
+                    <li><a href="#">
+                            <i class="fas fa-search"></i>
+                        </a></li>
+                    <li><a href="#">
+                            <i class="fas fa-bell"></i>
+                        </a></li>
+                    <li><a href="#">
+                            <i class="fas fa-user"></i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" class="active">
+                        <span class="icon"><i class="fas fa-book"></i></span>
+                        <span class="title">Manage</span>
+                    </a></li>
+                <li><a href="#">
+                        <span class="icon"><i class="fas fa-file-video"></i></span>
+                        <span class="title">Movies</span>
+                    </a></li>
+                <li><a href="#">
+                        <span class="icon"><i class="fas fa-volleyball-ball"></i></span>
+                        <span class="title">Sports</span>
+                    </a></li>
+                <li><a href="#">
+                        <span class="icon"><i class="fas fa-blog"></i></span>
+                        <span class="title">Blogs</span>
+                    </a></li>
+                <li><a href="#">
+                        <span class="icon"><i class="fas fa-leaf"></i></span>
+                        <span class="title">Nature</span>
+                    </a></li>
+            </ul>
+        </div>
+
+        <div class="main_container">
+            <div class="item">
+                <div class="w-full">
+                    <label for="category" class="block text-gray-700 font-bold mb-2">Select title name:</label>
+                    <div>
+                        <select id="title_name" name="category"
+                            class="block appearance-none w-3/12 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="0" disabled selected >please select </option>
+                            <option value="Mr" >Mr</option>
+                            <option value="Mrs" >Mrs</option>
+                            <option value="Miss" >Miss</option>
+                            <option value="Ms" >Ms</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path
+                                    d="M14.95 6.95l-3.586 3.586L10 12.586l4-4V3h1.95v3.95zM5.05 13.05l3.586-3.586L10 7.414l-4 4v3H5.05v-3.95z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap -mx-3 mb-6 mt-4">
+                    <div class="w-full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
+                            First Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="fname" name="fname" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lname">
+                           Last Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="lname" name="lname" type="text" placeholder="last name" required>
+                    </div>
+                    <div class="w-full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
+                           ID CARD
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="id_card" name="id_card" type="text" placeholder="ID card" required>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lname">
+                           Last Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="lname" name="lname" type="text" placeholder="last name" required>
+                    </div>
+                    <div class="w-full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
+                            First Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="fname" name="fname" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lname">
+                           Last Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="lname" name="lname" type="text" placeholder="last name" required>
+                    </div>
+                    <div class="w-full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
+                            First Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="fname" name="fname" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lname">
+                           Last Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="lname" name="lname" type="text" placeholder="last name" required>
+                    </div>
+                    <div class="w-full px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
+                            First Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="fname" name="fname" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lname">
+                           Last Name
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-white focus:border-gray-500"
+                            id="lname" name="lname" type="text" placeholder="last name" required>
+                    </div>
+                </div>
+                <!-- Add more fields for the rest of the data in the request here -->
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button">
+                        submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./js/dashboard.js"></script>
+<script src="./js/auth.js" ></script>

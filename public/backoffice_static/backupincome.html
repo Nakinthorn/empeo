@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://media.discordapp.net/attachments/457119817376202765/913645251237920798/logopt.png">
+
+
+  <title>HRM</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global.css">
+  <script src="./global.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Swal2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.11/sweetalert2.all.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./global_hrm.css" />
+
+  <!-- Global JS -->
+  <script src='./global_js.js'></script>
+  <script src="config.js"></script>
+  <!-- This css font  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100&display=swap" rel="stylesheet">
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .tapmenu-faq {
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+
+  .tapactive {
+    border-bottom: 3px solid #009688;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+
+  }
+
+  table th {
+    background-color: lightgray;
+    padding: 10px;
+    font-size: 16px;
+    height: 20px;
+  }
+
+  table td {
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    font-size: 14px;
+  }
+
+  /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #d2d2da;
+    border-radius: 3px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked~.checkmark {
+    background-color: orangered;
+    border: 1px solid orangered;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .input_box1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 8px;
+    font-size: 14px;
+    outline: unset;
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border-color: #808080;
+    color: #808080;
+  }
+
+  .box_user1 {
+
+    height: 5vh;
+    border: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .borderuser {
+    border-bottom: 3px solid #F47243;
+  }
+
+  .overlay_increase_income {
+    overflow: hidden;
+    background-image: url(./symbol/alert_green_full_screen_bg.png);
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+  }
+
+  .overlay-slide_increase_income {
+    visibility: hidden;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+  }
+
+  .overlay-slide_increase_income.open {
+    visibility: visible;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .overlay_accoun_information {
+    overflow: hidden;
+    background-image: url(./symbol/alert_green_full_screen_bg.png);
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+  }
+
+  .overlay-slide_accoun_information {
+    visibility: hidden;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+  }
+
+  .overlay-slide_accoun_information.open {
+    visibility: visible;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .overlay_add_account {
+    overflow: hidden;
+    background-image: url(./symbol/alert_green_full_screen_bg.png);
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+  }
+
+  .overlay-slide_add_account {
+    visibility: hidden;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+  }
+
+  .overlay-slide_add_account.open {
+    visibility: visible;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .overlay_add_Deduction {
+    overflow: hidden;
+    background-image: url(./symbol/alert_green_full_screen_bg.png);
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+  }
+
+  .overlay-slide_add_Deduction {
+    visibility: hidden;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+  }
+
+  .overlay-slide_add_Deduction.open {
+    visibility: visible;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .inpu_long {
+    width: 366px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--color_gray_Dark_3);
+  }
+
+  .input_box_status {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 7px;
+    gap: 8px;
+    outline: unset;
+    width: 101%;
+    height: 42px;
+    border-radius: 6px;
+    border: 1px solid var(--color_gray_Dark_3);
+    color: var(--color_gray_Dark_3);
+  }
+
+  .dropdown_arrow_status {
+    height: 45%;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .inputt_long {
+    width: 366px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--color_gray_Dark_3);
+  }
+
+  tr:hover {
+    background-color: #d3d3d378;
+  }
+
+  tr .box:hover {
+    color: #d3d3d378;
+  }
+</style>
+
+<body style="overflow: hidden;">
+  <script>
+    $.get("./menu-top.html", function (data) {
+      $("#sidebar-tabtop").html(data);
+    });
+  </script>
+  <script>
+    $.get("./menu-left.html", function (data) {
+      $("#sidebar-tableft").html(data);
+    });
+  </script>
+  <div style="display: flex;">
+    <div id="sidebar-tableft"></div>
+    <div style="width: calc(100% - 60px);">
+      <div id="sidebar-tabtop">
+      </div>
+
+
+      <div id="blur_bg"
+        style="width: 100%; height: 100%; position: absolute; top: 0; z-index: 2; background-color: rgb(151 151 151 / 20%); backdrop-filter: blur(3px); display: none;">
+      </div>
+      <!-- เพิ่มรายได้ -->
+      <div class="overlay_increase_income overlay-slide_increase_income">
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+          <p style="font-size: 1.5vw;"> เพิ่มรายได้ </p>
+          <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+            onclick="$('.overlay_increase_income').removeClass('open'); $('#blur_bg').css('display','none');">
+        </div>
+        <div style="height: 80%; padding: 0 20px; overflow: scroll; background-color: #fff;">
+          <div style="margin-top: 20px; width: 30%;">
+            <span style="font-size: 14px;">รหัส*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">ชื่อรายได้*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">ชื่อรายได้*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="width: 99% ">
+            <div style="display: flex; align-items: baseline;">
+              <p class="" style="font-size: 14px; margin-top: 20px;">ประเภทเงินได้*</p>
+            </div>
+            <div style="position: relative;">
+              <select id="" class="input_box_status kanit">
+                <option class="kanit font_normal " value="" disabled selected hidden>ทั้งหมด</option>
+                <option value="0">1</option>
+                <option value="0">2</option>
+              </select>
+              <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+            </div>
+          </div>
+          <div style="width: 99% ">
+            <div style="display: flex; align-items: baseline;">
+              <p class="" style="font-size: 14px; margin-top: 20px;">การปัดทศนิยม*</p>
+            </div>
+            <div style="position: relative;">
+              <select id="" class="input_box_status kanit">
+                <option class="kanit font_normal " value="" disabled selected hidden>กรุณาเลือก</option>
+                <option value="0">1</option>
+                <option value="0">2</option>
+              </select>
+              <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style=" font-size: 18px;"> เงื่อนไขการจ่าย </p>
+          </div>
+          <div style="display: flex;align-items: baseline;margin-top: 20px;">
+            <div style="width: 49%; font-size: 14px">
+              <p>รายได้นี้ทำจ่าย</p>
+            </div>
+            <div style="width: 51%;">
+              <div style="position: relative;">
+                <select id="" class="input_box_status kanit">
+                  <option value="" disabled selected hidden>ทุกงวด</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style="display: flex;margin-top: 20px;width: 100%;align-items: center;">
+            <div style="width: 100%; font-size: 14px;">
+              <p>คำนวณตามวันทำงานจริง</p>
+            </div>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="display: flex;justify-content: space-between;width: 100%;align-items:center">
+            <div style="width: 100%; font-size: 14px;">
+              <p>เป็นเงินที่จะจ่ายงวดเดียว</p>
+            </div>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style="font-size: 20px; font-size: 18px;"> เงื่อนไขการคำนวณ </p>
+          </div>
+          <div style="display: flex;align-items: baseline;margin-top: 20px;">
+            <div style="width: 49%;font-size: 14px;">
+              <p>นำไปคำนวนภาษี</p>
+            </div>
+            <div style="width: 51%;">
+              <div style="position: relative;">
+                <select id="" class="input_box_status kanit">
+                  <option value="" disabled selected hidden>คำนวณครั้งเดียว</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <div style="margin-top: 20px; font-size: 14px;">นำรายได้นี้ไปคำนวณกับ</div>
+            <div id="details_tapslipsalary1">
+              <div style="width: 100%; align-items: center;">
+                <label class="container font_normal_1 weight_regular" style="display: flex; margin-top: 20px; ">
+                  <input id="payslipmobile" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;">ประกันสังคม</div>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container font_normal_1 weight_regular" style="display: flex;">
+                  <input id="payslipemail" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;"> กองทุนสำรองเลี้ยงชีพ </div>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container font_normal_1 weight_regular" style="display: flex;">
+                  <input id="payslippaper" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;"> ค่าล่วงเวลา </div>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container font_normal_1 weight_regular" style="display: flex;">
+                  <input id="payslippaper" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;"> หักสายขาดงาน </div>
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+          <div style="align-items: center; display: flex;">
+            <span style="margin-right: 10px;">สถานะใช้งาน</span>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก</div>
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              เพิ่ม</div>
+          </div>
+        </div>
+      </div>
+      <!-- เพิ่มรายได้ END-->
+      <!-- ข้อมูลทางบัญชี -->
+      <div class="overlay_accoun_information overlay-slide_accoun_information">
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+          <p style="font-size: 1.5vw;"> ข้อมูลทางบัญชี </p>
+          <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+            onclick="$('.overlay_accoun_information').removeClass('open'); $('#blur_bg').css('display','none');">
+        </div>
+        <div style="height: 80%; padding: 0 25px; overflow: scroll; background-color: #fff;">
+          <div style="width: 99% ">
+            <div style="display: flex; align-items: baseline;">
+              <p class="" style="margin-top: 16px; margin-bottom: 5px; margin-right: 5px;">ประเภทรหัสบัญชี</p>
+            </div>
+            <div style="position: relative;">
+              <select id="" class="input_box_status kanit">
+                <option value="" disabled selected hidden>กรุณาเลือก</option>
+                <option value="0">1</option>
+                <option value="0">2</option>
+              </select>
+              <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">
+              <div style="margin-top: 20px;">
+                <span style="font-size: 14px;">สำนักงาน</span>
+                <div class="inpu_long" style="width: unset;">
+                  <input id="branch_name" type="text" class="kanit font_normal inputinside_css"
+                    placeholder="กรอกเลขบัญชี">
+                </div>
+              </div>
+            </span>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">โรงงาน</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="กรอกเลขบัญชี">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <div style="display: flex; align-items: center;justify-content: center;width: 200px;">
+              <div onclick="$('.overlay_add_account').addClass('open'); $('#blur_bg').css('display','flex');"
+                style="cursor: pointer; width: 20px; height: 20px;border-radius: 50%; background-color: #F47243;display: flex;align-items: center;justify-content: center;">
+                <p style="color: white;position: relative;bottom: 1px;">+</p>
+              </div>
+              <div style="margin-left: 10px; color: #F47243;">เพิ่มหมวดบัญชี</div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+          <div style="align-items: center; display: flex;"></div>
+          <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก
+            </div>
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              บันทึก
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- เพิ่มรายหัก -->
+      <div class="overlay_add_Deduction overlay-slide_add_Deduction">
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+          <p style="font-size: 1.5vw;"> เพิ่มรายหัก </p>
+          <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+            onclick="$('.overlay_add_Deduction').removeClass('open'); $('#blur_bg').css('display','none');">
+        </div>
+        <div style="height: 80%; padding: 0 20px; overflow: scroll; background-color: #fff;">
+          <div style="margin-top: 20px; width: 30%;">
+            <span style="font-size: 14px;">รหัส*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">ชื่อรายได้*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 14px;">ชื่อรายได้*</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css" placeholder="">
+            </div>
+          </div>
+          <div style="width: 99% ">
+            <div style="display: flex; align-items: baseline;">
+              <p class="" style="font-size: 14px; margin-top: 20px;">ประเภทเงินได้*</p>
+            </div>
+            <div style="position: relative;">
+              <select id="" class="input_box_status kanit">
+                <option class="kanit font_normal " value="" disabled selected hidden>ทั้งหมด</option>
+                <option value="0">1</option>
+                <option value="0">2</option>
+              </select>
+              <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+            </div>
+          </div>
+          <div style="width: 99% ">
+            <div style="display: flex; align-items: baseline;">
+              <p class="" style="font-size: 14px; margin-top: 20px;">การปัดทศนิยม*</p>
+            </div>
+            <div style="position: relative;">
+              <select id="" class="input_box_status kanit">
+                <option class="kanit font_normal " value="" disabled selected hidden>กรุณาเลือก</option>
+                <option value="0">1</option>
+                <option value="0">2</option>
+              </select>
+              <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style=" font-size: 18px;"> เงื่อนไขการจ่าย </p>
+          </div>
+          <div style="display: flex;align-items: baseline;margin-top: 20px;">
+            <div style="width: 49%; font-size: 14px">
+              <p>รายได้นี้ทำจ่าย</p>
+            </div>
+            <div style="width: 51%;">
+              <div style="position: relative;">
+                <select id="" class="input_box_status kanit">
+                  <option value="" disabled selected hidden>ทุกงวด</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style="display: flex;margin-top: 20px;width: 100%; align-items: center;">
+            <div style="width: 100%; font-size: 14px;">
+              <p>คำนวณตามวันทำงานจริง</p>
+            </div>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="display: flex;justify-content: space-between;width: 100%; align-items: center;">
+            <div style="width: 100%; font-size: 14px;">
+              <p>เป็นเงินที่จะจ่ายงวดเดียว</p>
+            </div>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style="font-size: 20px; font-size: 18px;"> เงื่อนไขการคำนวณ </p>
+          </div>
+          <div style="display: flex;align-items: baseline;margin-top: 20px;">
+            <div style="width: 49%;font-size: 14px;">
+              <p>นำไปคำนวนภาษี</p>
+            </div>
+            <div style="width: 51%;">
+              <div style="position: relative;">
+                <select id="" class="input_box_status kanit">
+                  <option value="" disabled selected hidden>คำนวณครั้งเดียว</option>
+                  <option value="0">1</option>
+                  <option value="0">2</option>
+                </select>
+                <img class="dropdown_arrow_status" src="./symbol_hrm/arrow-down-black.png">
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <div style="margin-top: 20px; font-size: 14px;">นำรายได้นี้ไปคำนวณกับ</div>
+            <div id="details_tapslipsalary1">
+              <div style="width: 100%; align-items: center;">
+                <label class="container font_normal_1 weight_regular" style="display: flex; margin-top: 20px; ">
+                  <input id="payslipmobile" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;">ประกันสังคม</div>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container font_normal_1 weight_regular" style="display: flex;">
+                  <input id="payslipemail" type="checkbox">
+                  <div style="font-size: 14px;margin-left: 5px; padding-bottom: 5px;"> กองทุนสำรองเลี้ยงชีพ </div>
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+          <div style="align-items: center; display: flex;">
+            <span style="margin-right: 10px;">สถานะใช้งาน</span>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก</div>
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              เพิ่ม</div>
+          </div>
+        </div>
+      </div>
+      <!-- เพิ่มรายหัก END -->
+      <!-- เพิ่มหมวดบัญชี -->
+      <div class="overlay_add_account overlay-slide_add_account">
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #d9d9d9; background-color: white;">
+          <p style="font-size: 1.5vw;"> สร้างหมวดบัญชี </p>
+          <img src="./symbol_hrm/close_black.png" alt="" style="height: 30%; cursor: pointer;"
+            onclick="$('.overlay_add_account').removeClass('open'); $('#blur_bg').css('display','none');">
+        </div>
+        <div style="height: 80%; padding: 0 25px; overflow: scroll; background-color: #fff;">
+          <div style="margin-top: 20px;">
+            <span style="font-size: 12px;">ชื่อหมวดบัญชี</span>
+            <div class="inpu_long" style="width: unset;">
+              <input id="branch_name" type="text" class="kanit font_normal inputinside_css"
+                placeholder="กรอกชื่อชื่อหมวดบัญชี">
+            </div>
+          </div>
+        </div>
+        <div
+          style="height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #d9d9d9; box-shadow: 0 0 8px #00000014; background-color: white;">
+          <div style="align-items: center; display: flex;">
+            <span style="margin-right: 10px;">สถานะใช้งาน</span>
+            <label class="switch_hrm">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div style="width: 45%; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; border: var(--border_dotDark_4);">
+              ยกเลิก
+            </div>
+            <div
+              style="width: 45%; height: 50%; border-radius: 6px; align-items: center; justify-content: center; display: flex; background-color: var(--color_blue); color: var(--color_white_Light_4);">
+              บันทึก
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- main -->
+      <div
+        style="width: 100%; height: 100px; display: flex; align-items: center;border-top: 1px solid #e0dede; justify-content: space-between; ">
+        <div class="font_xl" style="width: 20%;  padding-left: 25px;">ตั้งค่ารายได้รายหัก</div>
+        <div style="display: flex; width: 20%;  justify-content: end;  padding-right: 25px;">
+          <div class="font_normal" style="align-items: center;display: flex; color: #F47243;"><img
+              style="height: 20px; margin-right: 10px; " src="./symbol_hrm/scanandpay_copy_icon_pin.png">ดูวีดีโอ</div>
+          <div class="font_normal" style="align-items: center;display: flex; color: #F47243;"><img
+              style="height: 20px; margin-left: 20px; margin-right: 10px;"
+              src="./symbol_hrm/scanandpay_copy_icon_pin.png">คู่มือการใช้งาน</div>
+        </div>
+      </div>
+      <div style="width: 100%; border-bottom: 1px solid #e0dede;">
+        <div style="display: flex; padding-left: 25px; margin-top: -20px;">
+          <div id="tab1" onclick="menutt(1)" style="font-size: 16px;" class="box_user1 borderuser">รายได้</div>
+          <div id="tab2" onclick="menutt(2)" style="font-size: 16px; margin-left: 25px;" class="box_user1">รายหัก</div>
+        </div>
+      </div>
+      <!-- ตารางรายได้ -->
+      <div id="tab_income">
+        <div style="width: 100%; height: 85px; display: flex; background-color: rgb(255, 255, 255);">
+          <div style="width: 2240px; height: 85px;display: flex; align-items: center; padding: 0 25px;">
+            <div class=" search_long">
+              <div class="seachdiv">
+                <img src="./symbol_hrm/search_gray_icon.png" style="height: 50%;" />
+              </div>
+              <input id="" type="text" class="kanit font_normal seachinputinside_css"
+                placeholder="ค้นหารายชื่อได้ หรือรหัสรายได้" />
+            </div>
+            <div style="height: 50px;">&nbsp;</div>
+          </div>
+          <div style="width: 40%; height: 85px;display: flex;">
+            <div
+              style="width: 412px; height: 85px;display: flex;align-items: center;justify-content: space-between;padding: 0 20px">
+              <div style="width: 155px; margin-right: 20px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1 kanit">
+                    <option value="0">testtestestsetset</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px; padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div style="width: 90px; margin-right: 20px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1 kanit">
+                    <option value="0"> ใช้งาน</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px;padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');"
+                style=" color: #fff; background-color: #F47243;border-radius: 10px; padding: 13px;border: 1px solid #fff; cursor: pointer;width: 100px;">
+                <p style="text-align: center;;">+ เพิ่มรายได้</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height: calc(100vh - 85px - 60px - 163px);overflow: scroll; padding: 0 25px;">
+          <table style="padding: 0 25px;">
+            <tr>
+              <th>รหัส</th>
+              <th>รายได้</th>
+              <th>ประเภท</th>
+              <th>คำนวณภาษี</th>
+              <th>นอกงวด</th>
+              <th>งวดถัดไป</th>
+              <th>ทำจ่าย</th>
+              <th>ประเภทรหัสบัญชี</th>
+              <th>คำนวณกับ</th>
+              <th>สวัสดิการ</th>
+              <th>สถานะ </th>
+              <th style="width: 60px;"> </th>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">
+                  <div>101</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">เงินเดือน / ค่าจ้างรายวัน</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width:20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="display: flex; flex-direction: column;width: 100px;flex-flow: wrap;">
+                  <div
+                    style="width: 25px; height: 24px; background-image: url(./symbol_hrm/informationicon.png);background-size: cover;">
+                  </div>
+                  <div
+                    style="width: 25px; height: 24px; background-image: url(./symbol_hrm/informationicon.png);background-size: cover;">
+                  </div>
+                  <div
+                    style="width: 25px; height: 24px; background-image: url(./symbol_hrm/informationicon.png);background-size: cover;">
+                  </div>
+
+
+                </div>
+              </td>
+
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png"></div>
+                  <div style="width: 10%; display: flex;">
+                    <div class="icon-role" style="display: none;"
+                      onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                      <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png"></div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">102</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่าล่วงเวลา</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">103</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่าวิชาชีพ</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">104</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่าวิชาชีพ</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">105</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่ากะ</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">106</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่ากะพิเศษ (OT)</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;">งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">107</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่ากะพิเศษ (วันหยุด)</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">108</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;"> ค่ากะพิเศษจากเวลาทำงาน</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ครั้งเดียว</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 25px;line-break: anywhere;">109</div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">เบี้ยขยัน</div>
+              </td>
+              <td>
+                <div style="width: 40px;line-break: anywhere;">40 (1)</div>
+              </td>
+              <td>
+                <div style="width: 60px;line-break: anywhere;">ครั้งเดียว</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 81px;line-break: anywhere;"> งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- ตารางรายได้ END -->
+      <!-- ตารางรายหัก -->
+      <div id="tab_deduction" style="display: none; ">
+        <div style="width: 100%; height: 85px; display: flex; background-color: rgb(255, 255, 255);">
+          <div style="width: 2240px; height: 85px;display: flex; align-items: center; padding: 0 25px;">
+            <div class=" search_long">
+              <div class="seachdiv">
+                <img src="./symbol_hrm/search_gray_icon.png" style="height: 50%;" />
+              </div>
+              <input id="" type="text" class="kanit font_normal seachinputinside_css"
+                placeholder="ค้นหารายชื่อหัก หรือรหัสรายหัก" />
+            </div>
+            <div style="height: 50px;">&nbsp;</div>
+          </div>
+          <div style="width: 40%; height: 85px;display: flex;">
+            <div
+              style="width: 412px; height: 85px;display: flex;align-items: center;justify-content: space-between;padding: 0 20px">
+              <div style="width: 155px; margin-right: 20px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1 kanit">
+                    <option value="0">testtestestsetset</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px; padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div style="width: 90px;margin-right: 20px;">
+                <div style="position: relative;">
+                  <select id="" class="input_box1 kanit">
+                    <option value="0"> ใช้งาน</option>
+                  </select>
+                  <img style="position: absolute; top: 9px; width: 20px; height: 20px;padding-top: 5px;"
+                    class="dropdown_arrow_input" src="./symbol_hrm/arrow-down-black.png">
+                </div>
+              </div>
+              <div onclick="$('.overlay_add_Deduction').addClass('open'); $('#blur_bg').css('display','flex');"
+                style=" color: #fff; background-color: #F47243;border-radius: 10px; padding: 13px;border: 1px solid #fff; cursor: pointer;width: 100px;">
+                <p style="text-align: center;">+ เพิ่มรายหัก</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style=" height: calc(100vh - 85px - 60px - 163px);overflow: scroll; padding: 0 25px;">
+          <table style="padding: 0 25px;">
+            <tr>
+              <th>รหัส</th>
+              <th>รายหัก</th>
+              <th>คำนวณภาษี</th>
+              <th>นอกงวด</th>
+              <th>งวดถัดไป</th>
+              <th>ทำจ่าย</th>
+              <th>ประเภทรหัสบัญชี</th>
+              <th>คำนวณกับ</th>
+              <th>สวัสดิการ</th>
+              <th>สถานะ</th>
+              <th style="width: 66px;"></th>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D01</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ภาษีหัก ณ ที่จ่าย</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">งวดสิ้นเดือน></div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D02</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ประกันสังคม</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> ทั้งปี</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D04</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">หักลาไม่รับค่าจ้าง</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> ครั้งเดียว</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D05</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">หักไม่มาทำงาน</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> ครั้งเดียว</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D06</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">กองทุนสำรองเลี้ยงชีพ</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D07</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">เบิกเงินล่วงหน้า</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D09</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">หักพักงาน</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D10</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ค่าปรับ</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">ทุกงวด</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D11</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ภาษีหัก 40(1) หัก 3%</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_increase_income').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="$('.icon-role').css('display','flex')">
+              <td>
+                <div style="width: 30px;line-break: anywhere;">
+                  <div>D12</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 211px;line-break: anywhere;">ภาษีหัก 40(1)(2)</div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 100px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 150px;line-break: anywhere;">งวดสิ้นเดือน</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;">-</div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="width: 20px;line-break: anywhere;"> </div>
+              </td>
+              <td>
+                <div style="align-items: center;text-align: center;">
+                  <div
+                    style="width: 60px; height: 24px; background-color: rgb(200, 245, 232);border-radius: 50px;color:rgb(0, 164, 82);font-size: 14px;">
+                    ใช้งาน</div>
+                </div>
+              </td>
+              <td>
+                <div style="width: 10%; display: flex;">
+                  <div class="icon-role" style="display: none;"
+                    onclick="$('.overlay_accoun_information').addClass('open'); $('#blur_bg').css('display','flex');">
+                    <img style="height: 25px; margin: 0 10px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                  <div class="icon-role" style="display: none;">
+                    <img style="height: 25px;" src="./symbol_hrm/scanandpay_copy_icon_pin.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  let ENDPOINT = window.API_URL;
+  
+  function menutt(id) {
+    $("#tab1").removeClass('borderuser ')
+    $("#tab2").removeClass('borderuser')
+
+    $("#tab_income").css("display", 'none')
+    $("#tab_deduction").css("display", 'none')
+
+    if (id == 1) {
+      $("#tab1").addClass('borderuser')
+      $("#tab2").removeClass('borderuser')
+
+      $("#tab_income").css("display", 'block')
+    }
+
+    if (id == 2) {
+      $("#tab1").removeClass('borderuser')
+      $("#tab2").addClass('borderuser')
+
+      $("#tab_deduction").css("display", 'block')
+    }
+  }
+</script>
+
+</html>

@@ -1,0 +1,397 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.in-de-container {
+    margin-left: 7vw;
+}
+
+.tab {
+    display: none;
+    text-align: left;
+}
+
+.tab.active {
+    display: block;
+}
+
+.tab-container {
+    display: flex;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.tab-button p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.tab-button:hover {
+    color: #009688;
+    border-bottom: 2px solid #009688;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    height: 45px;
+}
+
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    text-align: center;
+    background-color: #009688;
+    color: #fff;
+}
+
+
+
+thead {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+hr {
+    color: gray;
+}
+
+.btn-add {
+    width: 120px;
+    height: 40px;
+    background: #009688;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.overlay-add-income {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.overlay-add-income-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    height: 95vh;
+    width: 40%;
+    overflow-y: auto;
+}
+
+.overlay-add-deduction {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.overlay-add-deduction-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    height: 95vh;
+    width: 40%;
+    overflow-y: auto;
+}
+
+.overlay-income {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.overlay-income-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    height: 95vh;
+    width: 40%;
+    overflow-y: auto;
+}
+
+.overlay-deduction {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.overlay-deduction-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    height: 95vh;
+    width: 40%;
+    overflow-y: auto;
+}
+
+.edit-btn {
+    padding: 10px 20px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.code-box {
+    width: 80px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #ECECF1;
+}
+
+.head-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #ECECF1;
+}
+
+.pay-box {
+    margin-top: 20px;
+}
+
+.pay-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.pay-select select {
+    padding: 10px;
+    width: 120px;
+    border: 1px solid #ECECF1;
+    border-radius: 7px;
+}
+
+.cal-box {
+    padding: 10px;
+}
+
+/* The switch container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.check-box {
+    display: flex;
+    gap: 10px;
+}
+
+.check-box input {
+    width: 20px;
+}
+
+.x-btn {
+    font-size: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.save-btn {
+    width: 90px;
+    height: 30px;
+    background: #009688;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    width: 90px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid #009688;
+    color: #009688;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.table-container {
+    height: 74vh;
+    overflow-y: auto;
+}
+
+.modal-confirm-income {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-income {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    max-width: 600px;
+    margin: 20vw auto;
+    border-radius: 5px;
+}
+
+.modal-confirm-deduction {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-deduction {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    max-width: 600px;
+    margin: 20vw auto;
+    border-radius: 5px;
+}
+
+.add-confirm-deduction {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-content-deduction {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    max-width: 600px;
+    margin: 20vw auto;
+    border-radius: 5px;
+}
+
+.add-confirm-income {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-content-income {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    max-width: 600px;
+    margin: 20vw auto;
+    border-radius: 5px;
+}
+
+.icon {
+    width: 20px;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 20px;
+    background: #009688;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+}

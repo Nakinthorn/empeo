@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- global.js -->
+    <script src='./global_js.js'></script>
+    <!-- This css font  -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap" rel="stylesheet">
+    <!-- global.css -->
+    <link rel="stylesheet" type="text/css" href='<?= base_url('css/global_hrm.css') ?>'>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tapmenu-faq {
+
+        height: 5vh;
+        border: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 25px;
+    }
+
+    .tapactive {
+        border-bottom: 3px solid #009688;
+    }
+</style>
+
+<div id="divmenu" class="div_menu">
+    <div class="font_size_icon div_menu_left" style="font-size: 1.9vw;">
+        <!-- <div class="flex_center div_icon_menu_logo"><img id="noom" src="https://media.discordapp.net/attachments/1065176955445587988/1123534910381117491/350885243_2871046769695349_6895795451906942072_n.jpg?width=372&height=580" alt="" style="width: 70%; transition: 1s;"></div> -->
+        <!-- <div class="flex_center div_icon_menu" onclick="open_tap_info()"><i class='bx bx-first-page'style="cursor: pointer;"></i></div> -->
+        <div onclick="location.href='dashboard.html'" class="flex_center div_icon_menu"><i class='bx bx-home'></i></div>
+        <div class="flex_center div_icon_menu"><i class='bx bx-food-menu'></i></div>
+        <div class="flex_center div_icon_menu"><i class='bx bx-group'></i></div>
+        <div class="flex_center div_icon_menu"><i class='bx bx-library'></i></div>
+        <div onclick="location.href='add-period.html'" class="flex_center div_icon_menu"><i class='bx bx-dollar-circle'></i></div>
+        <div class="flex_center div_icon_menu"><i class='bx bx-bar-chart-alt'></i></div>
+        <div onclick="location.href='setup.html'" class="flex_center div_icon_menu"><i class='bx bx-cog'></i></div>
+        <div class="flex_center div_icon_menu"><i class='bx bx-question-mark'></i></div>
+
+    </div>
+</div>
+
+</html>

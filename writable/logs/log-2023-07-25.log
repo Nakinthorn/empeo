@@ -1,0 +1,24 @@
+CRITICAL - 2023-07-25 04:22:43 --> Undefined array key "company"
+in APPPATH/Controllers/ProfileCon.php on line 98.
+ 1 APPPATH/Controllers/ProfileCon.php(98): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "company"', '/Users/sunti/hrm-project-frontend/app/Controllers/ProfileCon.php', 98)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\ProfileCon->profilev2()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileCon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')
+CRITICAL - 2023-07-25 04:22:48 --> Undefined array key "company"
+in APPPATH/Controllers/ProfileCon.php on line 98.
+ 1 APPPATH/Controllers/ProfileCon.php(98): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "company"', '/Users/sunti/hrm-project-frontend/app/Controllers/ProfileCon.php', 98)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\ProfileCon->profilev2()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileCon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')
+CRITICAL - 2023-07-25 04:23:38 --> Undefined array key "company"
+in APPPATH/Controllers/ProfileCon.php on line 98.
+ 1 APPPATH/Controllers/ProfileCon.php(98): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "company"', '/Users/sunti/hrm-project-frontend/app/Controllers/ProfileCon.php', 98)
+ 2 SYSTEMPATH/CodeIgniter.php(932): App\Controllers\ProfileCon->profilev2()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileCon))
+ 4 SYSTEMPATH/CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/sunti/hrm-project-frontend/public/index.php')
