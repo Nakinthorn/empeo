@@ -7,7 +7,7 @@
     <title>index</title>
 </head>
 <body>
-    <a href="/public/"></a>
+    <a href="/public/">aavv</a>
     <h1>redirect</h1>
 </body>
 </html>
